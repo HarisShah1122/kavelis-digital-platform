@@ -157,27 +157,27 @@ export default function Contact() {
                   role="status"
                   className={`mb-8 flex items-start gap-3 rounded-2xl border p-5 ${
                     statusInfo.tone === 'success'
-                      ? 'border-emerald-200 bg-emerald-50'
+                      ? 'border-teal-200 bg-teal-50'
                       : statusInfo.tone === 'error'
                         ? 'border-red-200 bg-red-50'
-                        : 'border-electric-200 bg-electric-50'
+                        : 'border-navy-200 bg-white'
                   }`}
                 >
                   {statusInfo.tone === 'success' ? (
-                    <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+                    <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
                   ) : statusInfo.tone === 'error' ? (
                     <AlertCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
                   ) : (
-                    <Info aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-electric-700" />
+                    <Info aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-navy-700" />
                   )}
                   <div>
                     <h2
                       className={`text-sm font-semibold ${
                         statusInfo.tone === 'success'
-                          ? 'text-emerald-900'
+                          ? 'text-teal-900'
                           : statusInfo.tone === 'error'
                             ? 'text-red-900'
-                            : 'text-electric-900'
+                            : 'text-navy-900'
                       }`}
                     >
                       {statusInfo.title}
@@ -185,10 +185,10 @@ export default function Contact() {
                     <p
                       className={`mt-1 text-sm leading-relaxed ${
                         statusInfo.tone === 'success'
-                          ? 'text-emerald-900/80'
+                          ? 'text-teal-900/80'
                           : statusInfo.tone === 'error'
                             ? 'text-red-900/80'
-                            : 'text-electric-900/80'
+                            : 'text-charcoal-600'
                       }`}
                     >
                       {statusInfo.body}
@@ -321,7 +321,7 @@ export default function Contact() {
                   <h2 className="text-base font-semibold text-navy-950">Direct email</h2>
                   <a
                     href={`mailto:${siteConfig.contactEmail}`}
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-electric-700 hover:text-electric-800"
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-teal-700 hover:text-teal-800"
                   >
                     <Mail aria-hidden="true" className="h-4 w-4" />
                     {siteConfig.contactEmail}

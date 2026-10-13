@@ -15,7 +15,7 @@ interface CtaBandProps {
 export function CtaBand({
   title = 'Have a product to build or a process to fix?',
   description = 'Tell us what you are working on. We will respond with honest scoping questions, realistic options, and a clear next step.',
-  primaryLabel = 'Start a project',
+  primaryLabel = 'Discuss Your Project',
   primaryTo = '/contact',
   secondaryLabel = 'Explore services',
   secondaryTo = '/services',

@@ -14,31 +14,30 @@ const proofPoints = [
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-navy-100 bg-gradient-to-b from-navy-50/70 to-white">
-      <div className="pointer-events-none absolute inset-0 bg-grid" aria-hidden="true" />
-      <Container className="relative section">
+    <section className="border-b border-navy-100 bg-teal-50/60">
+      <Container className="section">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <Badge>Built for product teams and operators</Badge>
+            <Badge>Digital products & technology solutions</Badge>
             <h1 className="display-heading mt-6">
-              Build smarter.
+              Digital products
               <br />
-              Automate better.
+              built for
               <br />
-              <span className="text-electric-700">Scale faster.</span>
+              <span className="text-teal-700">what&rsquo;s next.</span>
             </h1>
             <p className="lead mt-6 max-w-xl">
-              Kavelis is a technology partner for companies that need real software — SaaS
-              products, custom platforms, automation, and digital commerce — designed, built, and
-              maintained with engineering discipline.
+              Kavelis designs and builds SaaS products, automation systems, and scalable digital
+              experiences — helping businesses launch faster, operate smarter, and grow with
+              confidence.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button to="/contact" className="group">
-                Start a project
+                Discuss Your Project
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
               <Button to="/services" variant="secondary">
-                Explore capabilities
+                Explore Our Services
               </Button>
             </div>
             <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2">

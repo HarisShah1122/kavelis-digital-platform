@@ -61,7 +61,7 @@ export default function Products() {
                           {statusLabels[product.status] ?? product.status}
                         </Badge>
                       </div>
-                      <p className="mt-2 text-sm font-medium text-electric-700">{product.tagline}</p>
+                      <p className="mt-2 text-sm font-medium text-teal-700">{product.tagline}</p>
                       <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
                         {product.description}
                       </p>
@@ -88,7 +88,7 @@ export default function Products() {
                               >
                                 <Check
                                   aria-hidden="true"
-                                  className="mt-0.5 h-4 w-4 shrink-0 text-electric-600"
+                                  className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
                                 />
                                 {feature}
                               </li>
@@ -127,7 +127,7 @@ export default function Products() {
                       <div className="w-full max-w-xs rounded-xl border border-white/10 bg-white/5 p-4">
                         <div className="mb-3 flex items-center justify-between">
                           <span className="h-2 w-16 rounded-full bg-white/20" />
-                          <span className="h-2 w-8 rounded-full bg-electric-500/60" />
+                          <span className="h-2 w-8 rounded-full bg-teal-500/60" />
                         </div>
                         <div className="space-y-2.5">
                           {[72, 54, 88, 40, 64].map((width, i) => (
@@ -140,7 +140,7 @@ export default function Products() {
                         </div>
                         <div className="mt-4 grid grid-cols-2 gap-2">
                           <div className="h-14 rounded-lg bg-white/5" />
-                          <div className="h-14 rounded-lg bg-electric-500/20" />
+                          <div className="h-14 rounded-lg bg-teal-500/20" />
                         </div>
                         <p className="mt-4 text-center text-[10px] uppercase tracking-widest text-navy-500">
                           Product visual placeholder

@@ -24,7 +24,7 @@ export default function Work() {
         description="A structured view of the problems we solve and how we deliver. Client details are kept private unless publication is agreed."
       >
         <Button to="/contact" className="group">
-          Start a project like these
+          Discuss a similar project
           <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </Button>
       </PageHero>

@@ -128,9 +128,24 @@ All business content is centralized and typed:
 
 ## Design system
 
-- **Navy / charcoal / white** base with restrained **electric blue** accents (`tailwind.config.js`)
-- Inter typography, generous spacing, card-based layouts
-- Light pages with dark feature bands and footer
+Brand tokens live in `tailwind.config.js`, derived from the Kavelis identity:
+
+| Token | Value | Role |
+|-------|-------|------|
+| `navy-950` | `#101629` | Primary text, dark sections, footer |
+| `teal-800` | `#075B66` | Dark teal — logo mark, brand anchor |
+| `teal-600` | `#0E8482` | Primary buttons (WCAG AA with white text) |
+| `teal-500` | `#159A98` | Brand teal — accents, data viz |
+| `mint-400` | `#62D6B0` | Highlight accents on dark surfaces |
+| `canvas` | `#FAF9F6` | Soft off-white page background |
+| `charcoal-500` | `#687385` | Muted secondary text |
+| `teal-50` | `#E8F6F2` | Light teal section and hover backgrounds |
+
+Additional principles:
+
+- Inter typography, generous spacing, card-based layouts on an off-white canvas
+- White content surfaces; light teal accents; dark navy reserved for feature bands and footer
+- No neon gradients, glassmorphism, or particle effects
 - Reduced-motion support and visible focus states
 
 ## Deployment

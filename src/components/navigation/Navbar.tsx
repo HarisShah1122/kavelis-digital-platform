@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/Button'
 function navLinkClasses({ isActive }: { isActive: boolean }): string {
   return cn(
     'rounded-md px-1 py-1 text-sm font-medium transition-colors',
-    isActive ? 'text-electric-700' : 'text-charcoal-600 hover:text-navy-950',
+    isActive ? 'text-teal-700' : 'text-charcoal-600 hover:text-navy-950',
   )
 }
 
@@ -90,7 +90,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b bg-white/90 backdrop-blur transition-shadow',
+        'sticky top-0 z-50 border-b bg-canvas/95 backdrop-blur transition-shadow',
         scrolled ? 'border-navy-100 shadow-nav' : 'border-transparent',
       )}
     >
@@ -109,7 +109,7 @@ export function Navbar() {
                 className={cn(
                   'inline-flex items-center gap-1 rounded-md text-sm font-medium transition-colors',
                   location.pathname === '/services'
-                    ? 'text-electric-700'
+                    ? 'text-teal-700'
                     : 'text-charcoal-600 hover:text-navy-950',
                 )}
               >
@@ -130,7 +130,7 @@ export function Navbar() {
                       <Link
                         key={child.to}
                         to={child.to}
-                        className="rounded-xl p-3 transition-colors hover:bg-navy-50"
+                        className="rounded-xl p-3 transition-colors hover:bg-teal-50"
                       >
                         <span className="block text-sm font-semibold text-navy-950">
                           {child.label}
@@ -144,9 +144,9 @@ export function Navbar() {
                   <div className="mt-2 border-t border-navy-100 px-3 pb-1 pt-3">
                     <Link
                       to="/services"
-                      className="text-sm font-semibold text-electric-700 hover:text-electric-800"
+                      className="text-sm font-semibold text-teal-700 hover:text-teal-800"
                     >
-                      View all services →
+                      View all services â†’
                     </Link>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button to={siteConfig.startPath} className="hidden sm:inline-flex">
-            Start a project
+            Discuss Your Project
           </Button>
 
           <button
@@ -184,7 +184,7 @@ export function Navbar() {
         id="mobile-menu"
         ref={mobilePanelRef}
         hidden={!mobileOpen}
-        className="border-t border-navy-100 bg-white lg:hidden"
+        className="border-t border-navy-100 bg-canvas lg:hidden"
       >
         <nav aria-label="Mobile" className="container-page flex flex-col gap-1 py-4">
           {servicesItem ? (
@@ -194,7 +194,7 @@ export function Navbar() {
                 className={({ isActive }) =>
                   cn(
                     'rounded-lg px-3 py-2.5 text-base font-medium',
-                    isActive ? 'bg-navy-50 text-electric-700' : 'text-charcoal-700 hover:bg-navy-50',
+                    isActive ? 'bg-teal-50 text-teal-700' : 'text-charcoal-700 hover:bg-teal-50',
                   )
                 }
               >
@@ -205,7 +205,7 @@ export function Navbar() {
                   <li key={child.to}>
                     <Link
                       to={child.to}
-                      className="block rounded-md px-2 py-1.5 text-sm text-charcoal-600 hover:bg-navy-50 hover:text-navy-950"
+                      className="block rounded-md px-2 py-1.5 text-sm text-charcoal-600 hover:bg-teal-50 hover:text-navy-950"
                     >
                       {child.label}
                     </Link>
@@ -222,7 +222,7 @@ export function Navbar() {
               className={({ isActive }) =>
                 cn(
                   'rounded-lg px-3 py-2.5 text-base font-medium',
-                  isActive ? 'bg-navy-50 text-electric-700' : 'text-charcoal-700 hover:bg-navy-50',
+                  isActive ? 'bg-teal-50 text-teal-700' : 'text-charcoal-700 hover:bg-teal-50',
                 )
               }
             >
@@ -231,7 +231,7 @@ export function Navbar() {
           ))}
 
           <Button to={siteConfig.startPath} className="mt-3 w-full">
-            Start a project
+            Discuss Your Project
           </Button>
         </nav>
       </div>

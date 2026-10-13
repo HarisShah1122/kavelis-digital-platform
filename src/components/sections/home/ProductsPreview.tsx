@@ -14,7 +14,7 @@ const statusLabels: Record<string, string> = {
 
 export function ProductsPreview() {
   return (
-    <Section className="border-t border-navy-100 bg-navy-50/40">
+    <Section className="border-t border-navy-100 bg-white">
       <Container>
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionHeader
@@ -25,7 +25,7 @@ export function ProductsPreview() {
           <Reveal>
             <Link
               to="/products"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-700 hover:text-electric-800"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
             >
               View products
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -43,13 +43,13 @@ export function ProductsPreview() {
                     {statusLabels[product.status] ?? product.status}
                   </Badge>
                 </div>
-                <p className="mt-2 text-sm font-medium text-electric-700">{product.tagline}</p>
+                <p className="mt-2 text-sm font-medium text-teal-700">{product.tagline}</p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-charcoal-600">
                   {product.description}
                 </p>
                 <Link
                   to={product.ctaTo}
-                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-navy-900 hover:text-electric-700"
+                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-navy-900 hover:text-teal-700"
                 >
                   {product.ctaLabel}
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />

@@ -6,7 +6,7 @@ export function DashboardMockup() {
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-navy-900/10 bg-navy-950 shadow-lift"
+      className="mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-navy-800 bg-navy-950 shadow-lift"
     >
       <div className="flex items-center gap-1.5 border-b border-white/10 bg-navy-900 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -17,7 +17,7 @@ export function DashboardMockup() {
 
       <div className="grid grid-cols-[auto_1fr]">
         <aside className="hidden w-14 flex-col items-center gap-4 border-r border-white/10 py-5 sm:flex">
-          <LayoutDashboard className="h-4 w-4 text-electric-400" />
+          <LayoutDashboard className="h-4 w-4 text-mint-400" />
           <BarChart3 className="h-4 w-4 text-white/40" />
           <Users className="h-4 w-4 text-white/40" />
           <CreditCard className="h-4 w-4 text-white/40" />
@@ -47,7 +47,9 @@ export function DashboardMockup() {
               {bars.map((height, index) => (
                 <div
                   key={index}
-                  className={`flex-1 rounded-t ${index === bars.length - 2 ? 'bg-electric-500' : 'bg-electric-500/40'}`}
+                  className={`flex-1 rounded-t ${
+                    index === bars.length - 2 ? 'bg-mint-400' : 'bg-teal-500/50'
+                  }`}
                   style={{ height: `${height}%` }}
                 />
               ))}
@@ -67,9 +69,9 @@ export function DashboardMockup() {
                   <span
                     className={
                       row.status === 'Completed'
-                        ? 'text-emerald-400'
+                        ? 'text-mint-400'
                         : row.status === 'Running'
-                          ? 'text-electric-400'
+                          ? 'text-teal-400'
                           : 'text-navy-400'
                     }
                   >

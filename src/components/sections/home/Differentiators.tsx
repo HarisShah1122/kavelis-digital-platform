@@ -7,7 +7,7 @@ const icons = [Compass, Layers3, ShieldCheck, Handshake]
 
 export function Differentiators() {
   return (
-    <Section className="border-y border-navy-100 bg-navy-50/40">
+    <Section className="border-y border-navy-100 bg-white">
       <Container>
         <SectionHeader
           eyebrow="Engineering approach"
@@ -21,7 +21,7 @@ export function Differentiators() {
             return (
               <Reveal key={item.id} delayMs={index * 60}>
                 <div className="card h-full p-6">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-950 text-white">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-800 text-white">
                     <Icon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-lg font-semibold text-navy-950">{item.title}</h3>

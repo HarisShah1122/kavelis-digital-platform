@@ -66,7 +66,7 @@ export default function Solutions() {
                         >
                           <Check
                             aria-hidden="true"
-                            className="mt-0.5 h-4 w-4 shrink-0 text-electric-600"
+                            className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
                           />
                           {need}
                         </li>
@@ -86,7 +86,7 @@ export default function Solutions() {
                         >
                           <Check
                             aria-hidden="true"
-                            className="mt-0.5 h-4 w-4 shrink-0 text-electric-600"
+                            className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
                           />
                           {approach}
                         </li>

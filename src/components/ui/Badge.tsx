@@ -8,7 +8,7 @@ interface BadgeProps {
 }
 
 const tones: Record<NonNullable<BadgeProps['tone']>, string> = {
-  blue: 'bg-electric-50 text-electric-700 ring-electric-200',
+  blue: 'bg-teal-50 text-teal-700 ring-teal-200',
   neutral: 'bg-navy-50 text-navy-700 ring-navy-200',
   warning: 'bg-amber-50 text-amber-800 ring-amber-200',
 }

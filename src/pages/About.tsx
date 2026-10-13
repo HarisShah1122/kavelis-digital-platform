@@ -76,7 +76,7 @@ export default function About() {
         </Container>
       </Section>
 
-      <Section className="border-y border-navy-100 bg-navy-50/40">
+      <Section className="border-y border-navy-100 bg-white">
         <Container>
           <SectionHeader
             eyebrow="Principles"
@@ -109,7 +109,7 @@ export default function About() {
             {processSteps.map((step, index) => (
               <Reveal key={step.id} as="li" delayMs={index * 50} className="h-full">
                 <div className="card h-full p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-electric-600">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-600">
                     {step.number}
                   </p>
                   <h3 className="mt-3 text-base font-semibold text-navy-950">{step.title}</h3>

@@ -24,7 +24,7 @@ export function Accordion({ items, className }: AccordionProps) {
                 aria-controls={`faq-panel-${item.id}`}
                 id={`faq-button-${item.id}`}
                 onClick={() => setOpenId(open ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold text-navy-950 transition-colors hover:text-electric-700"
+                className="flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold text-navy-950 transition-colors hover:text-teal-700"
               >
                 {item.question}
                 <ChevronDown

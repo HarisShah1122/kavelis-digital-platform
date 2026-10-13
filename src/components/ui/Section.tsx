@@ -24,7 +24,7 @@ export function Section({ children, className, id, dark = false }: SectionProps)
   return (
     <section
       id={id}
-      className={cn('section', dark ? 'bg-navy-950 text-white' : 'bg-white', className)}
+      className={cn('section', dark ? 'bg-navy-950 text-white' : 'bg-transparent', className)}
     >
       {children}
     </section>
@@ -57,7 +57,7 @@ export function SectionHeader({
         className,
       )}
     >
-      {eyebrow ? <p className={cn('eyebrow', onDark && 'text-electric-300')}>{eyebrow}</p> : null}
+      {eyebrow ? <p className={cn('eyebrow', onDark && 'text-teal-300')}>{eyebrow}</p> : null}
       <h2
         className={cn(
           'mt-3 text-3xl font-bold tracking-tight sm:text-4xl',

@@ -23,19 +23,19 @@ export default function Services() {
         description="Kavelis partners with businesses to design, build, integrate, and maintain the software their operations depend on. Each service can stand alone or combine into a longer engagement."
       >
         <Button to="/contact" className="group">
-          Discuss your project
+          Discuss Your Project
           <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </Button>
       </PageHero>
 
-      <Section className="border-b border-navy-100">
+      <Section className="border-b border-navy-100 bg-white">
         <Container>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <li key={service.id}>
                 <a
                   href={`#${service.id}`}
-                  className="block rounded-xl border border-navy-100 bg-white px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-electric-200 hover:bg-electric-50/50 hover:text-electric-800"
+                  className="block rounded-xl border border-navy-100 bg-canvas px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-teal-200 hover:bg-teal-50 hover:text-teal-800"
                 >
                   {service.title}
                 </a>
@@ -47,56 +47,34 @@ export default function Services() {
 
       {services.map((service, index) => {
         const Icon = service.icon
-        const isDark = index % 2 === 1
         return (
           <Section
             key={service.id}
             id={service.id}
-            dark={isDark}
-            className={isDark ? '' : 'border-b border-navy-100'}
+            className={index % 2 === 1 ? 'border-y border-navy-100 bg-white' : ''}
           >
             <Container>
               <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
                 <Reveal>
-                  <span
-                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${
-                      isDark ? 'bg-white/10 text-electric-300' : 'bg-electric-50 text-electric-700'
-                    }`}
-                  >
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
                     <Icon aria-hidden="true" className="h-5 w-5" />
                   </span>
-                  <h2
-                    className={`mt-5 text-3xl font-bold tracking-tight sm:text-4xl ${
-                      isDark ? 'text-white' : 'text-navy-950'
-                    }`}
-                  >
+                  <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
                     {service.title}
                   </h2>
-                  <p
-                    className={`mt-4 text-base leading-relaxed sm:text-lg ${
-                      isDark ? 'text-navy-200' : 'text-charcoal-600'
-                    }`}
-                  >
+                  <p className="mt-4 text-base leading-relaxed text-charcoal-500 sm:text-lg">
                     {service.description}
                   </p>
 
                   <div className="mt-8">
-                    <h3
-                      className={`text-sm font-semibold uppercase tracking-wider ${
-                        isDark ? 'text-navy-300' : 'text-charcoal-500'
-                      }`}
-                    >
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
                       Engagement options
                     </h3>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {service.engagementOptions.map((option) => (
                         <li
                           key={option}
-                          className={`rounded-full px-3.5 py-1.5 text-xs font-semibold ${
-                            isDark
-                              ? 'bg-white/10 text-navy-100'
-                              : 'bg-navy-50 text-navy-700'
-                          }`}
+                          className="rounded-full bg-teal-50 px-3.5 py-1.5 text-xs font-semibold text-teal-800"
                         >
                           {option}
                         </li>
@@ -105,9 +83,7 @@ export default function Services() {
                   </div>
 
                   <div className="mt-8">
-                    <Button to="/contact" variant={isDark ? 'dark' : 'primary'}>
-                      Discuss {service.title.toLowerCase()}
-                    </Button>
+                    <Button to="/contact">Discuss this service</Button>
                   </div>
                 </Reveal>
 
@@ -117,34 +93,17 @@ export default function Services() {
                     { heading: 'Typical deliverables', items: service.deliverables },
                     { heading: 'Common use cases', items: service.useCases },
                   ].map((block) => (
-                    <div
-                      key={block.heading}
-                      className={`rounded-2xl border p-6 ${
-                        isDark
-                          ? 'border-white/10 bg-white/5'
-                          : 'border-navy-100 bg-navy-50/50'
-                      }`}
-                    >
-                      <h3
-                        className={`text-base font-semibold ${
-                          isDark ? 'text-white' : 'text-navy-950'
-                        }`}
-                      >
-                        {block.heading}
-                      </h3>
+                    <div key={block.heading} className="card p-6">
+                      <h3 className="text-base font-semibold text-navy-950">{block.heading}</h3>
                       <ul className="mt-4 space-y-2.5">
                         {block.items.map((item) => (
                           <li
                             key={item}
-                            className={`flex items-start gap-2.5 text-sm leading-relaxed ${
-                              isDark ? 'text-navy-200' : 'text-charcoal-600'
-                            }`}
+                            className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-500"
                           >
                             <Check
                               aria-hidden="true"
-                              className={`mt-0.5 h-4 w-4 shrink-0 ${
-                                isDark ? 'text-electric-400' : 'text-electric-600'
-                              }`}
+                              className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
                             />
                             {item}
                           </li>

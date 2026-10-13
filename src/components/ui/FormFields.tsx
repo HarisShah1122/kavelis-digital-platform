@@ -26,7 +26,7 @@ export function FieldWrapper({
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy-900">
         {label}
         {required ? (
-          <span aria-hidden="true" className="ml-0.5 text-electric-600">
+          <span aria-hidden="true" className="ml-0.5 text-teal-600">
             *
           </span>
         ) : (

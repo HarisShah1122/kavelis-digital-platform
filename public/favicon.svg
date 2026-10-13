@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kavelis">
-  <rect width="64" height="64" rx="14" fill="#0A1628" />
+  <rect width="64" height="64" rx="14" fill="#075B66" />
   <path d="M17 13h7.6v16.4L37.8 13H47L32.6 27.8 48 51h-8.8L24.6 33.4V51H17V13z" fill="#FFFFFF" />
-  <rect x="42" y="44" width="9" height="7" rx="2" fill="#2563EB" />
+  <rect x="42" y="44" width="9" height="7" rx="2" fill="#62D6B0" />
 </svg>

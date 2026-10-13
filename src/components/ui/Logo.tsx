@@ -14,8 +14,8 @@ export function Logo({ className, onDark = false, linked = true }: LogoProps) {
       <span
         aria-hidden="true"
         className={cn(
-          'grid h-9 w-9 shrink-0 place-items-center rounded-lg text-base font-bold tracking-tight',
-          onDark ? 'bg-white text-navy-950' : 'bg-navy-950 text-white',
+          'grid h-9 w-9 shrink-0 place-items-center rounded-[10px] text-base font-bold tracking-tight',
+          onDark ? 'bg-white text-teal-800' : 'bg-teal-800 text-white',
         )}
       >
         K

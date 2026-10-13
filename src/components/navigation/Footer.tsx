@@ -20,9 +20,9 @@ export function Footer() {
             </p>
             <Link
               to={siteConfig.startPath}
-              className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-electric-300"
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-teal-300"
             >
-              Start a project
+              Discuss Your Project
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </Link>
           </div>
@@ -65,7 +65,7 @@ export function Footer() {
             ) : (
               <p className="mt-4 text-sm text-navy-300">
                 Prefer to start with a conversation?{' '}
-                <Link to={siteConfig.startPath} className="font-semibold text-white hover:text-electric-300">
+                <Link to={siteConfig.startPath} className="font-semibold text-white hover:text-teal-300">
                   Send a project inquiry
                 </Link>
                 .
