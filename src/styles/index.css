@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-charcoal-900 antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-electric-600 ring-offset-2;
+  }
+
+  ::selection {
+    @apply bg-electric-100 text-navy-950;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-tight {
+    @apply py-12 md:py-16;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-electric-700;
+  }
+
+  .display-heading {
+    @apply text-4xl font-bold tracking-tight text-navy-950 sm:text-5xl lg:text-6xl;
+  }
+
+  .section-heading {
+    @apply text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl;
+  }
+
+  .lead {
+    @apply text-lg leading-relaxed text-charcoal-600;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-electric-600 text-white hover:bg-electric-700;
+  }
+
+  .btn-secondary {
+    @apply border border-navy-200 bg-white text-navy-900 hover:border-navy-300 hover:bg-navy-50;
+  }
+
+  .btn-dark {
+    @apply bg-white text-navy-950 hover:bg-navy-100;
+  }
+
+  .btn-ghost-light {
+    @apply text-navy-100 hover:bg-white/10;
+  }
+
+  .card {
+    @apply rounded-2xl border border-navy-100 bg-white shadow-card;
+  }
+
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-navy-200 hover:shadow-lift;
+  }
+
+  .input-field {
+    @apply block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-sm text-charcoal-900 placeholder:text-charcoal-400 focus:border-electric-600 focus:outline-none focus:ring-1 focus:ring-electric-600;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Subtle grid backdrop for hero/dark sections */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(10, 22, 40, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 22, 40, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
