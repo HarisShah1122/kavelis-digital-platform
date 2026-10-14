@@ -11,15 +11,18 @@ interface LogoProps {
 export function Logo({ className, onDark = false, linked = true }: LogoProps) {
   const content = (
     <span className={cn('inline-flex items-center gap-2.5', className)}>
-      <span
+      {/* Kavelis logo asset from public/favicon.svg */}
+      <img
+        src="/favicon.svg"
+        alt=""
         aria-hidden="true"
+        width={36}
+        height={36}
         className={cn(
-          'grid h-9 w-9 shrink-0 place-items-center rounded-[10px] text-base font-bold tracking-tight',
-          onDark ? 'bg-white text-navy-950' : 'bg-navy-950 text-gold-400',
+          'h-9 w-9 shrink-0 rounded-[10px]',
+          onDark && 'ring-1 ring-white/15',
         )}
-      >
-        K
-      </span>
+      />
       <span
         className={cn(
           'text-lg font-semibold tracking-tight',
