@@ -105,7 +105,7 @@ export default function About() {
             title="Collaboration without the black box"
             description="You are never guessing where a project stands. Here is the process every engagement follows."
           />
-          <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, index) => (
               <Reveal key={step.id} as="li" delayMs={index * 50} className="h-full">
                 <div className="card h-full p-5">

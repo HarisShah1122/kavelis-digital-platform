@@ -1,9 +1,17 @@
-import { Compass, Handshake, Layers3, ShieldCheck } from 'lucide-react'
+import {
+  Compass,
+  Gauge,
+  Handshake,
+  Layers3,
+  PlugZap,
+  ShieldCheck,
+  Users,
+} from 'lucide-react'
 import { differentiators } from '@/data/content'
 import { Container, Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 
-const icons = [Compass, Layers3, ShieldCheck, Handshake]
+const icons = [Compass, Layers3, ShieldCheck, Handshake, Users, PlugZap, Gauge]
 
 export function Differentiators() {
   return (

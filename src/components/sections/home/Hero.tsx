@@ -22,19 +22,22 @@ export function Hero() {
             <h1 className="display-heading mt-6">
               Digital products
               <br />
-              built for
+              built to move
               <br />
-              <span className="text-teal-700">what&rsquo;s next.</span>
+              <span className="text-teal-700">your business forward.</span>
             </h1>
             <p className="lead mt-6 max-w-xl">
-              Kavelis designs and builds SaaS products, automation systems, and scalable digital
-              experiences — helping businesses launch faster, operate smarter, and grow with
+              Kavelis designs and builds SaaS products, business automation, and AI-assisted
+              software — helping businesses launch faster, operate smarter, and grow with
               confidence.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button to="/contact" className="group">
                 Discuss Your Project
-                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight
+                  aria-hidden="true"
+                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                />
               </Button>
               <Button to="/services" variant="secondary">
                 Explore Our Services

@@ -1,5 +1,6 @@
 import { ArrowRight, Check, Puzzle } from 'lucide-react'
 import { products } from '@/data/products'
+import { productCategories } from '@/data/productCategories'
 import { useSeo } from '@/hooks/useSeo'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -15,11 +16,59 @@ const statusLabels: Record<string, string> = {
   live: 'Live',
 }
 
+/** CSS-only visual per product category — no fabricated screenshots. */
+function CategoryVisual({ variant }: { variant: number }) {
+  return (
+    <div aria-hidden="true" className="rounded-xl bg-navy-950 p-4">
+      <div className="rounded-lg border border-white/10 bg-white/5 p-3">
+        <div className="mb-2.5 flex items-center justify-between">
+          <span className="h-2 w-14 rounded-full bg-white/25" />
+          <span className="h-2 w-7 rounded-full bg-teal-500/70" />
+        </div>
+        {variant === 1 ? (
+          <div className="grid grid-cols-3 gap-2">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="space-y-1">
+                <div
+                  className={`h-7 rounded ${i % 3 === 1 ? 'bg-teal-500/25' : 'bg-white/10'}`}
+                />
+                <div className="h-1 w-3/4 rounded-full bg-white/15" />
+              </div>
+            ))}
+          </div>
+        ) : variant === 2 ? (
+          <div className="space-y-2">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span
+                  className={`h-6 w-6 rounded ${i === 1 ? 'bg-teal-500/40' : 'bg-white/15'}`}
+                />
+                <span className="h-1.5 flex-1 rounded-full bg-white/15" />
+                <span className="h-1.5 w-8 rounded-full bg-teal-500/50" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-16 items-end gap-1.5">
+            {[40, 65, 50, 80, 58, 90, 70, 84].map((h, i) => (
+              <div
+                key={i}
+                className={`flex-1 rounded-t ${i % 3 === 2 ? 'bg-teal-500/70' : 'bg-white/20'}`}
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function Products() {
   useSeo({
     title: 'Products',
     description:
-      'The Kavelis product portfolio — configurable platforms for memberships, billing, customer portals, and business automation.',
+      'Kavelis product capabilities — SaaS applications, business platforms, subscription products, e-commerce, and automation dashboards.',
     path: '/products',
   })
 
@@ -27,19 +76,62 @@ export default function Products() {
     <>
       <PageHero
         eyebrow="Products"
-        title="Products built by Kavelis"
-        description="Alongside client engagements, we develop our own products for recurring operational problems. This page is structured to scale as verified products are published."
-      />
+        title="Products built for how businesses run"
+        description="Alongside client engagements, Kavelis designs and builds product-grade software — SaaS applications, operational platforms, subscription products, and commerce systems. Explore the categories below."
+      >
+        <Button to="/contact" className="group">
+          Discuss Your Project
+          <ArrowRight
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+          />
+        </Button>
+      </PageHero>
 
-      <Section className="border-b border-navy-100">
+      <Section>
+        <Container>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {productCategories.map((category, index) => (
+              <Reveal key={category.id} delayMs={(index % 3) * 70} className="h-full">
+                <article className="card card-hover flex h-full flex-col p-6">
+                  <CategoryVisual variant={index % 3} />
+                  <div className="mt-5 flex items-start justify-between gap-3">
+                    <h2 className="text-lg font-bold tracking-tight text-navy-950">
+                      {category.title}
+                    </h2>
+                    {category.isPlaceholder ? <Badge tone="warning">Example</Badge> : null}
+                  </div>
+                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-charcoal-500">
+                    {category.description}
+                  </p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {category.capabilities.map((capability) => (
+                      <li
+                        key={capability}
+                        className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800"
+                      >
+                        {capability}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="border-y border-navy-100 bg-white">
         <Container>
           <Reveal className="flex items-start gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-5">
             <Puzzle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
             <div>
               <h2 className="text-sm font-semibold text-amber-900">Editable placeholders</h2>
               <p className="mt-1 text-sm leading-relaxed text-amber-900/80">
-                The product entries on this page are clearly marked placeholders. Replace them in{' '}
-                <code className="rounded bg-amber-100 px-1.5 py-0.5 text-xs">src/data/products.ts</code>{' '}
+                The product entries below are clearly marked placeholders. Replace them in{' '}
+                <code className="rounded bg-amber-100 px-1.5 py-0.5 text-xs">
+                  src/data/products.ts
+                </code>{' '}
                 with verified Kavelis products — real names, features, screenshots, and status —
                 before publishing. Nothing here should be presented as a launched product until it
                 is confirmed.

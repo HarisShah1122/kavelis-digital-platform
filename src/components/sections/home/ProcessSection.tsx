@@ -9,13 +9,18 @@ export function ProcessSection() {
         <SectionHeader
           eyebrow="Delivery process"
           title="A clear path from idea to production"
-          description="Every engagement follows a transparent process so you always know what is being built, why, and what comes next."
+          description="Seven stages, every engagement — so you always know what is being built, why, and what comes next."
           align="center"
         />
 
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
-            <Reveal key={step.id} as="li" delayMs={index * 60} className="h-full">
+            <Reveal
+              key={step.id}
+              as="li"
+              delayMs={index * 60}
+              className={index === processSteps.length - 1 ? 'sm:col-span-2 lg:col-span-4' : 'h-full'}
+            >
               <div className="card h-full p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-600">
                   {step.number}

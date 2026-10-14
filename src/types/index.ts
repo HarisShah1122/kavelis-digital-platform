@@ -46,12 +46,48 @@ export interface Product {
 export interface CaseStudy {
   id: string
   title: string
+  category: string
+  summary: string
   clientLabel: string
+  overview: string
   challenge: string
   solution: string
+  features: string[]
+  approach: string[]
   technologies: string[]
   outcomes: string[]
   isPlaceholder: boolean
+}
+
+export type PricingMode = 'fixed-scope' | 'ongoing' | 'retainer'
+
+export interface PricingTier {
+  id: string
+  name: string
+  mode: PricingMode
+  audience: string
+  description: string
+  scope: string[]
+  timeline: string
+  /** Display price. Use "Inquiry-based" until commercial terms are confirmed. */
+  price: string
+  isPlaceholder: boolean
+  featured?: boolean
+}
+
+export interface ProductCategory {
+  id: string
+  title: string
+  description: string
+  capabilities: string[]
+  visual: 'dashboard' | 'commerce' | 'portal' | 'automation' | 'mobile' | 'analytics'
+  isPlaceholder: boolean
+}
+
+export interface TrustItem {
+  id: string
+  title: string
+  description: string
 }
 
 export interface Industry {

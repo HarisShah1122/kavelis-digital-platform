@@ -6,8 +6,11 @@ import { useScrollManager } from '@/hooks/useScrollManager'
 
 const Home = lazy(() => import('@/pages/Home'))
 const Services = lazy(() => import('@/pages/Services'))
+const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'))
 const Products = lazy(() => import('@/pages/Products'))
 const Work = lazy(() => import('@/pages/Work'))
+const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
+const Pricing = lazy(() => import('@/pages/Pricing'))
 const Solutions = lazy(() => import('@/pages/Solutions'))
 const About = lazy(() => import('@/pages/About'))
 const Contact = lazy(() => import('@/pages/Contact'))
@@ -44,8 +47,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/products" element={<Products />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/work/:caseStudyId" element={<CaseStudy />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

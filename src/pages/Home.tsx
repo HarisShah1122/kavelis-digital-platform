@@ -2,9 +2,12 @@ import { useSeo } from '@/hooks/useSeo'
 import { Hero } from '@/components/sections/home/Hero'
 import { ServicesOverview } from '@/components/sections/home/ServicesOverview'
 import { ProductsPreview } from '@/components/sections/home/ProductsPreview'
+import { WorkPreview } from '@/components/sections/home/WorkPreview'
 import { CapabilitiesBand } from '@/components/sections/home/CapabilitiesBand'
 import { ProcessSection } from '@/components/sections/home/ProcessSection'
+import { PricingPreview } from '@/components/sections/home/PricingPreview'
 import { Differentiators } from '@/components/sections/home/Differentiators'
+import { TrustSection } from '@/components/sections/home/TrustSection'
 import { FaqSection } from '@/components/sections/home/FaqSection'
 import { CtaBand } from '@/components/ui/CtaBand'
 
@@ -21,9 +24,12 @@ export default function Home() {
       <Hero />
       <ServicesOverview />
       <ProductsPreview />
+      <WorkPreview />
       <CapabilitiesBand />
       <ProcessSection />
+      <PricingPreview />
       <Differentiators />
+      <TrustSection />
       <FaqSection />
       <CtaBand />
     </>

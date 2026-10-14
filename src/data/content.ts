@@ -1,105 +1,192 @@
-import type { Differentiator, FaqItem, ProcessStep } from '@/types'
+import type { Differentiator, FaqItem, ProcessStep, TrustItem } from '@/types'
 
 export const processSteps: ProcessStep[] = [
   {
-    id: 'discover',
+    id: 'discovery',
     number: '01',
-    title: 'Discover',
+    title: 'Discovery & requirements',
     description:
-      'We start with your goals, users, constraints, and existing systems. Together we define scope, success criteria, and a realistic delivery plan.',
+      'We start with your goals, users, constraints, and existing systems — defining scope, success criteria, and what is genuinely worth building.',
+  },
+  {
+    id: 'planning',
+    number: '02',
+    title: 'Planning & architecture',
+    description:
+      'We shape the solution: system architecture, data models, integration points, and a milestone plan you can track against.',
   },
   {
     id: 'design',
-    number: '02',
-    title: 'Design',
+    number: '03',
+    title: 'UI/UX design',
     description:
       'Information architecture, user flows, and interface design come before heavy implementation — so the product is validated visually and logically early.',
   },
   {
-    id: 'build',
-    number: '03',
-    title: 'Build',
-    description:
-      'Iterative development in short cycles with working software, regular demos, and transparent progress. You see the product take shape continuously.',
-  },
-  {
-    id: 'launch',
+    id: 'development',
     number: '04',
-    title: 'Launch',
+    title: 'Development & integrations',
     description:
-      'Testing, performance checks, deployment pipelines, and monitoring go in before release. Launch is planned, not improvised.',
+      'Iterative build in short cycles with working software, regular demos, and third-party integrations wired in as they are agreed.',
   },
   {
-    id: 'iterate',
+    id: 'testing',
     number: '05',
-    title: 'Iterate & support',
+    title: 'Testing & quality assurance',
     description:
-      'After release we track real usage, fix issues, and prioritize improvements — either through a support retainer or planned evolution sprints.',
+      'Functional testing, accessibility checks, performance passes, and edge-case review — issues are found before your users find them.',
+  },
+  {
+    id: 'deployment',
+    number: '06',
+    title: 'Deployment & launch',
+    description:
+      'Deployment pipelines, monitoring, and a launch plan go in before release. Go-live is prepared, not improvised.',
+  },
+  {
+    id: 'maintenance',
+    number: '07',
+    title: 'Maintenance & improvement',
+    description:
+      'After release we track real usage, fix issues, apply security updates, and prioritize improvements through a retainer or planned cycles.',
   },
 ]
 
 export const differentiators: Differentiator[] = [
   {
     id: 'product-minded-engineering',
-    title: 'Product-minded engineering',
+    title: 'Business-focused product development',
     description:
       'We question scope, challenge assumptions, and design for the business outcome — not just the ticket list. You get a partner invested in whether the software works in the real world.',
   },
   {
     id: 'modern-maintainable-stacks',
-    title: 'Modern, maintainable stacks',
+    title: 'Maintainable software architecture',
     description:
       'TypeScript across the stack, well-tested services, and clear project structure. The codebase is designed to be handed over, extended, and supported without archaeology.',
   },
   {
     id: 'transparent-delivery',
-    title: 'Transparent delivery',
+    title: 'Reliable communication',
     description:
       'Clear milestones, visible progress, and direct communication. No black-box development, no surprise invoices at the end of an open-ended engagement.',
   },
   {
     id: 'long-term-partnership',
-    title: 'Built for the long term',
+    title: 'Long-term product improvement',
     description:
-      'Documentation, monitoring, and maintainability are part of the definition of done — because most of a product\'s life happens after launch.',
+      'Documentation, monitoring, and maintainability are part of the definition of done — because most of a product’s life happens after launch.',
+  },
+  {
+    id: 'thoughtful-ux',
+    title: 'Thoughtful user experience',
+    description:
+      'Interfaces are designed for the people who use them daily — clear hierarchy, accessible interaction, and fewer clicks on the paths that matter.',
+  },
+  {
+    id: 'practical-integrations',
+    title: 'Practical integrations',
+    description:
+      'We connect the tools you already pay for — CRMs, ERPs, payment providers, and analytics — with proper error handling and monitoring instead of fragile glue.',
+  },
+  {
+    id: 'scalable-solutions',
+    title: 'Scalable solutions',
+    description:
+      'Architecture choices are matched to real growth expectations, so early decisions do not become expensive rewrites at the worst possible moment.',
+  },
+]
+
+/**
+ * Trust section — no fabricated testimonials. These are working principles
+ * the collaboration is actually built on.
+ */
+export const trustItems: TrustItem[] = [
+  {
+    id: 'code-ownership',
+    title: 'You own the code',
+    description:
+      'Source code, documentation, and infrastructure credentials belong to you. Handover is planned from day one, not negotiated at the end.',
+  },
+  {
+    id: 'written-communication',
+    title: 'Everything important is written down',
+    description:
+      'Decisions, scope changes, and progress are documented in shared channels — so nothing critical lives only in someone’s inbox.',
+  },
+  {
+    id: 'demo-driven-progress',
+    title: 'Working software every cycle',
+    description:
+      'You review demonstrable progress at regular intervals. If a timeline needs to change, you hear it early with options — not at the deadline.',
+  },
+  {
+    id: 'no-lock-in',
+    title: 'No vendor lock-in',
+    description:
+      'We build on mainstream, well-supported technology and keep systems understandable to other competent engineers.',
   },
 ]
 
 export const homeFaqs: FaqItem[] = [
   {
     id: 'what-kavelis-does',
-    question: 'What does Kavelis build?',
+    question: 'What services does Kavelis offer?',
     answer:
-      'Kavelis designs, builds, and maintains SaaS products, custom web applications, e-commerce platforms, business automation workflows, and API integrations. We also add practical AI features where they create real leverage in a workflow.',
+      'SaaS product development, custom software and web applications, business automation, AI-assisted solutions, e-commerce, API development and third-party integrations, and ongoing maintenance and technical support.',
   },
   {
-    id: 'engagement-models',
-    question: 'How do engagements typically work?',
+    id: 'starting-a-project',
+    question: 'How do I start a project?',
     answer:
-      'Most work starts with a short discovery phase to define scope and priorities. From there we offer fixed-scope project builds, monthly dedicated team arrangements, and ongoing maintenance retainers — depending on whether you are launching something new or evolving an existing product.',
+      'Send a project inquiry through the contact page with as much context as you have. We respond with clarifying questions, and if there is a fit, a short discovery phase defines scope before any commitment to build.',
+  },
+  {
+    id: 'requirements-planning',
+    question: 'What if my requirements are not fully defined yet?',
+    answer:
+      'That is normal. Discovery exists for exactly this — we help turn business goals into a concrete scope, identify the must-haves, and stage the rest so you can start delivering value sooner.',
   },
   {
     id: 'project-timeline',
     question: 'How long does a typical project take?',
     answer:
-      'Timelines depend on scope. A focused automation or integration project may take a few weeks; an MVP or custom platform usually takes several months in staged releases. After discovery we give you a realistic plan with milestones rather than a single optimistic date.',
+      'Timelines depend on scope. A focused automation or integration project may take a few weeks; an MVP or custom platform usually takes several months in staged releases. After discovery you get a realistic plan with milestones rather than a single optimistic date.',
   },
   {
-    id: 'working-remotely',
-    question: 'Do you work with international clients?',
+    id: 'pricing-models',
+    question: 'How does pricing work?',
     answer:
-      'Yes. Kavelis works with clients remotely across time zones, using structured async communication, regular demos, and clear written documentation to keep projects moving.',
+      'Engagements are priced as fixed-scope projects, ongoing product-team arrangements, or maintenance retainers. Commercial details are confirmed after discovery, once scope is understood — we do not publish generic price lists that would not reflect your actual needs.',
   },
   {
-    id: 'existing-codebase',
-    question: 'Can you work with an existing codebase?',
+    id: 'code-ownership',
+    question: 'Who owns the source code and intellectual property?',
     answer:
-      'Yes. We take over, stabilize, and modernize existing products — including codebases built by other teams. We start with an audit so you understand risks and priorities before any large changes.',
+      'You do. On delivery, the source code, documentation, and related assets are yours, with handover planned as part of the engagement rather than an afterthought.',
+  },
+  {
+    id: 'third-party-integrations',
+    question: 'Can you integrate with our existing tools and third parties?',
+    answer:
+      'Yes. Payment providers, CRMs, ERPs, accounting systems, communication tools, and custom APIs are common parts of our work. We design integrations with error handling, retries, and monitoring so failures surface early.',
+  },
+  {
+    id: 'saas-development',
+    question: 'Do you build SaaS products from scratch?',
+    answer:
+      'Yes — from architecture and billing foundations to dashboards, onboarding, and admin tooling. We can also join an existing SaaS product mid-flight to extend or stabilize it.',
+  },
+  {
+    id: 'ecommerce-solutions',
+    question: 'Can you build or replatform our online store?',
+    answer:
+      'Yes. We build and improve storefronts, catalogs, checkout flows, promotions, and the operational tooling behind them — balancing customer experience with inventory, payments, and fulfilment realities.',
   },
   {
     id: 'post-launch-support',
     question: 'What happens after launch?',
     answer:
-      'We offer maintenance and support retainers covering monitoring, bug fixes, dependency and security updates, and iterative improvements. Many clients continue with us well beyond the initial release.',
+      'Maintenance and support retainers cover monitoring, bug fixes, dependency and security updates, and iterative improvements — so the product keeps working and evolving after release.',
   },
 ]

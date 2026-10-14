@@ -8,10 +8,13 @@ Built with **React 18**, **TypeScript (strict)**, **Vite**, **Tailwind CSS**, **
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home — hero, services, products, capabilities, process, FAQs, CTA |
-| `/services` | Full service catalog with outcomes, deliverables, use cases, engagement options |
-| `/products` | Product portfolio (editable placeholders until verified products are published) |
-| `/work` | Case-study layout (structural templates until verified projects are added) |
+| `/` | Home — hero, services, product categories, selected work, capabilities, 7-step process, pricing, differentiators, trust principles, FAQs, CTA |
+| `/services` | Service overview with cards linking to detail pages |
+| `/services/:serviceId` | Service detail — outcomes, deliverables, use cases, engagement options, related services (unknown IDs show 404) |
+| `/products` | Product capability categories + product portfolio (editable placeholders until verified products are published) |
+| `/work` | Varied portfolio layout with CSS visuals (structural templates until verified projects are added) |
+| `/work/:caseStudyId` | Case-study detail — challenge, solution, features, approach, technologies (placeholders flagged in-page) |
+| `/pricing` | Engagement models and pricing tiers (inquiry-based placeholders until commercial terms are confirmed) |
 | `/solutions` | Industry / business-type engagement patterns |
 | `/about` | Mission, principles, delivery process, engineering quality |
 | `/contact` | Project inquiry form with validation and honest submission states |
@@ -121,9 +124,11 @@ All business content is centralized and typed:
 
 - **Services** — `src/data/services.ts`
 - **Products** — `src/data/products.ts` (entries marked `isPlaceholder: true` must be replaced with verified products before publishing)
+- **Product categories** — `src/data/productCategories.ts`
 - **Case studies** — `src/data/caseStudies.ts` (templates only; add outcomes only with evidence)
+- **Pricing tiers & engagement models** — `src/data/pricing.ts` (all tiers are inquiry-based placeholders until commercial terms are approved)
 - **Industries** — `src/data/industries.ts`
-- **Process, FAQs, differentiators** — `src/data/content.ts`
+- **Process (7 steps), FAQs, differentiators, trust principles** — `src/data/content.ts`
 - **Navigation** — `src/data/navigation.ts`
 
 ## Design system
@@ -170,6 +175,7 @@ Import the repository, framework preset **Vite**, and set the SPA fallback to se
 - [ ] Connect `VITE_CONTACT_ENDPOINT` to a real form backend and test end-to-end
 - [ ] Replace product placeholders in `src/data/products.ts` with verified products
 - [ ] Replace case-study templates in `src/data/caseStudies.ts` with approved write-ups
+- [ ] Confirm commercial terms and replace inquiry-based placeholders in `src/data/pricing.ts` (remove the placeholder notices on `/pricing` and the homepage pricing section)
 - [ ] Have legal counsel review `/privacy` and `/terms` before publishing
 - [ ] Add verified structured data (Organization JSON-LD) once the legal entity details are confirmed
 

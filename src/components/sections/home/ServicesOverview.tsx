@@ -31,7 +31,7 @@ export function ServicesOverview() {
             return (
               <Reveal key={service.id} delayMs={index * 50}>
                 <Link
-                  to={`/services#${service.id}`}
+                  to={`/services/${service.id}`}
                   className="card card-hover group flex h-full flex-col p-6"
                 >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">

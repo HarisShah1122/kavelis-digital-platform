@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, FolderKanban } from 'lucide-react'
 import { caseStudies } from '@/data/caseStudies'
 import { useSeo } from '@/hooks/useSeo'
@@ -7,6 +8,96 @@ import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { CtaBand } from '@/components/ui/CtaBand'
+import { cn } from '@/lib/utils'
+
+/** CSS-only visual placeholders — no fabricated client screenshots. */
+function WorkThumb({
+  variant,
+  title,
+  className,
+}: {
+  variant: number
+  title: string
+  className?: string
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        'relative overflow-hidden border-b border-navy-100 p-5',
+        variant === 0 && 'bg-navy-950',
+        variant === 1 && 'bg-teal-800',
+        variant === 2 && 'bg-canvas',
+        'rounded-t-2xl',
+        className,
+      )}
+    >
+      <div
+        className={cn(
+          'mx-auto max-w-md rounded-xl border p-4 shadow-card',
+          variant === 2 ? 'border-navy-100 bg-white' : 'border-white/10 bg-white/5',
+        )}
+      >
+        <div className="mb-3 flex items-center gap-1.5">
+          <span
+            className={cn('h-2 w-2 rounded-full', variant === 2 ? 'bg-navy-200' : 'bg-white/25')}
+          />
+          <span
+            className={cn('h-2 w-2 rounded-full', variant === 2 ? 'bg-navy-200' : 'bg-white/25')}
+          />
+          <span className="ml-2 h-2 w-20 rounded-full bg-teal-500/70" />
+        </div>
+
+        {variant === 0 ? (
+          <div className="grid grid-cols-4 gap-3">
+            <div className="col-span-1 space-y-2">
+              {[0, 1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className={cn('h-2 rounded-full', i === 0 ? 'bg-teal-400/70' : 'bg-white/15')}
+                  style={{ width: `${[90, 70, 80, 60][i] ?? 70}%` }}
+                />
+              ))}
+            </div>
+            <div className="col-span-3">
+              <div className="flex h-20 items-end gap-2">
+                {[45, 70, 55, 85, 62, 92, 74].map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 rounded-t bg-teal-500/60"
+                    style={{ height: `${h}%` }}
+                  />
+                ))}
+              </div>
+              <div className="mt-3 h-2 w-3/4 rounded-full bg-white/15" />
+            </div>
+          </div>
+        ) : variant === 1 ? (
+          <div className="flex items-center justify-between gap-2 py-2">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="flex flex-1 items-center gap-2">
+                <div className="h-9 flex-1 rounded-lg bg-white/10" />
+                {i < 2 ? <span className="h-0.5 w-4 bg-teal-400/70" /> : null}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 gap-2.5">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="space-y-1.5">
+                <div className={cn('h-10 rounded-lg', i % 3 === 1 ? 'bg-teal-100' : 'bg-navy-100')} />
+                <div className="h-1.5 w-3/4 rounded-full bg-navy-100" />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <p className="mt-4 text-center text-[10px] uppercase tracking-widest text-navy-500">
+        Visual placeholder — {title}
+      </p>
+    </div>
+  )
+}
 
 export default function Work() {
   useSeo({
@@ -15,6 +106,8 @@ export default function Work() {
       'Selected Kavelis engagements and case studies — business challenge, solution delivered, and the technologies involved.',
     path: '/work',
   })
+
+  const spans = ['lg:col-span-4', 'lg:col-span-2', 'lg:col-span-6']
 
   return (
     <>
@@ -25,7 +118,10 @@ export default function Work() {
       >
         <Button to="/contact" className="group">
           Discuss a similar project
-          <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+          />
         </Button>
       </PageHero>
 
@@ -47,43 +143,51 @@ export default function Work() {
             </div>
           </Reveal>
 
-          <div className="space-y-6">
+          <div className="grid gap-6 lg:grid-cols-6">
             {caseStudies.map((study, index) => (
-              <Reveal key={study.id} delayMs={index * 80}>
-                <article className="card p-7 sm:p-9">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h2 className="text-2xl font-bold tracking-tight text-navy-950">
+              <Reveal
+                key={study.id}
+                delayMs={index * 80}
+                className={cn('h-full', spans[index] ?? 'lg:col-span-6')}
+              >
+                <Link
+                  to={`/work/${study.id}`}
+                  className={cn(
+                    'card card-hover group flex h-full flex-col overflow-hidden p-0',
+                    index === 2 && 'lg:flex-row',
+                  )}
+                >
+                  <WorkThumb
+                    variant={index % 3}
+                    title={study.category}
+                    className={
+                      index === 2
+                        ? 'lg:w-1/3 lg:shrink-0 lg:rounded-bl-2xl lg:rounded-t-none lg:border-b-0 lg:border-r'
+                        : undefined
+                    }
+                  />
+                  <div
+                    className={cn(
+                      'flex flex-1 flex-col p-6 sm:p-7',
+                      index === 2 && 'sm:p-7',
+                    )}
+                  >
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                        {study.category}
+                      </p>
+                      {study.isPlaceholder ? <Badge tone="warning">Template</Badge> : null}
+                    </div>
+                    <h2 className="mt-3 text-xl font-bold tracking-tight text-navy-950 sm:text-2xl">
                       {study.title}
                     </h2>
-                    {study.isPlaceholder ? <Badge tone="warning">Template</Badge> : null}
-                  </div>
-                  <p className="mt-1.5 text-sm text-charcoal-500">{study.clientLabel}</p>
+                    <p className="mt-1 text-xs text-charcoal-400">{study.clientLabel}</p>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
+                      {study.summary}
+                    </p>
 
-                  <div className="mt-7 grid gap-7 md:grid-cols-2">
-                    <div>
-                      <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
-                        Business challenge
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
-                        {study.challenge}
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
-                        Solution delivered
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-charcoal-700">
-                        {study.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-7">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
-                      Technologies
-                    </h3>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {study.technologies.map((tech) => (
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {study.technologies.slice(0, 4).map((tech) => (
                         <li
                           key={tech}
                           className="rounded-full bg-navy-50 px-3 py-1 text-xs font-semibold text-navy-700"
@@ -92,26 +196,16 @@ export default function Work() {
                         </li>
                       ))}
                     </ul>
-                  </div>
 
-                  {study.outcomes.length > 0 ? (
-                    <div className="mt-7">
-                      <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
-                        Outcomes
-                      </h3>
-                      <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-charcoal-700">
-                        {study.outcomes.map((outcome) => (
-                          <li key={outcome}>{outcome}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : (
-                    <p className="mt-7 text-xs italic text-charcoal-400">
-                      Outcomes are intentionally omitted until supported by verified project
-                      evidence.
-                    </p>
-                  )}
-                </article>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700">
+                      Read case study
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                      />
+                    </span>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>

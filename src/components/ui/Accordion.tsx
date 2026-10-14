@@ -40,10 +40,17 @@ export function Accordion({ items, className }: AccordionProps) {
               id={`faq-panel-${item.id}`}
               role="region"
               aria-labelledby={`faq-button-${item.id}`}
-              hidden={!open}
-              className="pb-5 pr-8 text-sm leading-relaxed text-charcoal-600"
+              aria-hidden={open ? undefined : true}
+              className={cn(
+                'grid transition-[grid-template-rows] duration-300 ease-out',
+                open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+              )}
             >
-              {item.answer}
+              <div className="overflow-hidden">
+                <p className="pb-5 pr-8 text-sm leading-relaxed text-charcoal-500">
+                  {item.answer}
+                </p>
+              </div>
             </div>
           </div>
         )

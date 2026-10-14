@@ -106,9 +106,18 @@ export function Navbar() {
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
                 onClick={() => setServicesOpen((open) => !open)}
+                onKeyDown={(event) => {
+                  if (event.key === 'ArrowDown') {
+                    event.preventDefault()
+                    setServicesOpen(true)
+                    requestAnimationFrame(() => {
+                      servicesPanelRef.current?.querySelector('a')?.focus()
+                    })
+                  }
+                }}
                 className={cn(
                   'inline-flex items-center gap-1 rounded-md text-sm font-medium transition-colors',
-                  location.pathname === '/services'
+                  location.pathname.startsWith('/services')
                     ? 'text-teal-700'
                     : 'text-charcoal-600 hover:text-navy-950',
                 )}
@@ -123,6 +132,26 @@ export function Navbar() {
               {servicesOpen ? (
                 <div
                   ref={servicesPanelRef}
+                  onKeyDown={(event) => {
+                    const links = Array.from(
+                      servicesPanelRef.current?.querySelectorAll('a') ?? [],
+                    )
+                    if (links.length === 0) return
+                    const current = links.indexOf(document.activeElement as HTMLAnchorElement)
+                    if (event.key === 'ArrowDown') {
+                      event.preventDefault()
+                      links[(current + 1) % links.length]?.focus()
+                    } else if (event.key === 'ArrowUp') {
+                      event.preventDefault()
+                      links[(current - 1 + links.length) % links.length]?.focus()
+                    } else if (event.key === 'Home') {
+                      event.preventDefault()
+                      links[0]?.focus()
+                    } else if (event.key === 'End') {
+                      event.preventDefault()
+                      links[links.length - 1]?.focus()
+                    }
+                  }}
                   className="absolute left-1/2 top-full z-50 mt-3 w-[34rem] -translate-x-1/2 rounded-2xl border border-navy-100 bg-white p-3 shadow-lift"
                 >
                   <div className="grid grid-cols-2 gap-1">
@@ -146,7 +175,7 @@ export function Navbar() {
                       to="/services"
                       className="text-sm font-semibold text-teal-700 hover:text-teal-800"
                     >
-                      View all services â†’
+                      View all services &rarr;
                     </Link>
                   </div>
                 </div>

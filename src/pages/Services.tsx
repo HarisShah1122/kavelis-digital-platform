@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import { services } from '@/data/services'
+import { processSteps } from '@/data/content'
 import { useSeo } from '@/hooks/useSeo'
 import { Button } from '@/components/ui/Button'
 import { PageHero } from '@/components/ui/PageHero'
@@ -22,101 +24,103 @@ export default function Services() {
         title="Product engineering across the full lifecycle"
         description="Kavelis partners with businesses to design, build, integrate, and maintain the software their operations depend on. Each service can stand alone or combine into a longer engagement."
       >
-        <Button to="/contact" className="group">
-          Discuss Your Project
-          <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button to="/contact" className="group">
+            Discuss Your Project
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            />
+          </Button>
+          <Button to="/pricing" variant="secondary">
+            View pricing
+          </Button>
+        </div>
       </PageHero>
 
-      <Section className="border-b border-navy-100 bg-white">
+      <Section>
         <Container>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
-              <li key={service.id}>
-                <a
-                  href={`#${service.id}`}
-                  className="block rounded-xl border border-navy-100 bg-canvas px-4 py-3 text-sm font-medium text-navy-800 transition-colors hover:border-teal-200 hover:bg-teal-50 hover:text-teal-800"
-                >
-                  {service.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <Reveal key={service.id} delayMs={(index % 3) * 70} className="h-full">
+                  <article className="card card-hover flex h-full flex-col p-7">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <h2 className="mt-5 text-xl font-bold tracking-tight text-navy-950">
+                      <a href={`/services/${service.id}`} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded">
+                        {service.title}
+                      </a>
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-charcoal-500">
+                      {service.shortDescription}
+                    </p>
 
-      {services.map((service, index) => {
-        const Icon = service.icon
-        return (
-          <Section
-            key={service.id}
-            id={service.id}
-            className={index % 2 === 1 ? 'border-y border-navy-100 bg-white' : ''}
-          >
-            <Container>
-              <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-                <Reveal>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </span>
-                  <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
-                    {service.title}
-                  </h2>
-                  <p className="mt-4 text-base leading-relaxed text-charcoal-500 sm:text-lg">
-                    {service.description}
-                  </p>
-
-                  <div className="mt-8">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-500">
-                      Engagement options
-                    </h3>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {service.engagementOptions.map((option) => (
+                    <ul className="mt-5 flex-1 space-y-2.5">
+                      {service.outcomes.slice(0, 2).map((outcome) => (
                         <li
-                          key={option}
-                          className="rounded-full bg-teal-50 px-3.5 py-1.5 text-xs font-semibold text-teal-800"
+                          key={outcome}
+                          className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-600"
                         >
-                          {option}
+                          <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                          {outcome}
                         </li>
                       ))}
                     </ul>
-                  </div>
 
-                  <div className="mt-8">
-                    <Button to="/contact">Discuss this service</Button>
-                  </div>
-                </Reveal>
-
-                <Reveal delayMs={100} className="space-y-8">
-                  {[
-                    { heading: 'Business outcomes', items: service.outcomes },
-                    { heading: 'Typical deliverables', items: service.deliverables },
-                    { heading: 'Common use cases', items: service.useCases },
-                  ].map((block) => (
-                    <div key={block.heading} className="card p-6">
-                      <h3 className="text-base font-semibold text-navy-950">{block.heading}</h3>
-                      <ul className="mt-4 space-y-2.5">
-                        {block.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-500"
-                          >
-                            <Check
-                              aria-hidden="true"
-                              className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {service.engagementOptions.slice(0, 2).map((option) => (
+                        <span
+                          key={option}
+                          className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800"
+                        >
+                          {option}
+                        </span>
+                      ))}
                     </div>
-                  ))}
+
+                    <a
+                      href={`/services/${service.id}`}
+                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+                    >
+                      View service
+                      <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </a>
+                  </article>
                 </Reveal>
-              </div>
-            </Container>
-          </Section>
-        )
-      })}
+              )
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="border-y border-navy-100 bg-white">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">How we work</p>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-navy-950 sm:text-3xl">
+                One disciplined process, from first call to launch
+              </h2>
+            </div>
+            <Link to="/about" className="text-sm font-semibold text-teal-700 hover:text-teal-800">
+              Full process details →
+            </Link>
+          </div>
+          <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+            {processSteps.map((step) => (
+              <li key={step.id} className="rounded-xl border border-navy-100 bg-canvas p-4 text-center">
+                <p className="text-xs font-semibold text-teal-600">{step.number}</p>
+                <p className="mt-1.5 text-xs font-semibold leading-snug text-navy-900">
+                  {step.title}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </Section>
 
       <CtaBand
         title="Not sure which service fits?"
