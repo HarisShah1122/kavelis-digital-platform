@@ -17,7 +17,7 @@ export function ServicesOverview() {
           <Reveal>
             <Link
               to="/services"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               All services
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -34,14 +34,14 @@ export function ServicesOverview() {
                   to={`/services/${service.id}`}
                   className="card card-hover group flex h-full flex-col p-6"
                 >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
                     <Icon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-navy-950">{service.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-600">
                     {service.shortDescription}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-700">
                     Learn more
                     <ArrowRight
                       aria-hidden="true"

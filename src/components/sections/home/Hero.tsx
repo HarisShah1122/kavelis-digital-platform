@@ -14,7 +14,7 @@ const proofPoints = [
 
 export function Hero() {
   return (
-    <section className="border-b border-navy-100 bg-teal-50/60">
+    <section className="border-b border-navy-100 bg-gold-50/60">
       <Container className="section">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
@@ -24,7 +24,7 @@ export function Hero() {
               <br />
               built to move
               <br />
-              <span className="text-teal-700">your business forward.</span>
+              <span className="text-gold-700">your business forward.</span>
             </h1>
             <p className="lead mt-6 max-w-xl">
               Kavelis designs and builds SaaS products, business automation, and AI-assisted

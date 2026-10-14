@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, description, children }: PageHeroProps) {
   return (
-    <section className="border-b border-navy-100 bg-teal-50">
+    <section className="border-b border-navy-100 bg-gold-50">
       <Container className="section-tight">
         <Reveal className="max-w-3xl">
           {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}

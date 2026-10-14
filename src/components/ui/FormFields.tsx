@@ -26,7 +26,7 @@ export function FieldWrapper({
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy-900">
         {label}
         {required ? (
-          <span aria-hidden="true" className="ml-0.5 text-teal-600">
+          <span aria-hidden="true" className="ml-0.5 text-gold-600">
             *
           </span>
         ) : (
@@ -40,7 +40,7 @@ export function FieldWrapper({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1.5 text-xs font-medium text-red-600">
+        <p id={`${id}-error`} role="alert" className="mt-1.5 text-xs font-medium text-error">
           {error}
         </p>
       ) : null}

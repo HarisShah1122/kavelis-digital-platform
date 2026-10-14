@@ -31,7 +31,7 @@ export function CapabilitiesBand() {
       <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
             <Reveal>
-              <p className="eyebrow text-teal-300">SaaS & automation</p>
+              <p className="eyebrow text-gold-300">SaaS & automation</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                 Software that earns its place in daily operations
               </h2>
@@ -49,7 +49,7 @@ export function CapabilitiesBand() {
                   <ul className="mt-4 space-y-3">
                     {column.items.map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-sm text-navy-200">
-                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-400" />
+                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" />
                         {item}
                       </li>
                     ))}

@@ -22,7 +22,7 @@ export function ProcessSection() {
               className={index === processSteps.length - 1 ? 'sm:col-span-2 lg:col-span-4' : 'h-full'}
             >
               <div className="card h-full p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-600">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-600">
                   {step.number}
                 </p>
                 <h3 className="mt-3 text-base font-semibold text-navy-950">{step.title}</h3>

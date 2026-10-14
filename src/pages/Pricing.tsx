@@ -45,9 +45,9 @@ export default function Pricing() {
         </div>
       </PageHero>
 
-      <div className="border-b border-amber-200 bg-amber-50">
+      <div className="border-b border-warning/25 bg-warning/10">
         <Container className="py-3.5">
-          <p className="flex items-start gap-2.5 text-sm text-amber-800">
+          <p className="flex items-start gap-2.5 text-sm text-warning">
             <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
               <strong className="font-semibold">Pricing placeholders.</strong> Commercial terms are
@@ -66,18 +66,18 @@ export default function Pricing() {
                 <div
                   className={cn(
                     'card flex h-full flex-col p-7',
-                    tier.featured && 'border-2 border-teal-600 shadow-card',
+                    tier.featured && 'border-2 border-gold-500 shadow-card',
                   )}
                 >
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="text-lg font-bold text-navy-950">{tier.name}</h2>
                     {tier.featured ? (
-                      <span className="rounded-full bg-teal-600 px-2.5 py-1 text-xs font-semibold text-white">
+                      <span className="rounded-full bg-gold-500 px-2.5 py-1 text-xs font-semibold text-navy-950">
                         Most common
                       </span>
                     ) : null}
                   </div>
-                  <p className="mt-2 text-sm font-medium text-teal-700">{tier.audience}</p>
+                  <p className="mt-2 text-sm font-medium text-gold-700">{tier.audience}</p>
                   <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
                     {tier.description}
                   </p>
@@ -95,7 +95,7 @@ export default function Pricing() {
                         key={item}
                         className="flex items-start gap-3 text-sm leading-relaxed text-charcoal-600"
                       >
-                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
                         {item}
                       </li>
                     ))}
@@ -127,7 +127,7 @@ export default function Pricing() {
             {engagementModels.map((model, index) => (
               <Reveal key={model.id} delayMs={index * 70}>
                 <div className="card h-full p-6">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
                     <HelpCircle aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-navy-950">{model.title}</h3>

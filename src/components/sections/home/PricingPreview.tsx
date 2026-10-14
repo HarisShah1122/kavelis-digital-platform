@@ -19,7 +19,7 @@ export function PricingPreview() {
           <Reveal>
             <Link
               to="/pricing"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               View pricing
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -33,13 +33,13 @@ export function PricingPreview() {
               <div
                 className={cn(
                   'card flex h-full flex-col p-6',
-                  tier.featured && 'border-2 border-teal-600',
+                  tier.featured && 'border-2 border-gold-500',
                 )}
               >
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-base font-bold text-navy-950">{tier.name}</h3>
                   {tier.featured ? (
-                    <span className="rounded-full bg-teal-600 px-2.5 py-1 text-xs font-semibold text-white">
+                    <span className="rounded-full bg-gold-500 px-2.5 py-1 text-xs font-semibold text-navy-950">
                       Most common
                     </span>
                   ) : null}
@@ -56,7 +56,7 @@ export function PricingPreview() {
                       key={item}
                       className="flex items-start gap-2.5 text-sm text-charcoal-600"
                     >
-                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
                       {item}
                     </li>
                   ))}
@@ -73,9 +73,9 @@ export function PricingPreview() {
 
         <Reveal className="mt-6">
           <p className="flex items-start gap-2.5 text-sm text-charcoal-500">
-            <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+            <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
             All prices are inquiry-based until commercial terms are confirmed — see the{' '}
-            <Link to="/pricing" className="font-semibold text-teal-700 hover:text-teal-800">
+            <Link to="/pricing" className="font-semibold text-gold-700 hover:text-gold-800">
               pricing page
             </Link>{' '}
             for details.

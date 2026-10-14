@@ -26,12 +26,12 @@ export default function CaseStudy() {
 
   return (
     <>
-      <section className="border-b border-navy-100 bg-teal-50">
+      <section className="border-b border-navy-100 bg-gold-50">
         <Container className="section-tight">
           <Reveal>
             <Link
               to="/work"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-500 transition-colors hover:text-teal-700"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-500 transition-colors hover:text-gold-700"
             >
               <ArrowLeft aria-hidden="true" className="h-4 w-4" />
               All work
@@ -47,9 +47,9 @@ export default function CaseStudy() {
       </section>
 
       {study.isPlaceholder ? (
-        <div className="border-b border-amber-200 bg-amber-50">
+        <div className="border-b border-warning/25 bg-warning/10">
           <Container className="py-3.5">
-            <p className="flex items-start gap-2.5 text-sm text-amber-800">
+            <p className="flex items-start gap-2.5 text-sm text-warning">
               <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
               <span>
                 <strong className="font-semibold">Placeholder case study.</strong> This entry is a
@@ -73,7 +73,7 @@ export default function CaseStudy() {
               </div>
             </Reveal>
             <Reveal delayMs={80}>
-              <div className="card h-full border-teal-100 bg-teal-50/60 p-7 sm:p-8">
+              <div className="card h-full border-gold-100 bg-gold-50/60 p-7 sm:p-8">
                 <p className="eyebrow">Solution</p>
                 <p className="mt-4 text-base leading-relaxed text-charcoal-600">{study.solution}</p>
               </div>
@@ -96,7 +96,7 @@ export default function CaseStudy() {
                     >
                       <span
                         aria-hidden="true"
-                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500"
                       />
                       {feature}
                     </li>
@@ -111,7 +111,7 @@ export default function CaseStudy() {
                 <ol className="mt-5 space-y-4">
                   {study.approach.map((step, index) => (
                     <li key={step} className="flex items-start gap-4">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-teal-50 text-xs font-semibold text-teal-700">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gold-50 text-xs font-semibold text-gold-700">
                         {index + 1}
                       </span>
                       <span className="text-sm leading-relaxed text-charcoal-600">{step}</span>
@@ -140,7 +140,7 @@ export default function CaseStudy() {
 
       <Section>
         <Container>
-          <div className="max-w-3xl rounded-2xl border border-teal-100 bg-teal-50/70 p-7 sm:p-8">
+          <div className="max-w-3xl rounded-2xl border border-gold-100 bg-gold-50/70 p-7 sm:p-8">
             <h2 className="text-xl font-bold text-navy-950">Outcomes</h2>
             {study.outcomes.length > 0 ? (
               <ul className="mt-5 space-y-3">
@@ -151,7 +151,7 @@ export default function CaseStudy() {
                   >
                     <span
                       aria-hidden="true"
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"
+                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500"
                     />
                     {outcome}
                   </li>
@@ -174,7 +174,7 @@ export default function CaseStudy() {
                 </h2>
                 <Link
                   to="/work"
-                  className="text-sm font-semibold text-teal-700 hover:text-teal-800"
+                  className="text-sm font-semibold text-gold-700 hover:text-gold-800"
                 >
                   All case studies →
                 </Link>
@@ -186,14 +186,14 @@ export default function CaseStudy() {
                     to={`/work/${item.id}`}
                     className="card card-hover group flex h-full flex-col p-6"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">
                       {item.category}
                     </p>
                     <h3 className="mt-3 text-lg font-semibold text-navy-950">{item.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
                       {item.summary}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-700">
                       Read case study
                       <ArrowRight
                         aria-hidden="true"

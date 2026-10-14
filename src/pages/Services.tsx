@@ -46,11 +46,11 @@ export default function Services() {
               return (
                 <Reveal key={service.id} delayMs={(index % 3) * 70} className="h-full">
                   <article className="card card-hover flex h-full flex-col p-7">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gold-50 text-gold-700">
                       <Icon aria-hidden="true" className="h-5 w-5" />
                     </span>
                     <h2 className="mt-5 text-xl font-bold tracking-tight text-navy-950">
-                      <a href={`/services/${service.id}`} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded">
+                      <a href={`/services/${service.id}`} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 rounded">
                         {service.title}
                       </a>
                     </h2>
@@ -64,7 +64,7 @@ export default function Services() {
                           key={outcome}
                           className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-600"
                         >
-                          <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                          <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
                           {outcome}
                         </li>
                       ))}
@@ -74,7 +74,7 @@ export default function Services() {
                       {service.engagementOptions.slice(0, 2).map((option) => (
                         <span
                           key={option}
-                          className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800"
+                          className="rounded-full bg-gold-50 px-3 py-1 text-xs font-semibold text-gold-800"
                         >
                           {option}
                         </span>
@@ -83,7 +83,7 @@ export default function Services() {
 
                     <a
                       href={`/services/${service.id}`}
-                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
                     >
                       View service
                       <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -105,14 +105,14 @@ export default function Services() {
                 One disciplined process, from first call to launch
               </h2>
             </div>
-            <Link to="/about" className="text-sm font-semibold text-teal-700 hover:text-teal-800">
+            <Link to="/about" className="text-sm font-semibold text-gold-700 hover:text-gold-800">
               Full process details →
             </Link>
           </div>
           <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
             {processSteps.map((step) => (
               <li key={step.id} className="rounded-xl border border-navy-100 bg-canvas p-4 text-center">
-                <p className="text-xs font-semibold text-teal-600">{step.number}</p>
+                <p className="text-xs font-semibold text-gold-600">{step.number}</p>
                 <p className="mt-1.5 text-xs font-semibold leading-snug text-navy-900">
                   {step.title}
                 </p>

@@ -13,7 +13,7 @@ function WorkThumb({ variant }: { variant: number }) {
       className={cn(
         'rounded-t-2xl border-b border-navy-100 p-4',
         variant === 0 && 'bg-navy-950',
-        variant === 1 && 'bg-teal-800',
+        variant === 1 && 'bg-navy-900',
         variant === 2 && 'bg-canvas',
       )}
     >
@@ -26,21 +26,21 @@ function WorkThumb({ variant }: { variant: number }) {
         <div className="mb-2.5 flex items-center gap-1.5">
           <span className={cn('h-1.5 w-1.5 rounded-full', variant === 2 ? 'bg-navy-200' : 'bg-white/25')} />
           <span className={cn('h-1.5 w-1.5 rounded-full', variant === 2 ? 'bg-navy-200' : 'bg-white/25')} />
-          <span className="ml-1.5 h-1.5 w-14 rounded-full bg-teal-500/70" />
+          <span className="ml-1.5 h-1.5 w-14 rounded-full bg-gold-500/70" />
         </div>
         {variant === 1 ? (
           <div className="flex items-center gap-2 py-1">
             <div className="h-7 flex-1 rounded bg-white/10" />
-            <span className="h-0.5 w-3 bg-teal-400/70" />
+            <span className="h-0.5 w-3 bg-gold-400/70" />
             <div className="h-7 flex-1 rounded bg-white/10" />
-            <span className="h-0.5 w-3 bg-teal-400/70" />
-            <div className="h-7 flex-1 rounded bg-teal-500/25" />
+            <span className="h-0.5 w-3 bg-gold-400/70" />
+            <div className="h-7 flex-1 rounded bg-gold-500/25" />
           </div>
         ) : variant === 2 ? (
           <div className="grid grid-cols-3 gap-2">
             {[0, 1, 2].map((i) => (
               <div key={i} className="space-y-1">
-                <div className={`h-8 rounded ${i === 1 ? 'bg-teal-100' : 'bg-navy-100'}`} />
+                <div className={`h-8 rounded ${i === 1 ? 'bg-gold-100' : 'bg-navy-100'}`} />
                 <div className="h-1 w-3/4 rounded-full bg-navy-100" />
               </div>
             ))}
@@ -50,7 +50,7 @@ function WorkThumb({ variant }: { variant: number }) {
             {[42, 66, 52, 84, 60, 90, 72].map((h, i) => (
               <div
                 key={i}
-                className="flex-1 rounded-t bg-teal-500/60"
+                className="flex-1 rounded-t bg-gold-500/60"
                 style={{ height: `${h}%` }}
               />
             ))}
@@ -74,7 +74,7 @@ export function WorkPreview() {
           <Reveal>
             <Link
               to="/work"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               All case studies
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -92,7 +92,7 @@ export function WorkPreview() {
                 <WorkThumb variant={index % 3} />
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex flex-wrap items-center gap-2">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">
                       {study.category}
                     </p>
                     {study.isPlaceholder ? <Badge tone="warning">Template</Badge> : null}
@@ -103,7 +103,7 @@ export function WorkPreview() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-600">
                     {study.summary}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-700">
                     Read case study
                     <ArrowRight
                       aria-hidden="true"

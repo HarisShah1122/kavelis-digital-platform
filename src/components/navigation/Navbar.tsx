@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/Button'
 function navLinkClasses({ isActive }: { isActive: boolean }): string {
   return cn(
     'rounded-md px-1 py-1 text-sm font-medium transition-colors',
-    isActive ? 'text-teal-700' : 'text-charcoal-600 hover:text-navy-950',
+    isActive ? 'text-gold-700' : 'text-charcoal-600 hover:text-navy-950',
   )
 }
 
@@ -118,7 +118,7 @@ export function Navbar() {
                 className={cn(
                   'inline-flex items-center gap-1 rounded-md text-sm font-medium transition-colors',
                   location.pathname.startsWith('/services')
-                    ? 'text-teal-700'
+                    ? 'text-gold-700'
                     : 'text-charcoal-600 hover:text-navy-950',
                 )}
               >
@@ -159,7 +159,7 @@ export function Navbar() {
                       <Link
                         key={child.to}
                         to={child.to}
-                        className="rounded-xl p-3 transition-colors hover:bg-teal-50"
+                        className="rounded-xl p-3 transition-colors hover:bg-gold-50"
                       >
                         <span className="block text-sm font-semibold text-navy-950">
                           {child.label}
@@ -173,7 +173,7 @@ export function Navbar() {
                   <div className="mt-2 border-t border-navy-100 px-3 pb-1 pt-3">
                     <Link
                       to="/services"
-                      className="text-sm font-semibold text-teal-700 hover:text-teal-800"
+                      className="text-sm font-semibold text-gold-700 hover:text-gold-800"
                     >
                       View all services &rarr;
                     </Link>
@@ -223,7 +223,7 @@ export function Navbar() {
                 className={({ isActive }) =>
                   cn(
                     'rounded-lg px-3 py-2.5 text-base font-medium',
-                    isActive ? 'bg-teal-50 text-teal-700' : 'text-charcoal-700 hover:bg-teal-50',
+                    isActive ? 'bg-gold-50 text-gold-700' : 'text-charcoal-700 hover:bg-gold-50',
                   )
                 }
               >
@@ -234,7 +234,7 @@ export function Navbar() {
                   <li key={child.to}>
                     <Link
                       to={child.to}
-                      className="block rounded-md px-2 py-1.5 text-sm text-charcoal-600 hover:bg-teal-50 hover:text-navy-950"
+                      className="block rounded-md px-2 py-1.5 text-sm text-charcoal-600 hover:bg-gold-50 hover:text-navy-950"
                     >
                       {child.label}
                     </Link>
@@ -251,7 +251,7 @@ export function Navbar() {
               className={({ isActive }) =>
                 cn(
                   'rounded-lg px-3 py-2.5 text-base font-medium',
-                  isActive ? 'bg-teal-50 text-teal-700' : 'text-charcoal-700 hover:bg-teal-50',
+                  isActive ? 'bg-gold-50 text-gold-700' : 'text-charcoal-700 hover:bg-gold-50',
                 )
               }
             >

@@ -17,7 +17,7 @@ export function DashboardMockup() {
 
       <div className="grid grid-cols-[auto_1fr]">
         <aside className="hidden w-14 flex-col items-center gap-4 border-r border-white/10 py-5 sm:flex">
-          <LayoutDashboard className="h-4 w-4 text-mint-400" />
+          <LayoutDashboard className="h-4 w-4 text-gold-400" />
           <BarChart3 className="h-4 w-4 text-white/40" />
           <Users className="h-4 w-4 text-white/40" />
           <CreditCard className="h-4 w-4 text-white/40" />
@@ -48,7 +48,7 @@ export function DashboardMockup() {
                 <div
                   key={index}
                   className={`flex-1 rounded-t ${
-                    index === bars.length - 2 ? 'bg-mint-400' : 'bg-teal-500/50'
+                    index === bars.length - 2 ? 'bg-gold-400' : 'bg-gold-500/50'
                   }`}
                   style={{ height: `${height}%` }}
                 />
@@ -69,9 +69,9 @@ export function DashboardMockup() {
                   <span
                     className={
                       row.status === 'Completed'
-                        ? 'text-mint-400'
+                        ? 'text-gold-400'
                         : row.status === 'Running'
-                          ? 'text-teal-400'
+                          ? 'text-gold-400'
                           : 'text-navy-400'
                     }
                   >

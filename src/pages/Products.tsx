@@ -23,14 +23,14 @@ function CategoryVisual({ variant }: { variant: number }) {
       <div className="rounded-lg border border-white/10 bg-white/5 p-3">
         <div className="mb-2.5 flex items-center justify-between">
           <span className="h-2 w-14 rounded-full bg-white/25" />
-          <span className="h-2 w-7 rounded-full bg-teal-500/70" />
+          <span className="h-2 w-7 rounded-full bg-gold-500/70" />
         </div>
         {variant === 1 ? (
           <div className="grid grid-cols-3 gap-2">
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <div key={i} className="space-y-1">
                 <div
-                  className={`h-7 rounded ${i % 3 === 1 ? 'bg-teal-500/25' : 'bg-white/10'}`}
+                  className={`h-7 rounded ${i % 3 === 1 ? 'bg-gold-500/25' : 'bg-white/10'}`}
                 />
                 <div className="h-1 w-3/4 rounded-full bg-white/15" />
               </div>
@@ -41,10 +41,10 @@ function CategoryVisual({ variant }: { variant: number }) {
             {[0, 1, 2].map((i) => (
               <div key={i} className="flex items-center gap-2">
                 <span
-                  className={`h-6 w-6 rounded ${i === 1 ? 'bg-teal-500/40' : 'bg-white/15'}`}
+                  className={`h-6 w-6 rounded ${i === 1 ? 'bg-gold-500/40' : 'bg-white/15'}`}
                 />
                 <span className="h-1.5 flex-1 rounded-full bg-white/15" />
-                <span className="h-1.5 w-8 rounded-full bg-teal-500/50" />
+                <span className="h-1.5 w-8 rounded-full bg-gold-500/50" />
               </div>
             ))}
           </div>
@@ -53,7 +53,7 @@ function CategoryVisual({ variant }: { variant: number }) {
             {[40, 65, 50, 80, 58, 90, 70, 84].map((h, i) => (
               <div
                 key={i}
-                className={`flex-1 rounded-t ${i % 3 === 2 ? 'bg-teal-500/70' : 'bg-white/20'}`}
+                className={`flex-1 rounded-t ${i % 3 === 2 ? 'bg-gold-500/70' : 'bg-white/20'}`}
                 style={{ height: `${h}%` }}
               />
             ))}
@@ -108,7 +108,7 @@ export default function Products() {
                     {category.capabilities.map((capability) => (
                       <li
                         key={capability}
-                        className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800"
+                        className="rounded-full bg-gold-50 px-3 py-1 text-xs font-semibold text-gold-800"
                       >
                         {capability}
                       </li>
@@ -123,13 +123,13 @@ export default function Products() {
 
       <Section className="border-y border-navy-100 bg-white">
         <Container>
-          <Reveal className="flex items-start gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-5">
-            <Puzzle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+          <Reveal className="flex items-start gap-4 rounded-2xl border border-warning/25 bg-warning/10 p-5">
+            <Puzzle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-warning" />
             <div>
-              <h2 className="text-sm font-semibold text-amber-900">Editable placeholders</h2>
-              <p className="mt-1 text-sm leading-relaxed text-amber-900/80">
+              <h2 className="text-sm font-semibold text-warning">Editable placeholders</h2>
+              <p className="mt-1 text-sm leading-relaxed text-warning/90">
                 The product entries below are clearly marked placeholders. Replace them in{' '}
-                <code className="rounded bg-amber-100 px-1.5 py-0.5 text-xs">
+                <code className="rounded bg-white/60 px-1.5 py-0.5 text-xs">
                   src/data/products.ts
                 </code>{' '}
                 with verified Kavelis products — real names, features, screenshots, and status —
@@ -149,11 +149,11 @@ export default function Products() {
                         <h2 className="text-2xl font-bold tracking-tight text-navy-950">
                           {product.name}
                         </h2>
-                        <Badge tone={product.isPlaceholder ? 'warning' : 'blue'}>
+                        <Badge tone={product.isPlaceholder ? 'warning' : 'brand'}>
                           {statusLabels[product.status] ?? product.status}
                         </Badge>
                       </div>
-                      <p className="mt-2 text-sm font-medium text-teal-700">{product.tagline}</p>
+                      <p className="mt-2 text-sm font-medium text-gold-700">{product.tagline}</p>
                       <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
                         {product.description}
                       </p>
@@ -180,7 +180,7 @@ export default function Products() {
                               >
                                 <Check
                                   aria-hidden="true"
-                                  className="mt-0.5 h-4 w-4 shrink-0 text-teal-600"
+                                  className="mt-0.5 h-4 w-4 shrink-0 text-gold-600"
                                 />
                                 {feature}
                               </li>
@@ -219,7 +219,7 @@ export default function Products() {
                       <div className="w-full max-w-xs rounded-xl border border-white/10 bg-white/5 p-4">
                         <div className="mb-3 flex items-center justify-between">
                           <span className="h-2 w-16 rounded-full bg-white/20" />
-                          <span className="h-2 w-8 rounded-full bg-teal-500/60" />
+                          <span className="h-2 w-8 rounded-full bg-gold-500/60" />
                         </div>
                         <div className="space-y-2.5">
                           {[72, 54, 88, 40, 64].map((width, i) => (
@@ -232,7 +232,7 @@ export default function Products() {
                         </div>
                         <div className="mt-4 grid grid-cols-2 gap-2">
                           <div className="h-14 rounded-lg bg-white/5" />
-                          <div className="h-14 rounded-lg bg-teal-500/20" />
+                          <div className="h-14 rounded-lg bg-gold-500/20" />
                         </div>
                         <p className="mt-4 text-center text-[10px] uppercase tracking-widest text-navy-500">
                           Product visual placeholder

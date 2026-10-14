@@ -29,18 +29,18 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <section className="border-b border-navy-100 bg-teal-50">
+      <section className="border-b border-navy-100 bg-gold-50">
         <Container className="section-tight">
           <Reveal>
             <Link
               to="/services"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-500 transition-colors hover:text-teal-700"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-500 transition-colors hover:text-gold-700"
             >
               <ArrowLeft aria-hidden="true" className="h-4 w-4" />
               All services
             </Link>
             <div className="mt-6 flex items-start gap-5">
-              <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-teal-700 shadow-card sm:flex">
+              <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-gold-700 shadow-card sm:flex">
                 <Icon aria-hidden="true" className="h-6 w-6" />
               </span>
               <div className="max-w-3xl">
@@ -65,7 +65,7 @@ export default function ServiceDetail() {
         <Container>
           <div className="grid gap-8 lg:grid-cols-3">
             <Reveal className="lg:col-span-2">
-              <div className="rounded-2xl border border-teal-100 bg-teal-50/70 p-7 sm:p-8">
+              <div className="rounded-2xl border border-gold-100 bg-gold-50/70 p-7 sm:p-8">
                 <h2 className="text-xl font-bold text-navy-950">Business outcomes</h2>
                 <ul className="mt-5 space-y-3.5">
                   {service.outcomes.map((outcome) => (
@@ -73,7 +73,7 @@ export default function ServiceDetail() {
                       key={outcome}
                       className="flex items-start gap-3 text-sm leading-relaxed text-charcoal-600 sm:text-base"
                     >
-                      <Check aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
+                      <Check aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" />
                       {outcome}
                     </li>
                   ))}
@@ -113,7 +113,7 @@ export default function ServiceDetail() {
                       key={item}
                       className="flex items-start gap-3 text-sm leading-relaxed text-charcoal-600"
                     >
-                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
                       {item}
                     </li>
                   ))}
@@ -130,7 +130,7 @@ export default function ServiceDetail() {
                       key={item}
                       className="flex items-start gap-3 text-sm leading-relaxed text-charcoal-600"
                     >
-                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
                       {item}
                     </li>
                   ))}
@@ -152,7 +152,7 @@ export default function ServiceDetail() {
             </div>
             <Link
               to="/about"
-              className="text-sm font-semibold text-teal-700 hover:text-teal-800"
+              className="text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               Full process details →
             </Link>
@@ -163,7 +163,7 @@ export default function ServiceDetail() {
                 key={step.id}
                 className="rounded-xl border border-navy-100 bg-canvas p-4 text-center"
               >
-                <p className="text-xs font-semibold text-teal-600">{step.number}</p>
+                <p className="text-xs font-semibold text-gold-600">{step.number}</p>
                 <p className="mt-1.5 text-xs font-semibold leading-snug text-navy-900">
                   {step.title}
                 </p>
@@ -179,7 +179,7 @@ export default function ServiceDetail() {
             <h2 className="text-2xl font-bold tracking-tight text-navy-950 sm:text-3xl">
               Related services
             </h2>
-            <Link to="/services" className="text-sm font-semibold text-teal-700 hover:text-teal-800">
+            <Link to="/services" className="text-sm font-semibold text-gold-700 hover:text-gold-800">
               View all services →
             </Link>
           </div>
@@ -192,14 +192,14 @@ export default function ServiceDetail() {
                   to={`/services/${item.id}`}
                   className="card card-hover group flex h-full flex-col p-6"
                 >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
                     <RelatedIcon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-navy-950">{item.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
                     {item.shortDescription}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-700">
                     Learn more
                     <ArrowRight
                       aria-hidden="true"

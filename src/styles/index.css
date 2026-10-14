@@ -27,11 +27,11 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-teal-600 ring-offset-2 ring-offset-canvas;
+    @apply outline-none ring-2 ring-gold-600 ring-offset-2 ring-offset-canvas;
   }
 
   ::selection {
-    @apply bg-teal-100 text-navy-950;
+    @apply bg-gold-100 text-navy-950;
   }
 }
 
@@ -49,7 +49,7 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-teal-700;
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-700;
   }
 
   .display-heading {
@@ -65,19 +65,19 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .btn-primary {
-    @apply bg-teal-600 text-white hover:bg-teal-700;
+    @apply bg-navy-950 text-white hover:bg-navy-900;
   }
 
   .btn-secondary {
-    @apply border border-navy-200 bg-white text-navy-900 hover:border-teal-300 hover:bg-teal-50;
+    @apply border border-navy-100 bg-white text-navy-950 hover:border-gold-300 hover:bg-gold-50;
   }
 
   .btn-dark {
-    @apply bg-white text-navy-950 hover:bg-teal-50;
+    @apply bg-white text-navy-950 hover:bg-gold-50;
   }
 
   .btn-ghost-light {
@@ -89,15 +89,15 @@
   }
 
   .card-hover {
-    @apply transition duration-200 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-lift;
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-gold-200 hover:shadow-lift;
   }
 
   .input-field {
-    @apply block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-sm text-navy-950 placeholder:text-charcoal-400 focus:border-teal-600 focus:outline-none focus:ring-1 focus:ring-teal-600;
+    @apply block w-full rounded-lg border border-navy-100 bg-white px-3.5 py-2.5 text-sm text-navy-950 placeholder:text-charcoal-400 focus:border-gold-600 focus:outline-none focus:ring-1 focus:ring-gold-600;
   }
 
   .input-error {
-    @apply border-red-400 focus:border-red-500 focus:ring-red-500;
+    @apply border-error/60 focus:border-error focus:ring-error;
   }
 }
 

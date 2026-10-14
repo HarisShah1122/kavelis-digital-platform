@@ -57,7 +57,7 @@ export function SectionHeader({
         className,
       )}
     >
-      {eyebrow ? <p className={cn('eyebrow', onDark && 'text-teal-300')}>{eyebrow}</p> : null}
+      {eyebrow ? <p className={cn('eyebrow', onDark && 'text-gold-300')}>{eyebrow}</p> : null}
       <h2
         className={cn(
           'mt-3 text-3xl font-bold tracking-tight sm:text-4xl',

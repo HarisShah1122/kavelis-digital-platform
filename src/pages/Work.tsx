@@ -26,7 +26,7 @@ function WorkThumb({
       className={cn(
         'relative overflow-hidden border-b border-navy-100 p-5',
         variant === 0 && 'bg-navy-950',
-        variant === 1 && 'bg-teal-800',
+        variant === 1 && 'bg-navy-900',
         variant === 2 && 'bg-canvas',
         'rounded-t-2xl',
         className,
@@ -45,7 +45,7 @@ function WorkThumb({
           <span
             className={cn('h-2 w-2 rounded-full', variant === 2 ? 'bg-navy-200' : 'bg-white/25')}
           />
-          <span className="ml-2 h-2 w-20 rounded-full bg-teal-500/70" />
+          <span className="ml-2 h-2 w-20 rounded-full bg-gold-500/70" />
         </div>
 
         {variant === 0 ? (
@@ -54,7 +54,7 @@ function WorkThumb({
               {[0, 1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className={cn('h-2 rounded-full', i === 0 ? 'bg-teal-400/70' : 'bg-white/15')}
+                  className={cn('h-2 rounded-full', i === 0 ? 'bg-gold-400/70' : 'bg-white/15')}
                   style={{ width: `${[90, 70, 80, 60][i] ?? 70}%` }}
                 />
               ))}
@@ -64,7 +64,7 @@ function WorkThumb({
                 {[45, 70, 55, 85, 62, 92, 74].map((h, i) => (
                   <div
                     key={i}
-                    className="flex-1 rounded-t bg-teal-500/60"
+                    className="flex-1 rounded-t bg-gold-500/60"
                     style={{ height: `${h}%` }}
                   />
                 ))}
@@ -77,7 +77,7 @@ function WorkThumb({
             {[0, 1, 2].map((i) => (
               <div key={i} className="flex flex-1 items-center gap-2">
                 <div className="h-9 flex-1 rounded-lg bg-white/10" />
-                {i < 2 ? <span className="h-0.5 w-4 bg-teal-400/70" /> : null}
+                {i < 2 ? <span className="h-0.5 w-4 bg-gold-400/70" /> : null}
               </div>
             ))}
           </div>
@@ -85,7 +85,7 @@ function WorkThumb({
           <div className="grid grid-cols-3 gap-2.5">
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <div key={i} className="space-y-1.5">
-                <div className={cn('h-10 rounded-lg', i % 3 === 1 ? 'bg-teal-100' : 'bg-navy-100')} />
+                <div className={cn('h-10 rounded-lg', i % 3 === 1 ? 'bg-gold-100' : 'bg-navy-100')} />
                 <div className="h-1.5 w-3/4 rounded-full bg-navy-100" />
               </div>
             ))}
@@ -173,7 +173,7 @@ export default function Work() {
                     )}
                   >
                     <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">
                         {study.category}
                       </p>
                       {study.isPlaceholder ? <Badge tone="warning">Template</Badge> : null}
@@ -197,7 +197,7 @@ export default function Work() {
                       ))}
                     </ul>
 
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700">
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700">
                       Read case study
                       <ArrowRight
                         aria-hidden="true"

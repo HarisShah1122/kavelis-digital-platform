@@ -137,20 +137,26 @@ Brand tokens live in `tailwind.config.js`, derived from the Kavelis identity:
 
 | Token | Value | Role |
 |-------|-------|------|
-| `navy-950` | `#101629` | Primary text, dark sections, footer |
-| `teal-800` | `#075B66` | Dark teal — logo mark, brand anchor |
-| `teal-600` | `#0E8482` | Primary buttons (WCAG AA with white text) |
-| `teal-500` | `#159A98` | Brand teal — accents, data viz |
-| `mint-400` | `#62D6B0` | Highlight accents on dark surfaces |
-| `canvas` | `#FAF9F6` | Soft off-white page background |
-| `charcoal-500` | `#687385` | Muted secondary text |
-| `teal-50` | `#E8F6F2` | Light teal section and hover backgrounds |
+| `navy-950` | `#111629` | Primary navy — text, dark sections, footer, primary buttons |
+| `navy-900` | `#171D31` | Secondary navy — button hover, dark panels |
+| `gold-500` | `#C58D3E` | Brand gold — accents, featured borders, indicators |
+| `gold-600` | `#AA742D` | Gold hover |
+| `gold-700` | `#8C5E22` | Accessible gold text on light surfaces (links, active nav, eyebrows) |
+| `gold-100` | `#F5EBDD` | Pale gold — highlighted areas, selection |
+| `slate-500` / `charcoal-500` | `#5B6473` | Supporting text |
+| `charcoal-400` | `#8D95A2` | Muted gray |
+| `canvas` | `#F7F7F7` | Warm white page background |
+| `navy-100` | `#E7E9ED` | Border gray |
+| `success` | `#21865B` | Success states |
+| `warning` | `#B7791F` | Warning states |
+| `error` | `#C43D43` | Error states |
 
 Additional principles:
 
-- Inter typography, generous spacing, card-based layouts on an off-white canvas
-- White content surfaces; light teal accents; dark navy reserved for feature bands and footer
-- No neon gradients, glassmorphism, or particle effects
+- Inter typography, generous spacing, card-based layouts on a warm white canvas
+- White content surfaces; pale gold highlights; navy reserved for feature bands, footer, and primary buttons
+- Gold used selectively — active nav, links, eyebrows, accents, featured tiers
+- No teal/mint palette, neon gradients, glassmorphism, or particle effects
 - Reduced-motion support and visible focus states
 
 ## Deployment

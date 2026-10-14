@@ -17,7 +17,7 @@ export function ProductsPreview() {
           <Reveal>
             <Link
               to="/products"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-800"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               View products
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -32,7 +32,7 @@ export function ProductsPreview() {
                 to="/products"
                 className="card card-hover group flex h-full flex-col p-6"
               >
-                <span className="inline-flex items-center justify-center rounded-lg bg-teal-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-800">
+                <span className="inline-flex items-center justify-center rounded-lg bg-gold-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-gold-800">
                   Product
                 </span>
                 <h3 className="mt-4 text-base font-semibold text-navy-950">{category.title}</h3>
@@ -49,7 +49,7 @@ export function ProductsPreview() {
                     </li>
                   ))}
                 </ul>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-teal-700">
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold-700">
                   Explore
                   <ArrowRight
                     aria-hidden="true"

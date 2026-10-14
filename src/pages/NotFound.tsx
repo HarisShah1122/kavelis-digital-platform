@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <Section className="flex min-h-[60vh] items-center">
       <Container className="py-10 text-center">
-        <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-teal-800">
+        <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-50 text-gold-800">
           <Compass aria-hidden="true" className="h-6 w-6" />
         </span>
         <p className="eyebrow mt-6">404</p>

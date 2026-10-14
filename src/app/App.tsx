@@ -25,7 +25,7 @@ function RouteFallback() {
       role="status"
       aria-label="Loading page"
     >
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-navy-200 border-t-teal-600" />
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-navy-200 border-t-gold-600" />
     </div>
   )
 }

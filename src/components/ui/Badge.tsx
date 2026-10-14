@@ -4,16 +4,16 @@ import { cn } from '@/lib/utils'
 interface BadgeProps {
   children: ReactNode
   className?: string
-  tone?: 'blue' | 'neutral' | 'warning'
+  tone?: 'brand' | 'neutral' | 'warning'
 }
 
 const tones: Record<NonNullable<BadgeProps['tone']>, string> = {
-  blue: 'bg-teal-50 text-teal-700 ring-teal-200',
+  brand: 'bg-gold-50 text-gold-700 ring-gold-200',
   neutral: 'bg-navy-50 text-navy-700 ring-navy-200',
-  warning: 'bg-amber-50 text-amber-800 ring-amber-200',
+  warning: 'bg-warning/10 text-warning ring-warning/30',
 }
 
-export function Badge({ children, className, tone = 'blue' }: BadgeProps) {
+export function Badge({ children, className, tone = 'brand' }: BadgeProps) {
   return (
     <span
       className={cn(

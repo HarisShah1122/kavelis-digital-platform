@@ -22,7 +22,7 @@ export function TrustSection() {
             return (
               <Reveal key={item.id} delayMs={index * 60} className="h-full">
                 <div className="card h-full p-6">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 text-teal-700">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
                     <Icon aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-navy-950">{item.title}</h3>
