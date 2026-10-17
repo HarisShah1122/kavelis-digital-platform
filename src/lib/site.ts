@@ -14,14 +14,18 @@ export const siteConfig = {
   startPath: '/contact',
 } as const
 
-export function buildContactPayload(data: ContactFormData): ContactPayload {
+export function buildContactPayload(
+  data: ContactFormData,
+  reference?: string,
+): ContactPayload {
   return {
     ...data,
+    ...(reference ? { reference } : {}),
     submittedAt: new Date().toISOString(),
   }
 }
 
-export async function submitContactForm(data: ContactFormData): Promise<void> {
+export async function submitContactForm(data: ContactFormData, reference?: string): Promise<void> {
   const endpoint = siteConfig.contactEndpoint
   if (!endpoint) {
     throw new Error('CONTACT_ENDPOINT_MISSING')
@@ -30,7 +34,7 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildContactPayload(data)),
+    body: JSON.stringify(buildContactPayload(data, reference)),
   })
 
   if (!response.ok) {

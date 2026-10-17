@@ -15,6 +15,11 @@ export interface NavItem {
   children?: NavDropdownItem[]
 }
 
+export interface ServiceOffering {
+  title: string
+  description: string
+}
+
 export interface Service {
   id: string
   title: string
@@ -25,22 +30,8 @@ export interface Service {
   deliverables: string[]
   useCases: string[]
   engagementOptions: string[]
-}
-
-export type ProductStatus = 'placeholder' | 'in-development' | 'beta' | 'live'
-
-export interface Product {
-  id: string
-  name: string
-  tagline: string
-  description: string
-  problem: string
-  features: string[]
-  targetUsers: string[]
-  status: ProductStatus
-  ctaLabel: string
-  ctaTo: string
-  isPlaceholder: boolean
+  /** Optional detailed offering breakdown (e.g. Business Intelligence). */
+  offerings?: ServiceOffering[]
 }
 
 export interface CaseStudy {
@@ -59,28 +50,55 @@ export interface CaseStudy {
   isPlaceholder: boolean
 }
 
-export type PricingMode = 'fixed-scope' | 'ongoing' | 'retainer'
-
-export interface PricingTier {
+export interface SubscriptionPlan {
   id: string
   name: string
-  mode: PricingMode
-  audience: string
-  description: string
-  scope: string[]
-  timeline: string
-  /** Display price. Use "Inquiry-based" until commercial terms are confirmed. */
+  /** Monthly price in USD, formatted for display (e.g. "$950"). */
   price: string
-  isPlaceholder: boolean
+  priceValue: number
+  period: 'month'
+  audience: string
+  features: string[]
+  ctaLabel: string
   featured?: boolean
 }
 
-export interface ProductCategory {
+export interface MarketplaceCategory {
   id: string
   title: string
   description: string
-  capabilities: string[]
-  visual: 'dashboard' | 'commerce' | 'portal' | 'automation' | 'mobile' | 'analytics'
+}
+
+export type ProductVisual =
+  | 'dashboard'
+  | 'storefront'
+  | 'portal'
+  | 'automation'
+  | 'analytics'
+  | 'mobile'
+
+export interface ProductAddon {
+  name: string
+  price: string
+}
+
+export interface MarketplaceProduct {
+  id: string
+  name: string
+  categoryId: string
+  description: string
+  problem: string
+  features: string[]
+  customization: string[]
+  implementation: string[]
+  /** Starting price in USD for the defined base scope. */
+  startingPrice: number
+  addons: ProductAddon[]
+  recurringCosts: string[]
+  visual: ProductVisual
+  /** Related Kavelis service for cross-linking. */
+  relatedServiceId: string
+  /** Proposed pricing example — confirm before launch. */
   isPlaceholder: boolean
 }
 
@@ -132,5 +150,7 @@ export interface ContactFormData {
 export type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>
 
 export interface ContactPayload extends ContactFormData {
+  /** Prefilled plan or product reference, when arriving from a CTA. */
+  reference?: string
   submittedAt: string
 }

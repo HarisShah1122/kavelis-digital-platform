@@ -1,84 +1,141 @@
-import type { PricingTier } from '@/types'
+import type { FaqItem, SubscriptionPlan } from '@/types'
 
 /**
- * Engagement and pricing options.
- *
- * Commercial terms (prices, contracts, guarantees) are NOT confirmed.
- * Every entry uses inquiry-based pricing and is flagged as a placeholder
- * until real package details are approved. Edit this file to publish them.
+ * Monthly development subscription plans.
+ * Names, prices, and inclusions are fixed commercial offers — keep in sync
+ * with the Pricing page copy exactly.
  */
-export const pricingTiers: PricingTier[] = [
+export const subscriptionPlans: SubscriptionPlan[] = [
   {
-    id: 'starter-projects',
-    name: 'Starter Projects',
-    mode: 'fixed-scope',
-    audience: 'Startups and SMEs with a defined, focused problem to solve',
-    description:
-      'A fixed-scope engagement for a well-bounded deliverable — a landing platform, an internal tool, an integration, or an MVP first release.',
-    scope: [
-      'Discovery and scope definition',
-      'Design and development of the agreed scope',
-      'Testing, deployment, and handover',
-      'Documentation for the delivered work',
+    id: 'starter',
+    name: 'Starter',
+    price: '$950',
+    priceValue: 950,
+    period: 'month',
+    audience: 'For Small Businesses',
+    features: [
+      'One active request at a time.',
+      'Website setup using any CMS, up to 5 pages.',
+      'Low-code theme customization.',
+      'Basic integrations.',
+      'Mobile optimization.',
+      'Communication via Slack and email.',
     ],
-    timeline: 'Confirmed after discovery',
-    price: 'Inquiry-based',
-    isPlaceholder: true,
+    ctaLabel: 'Get Started with Starter',
   },
   {
-    id: 'growth-solutions',
-    name: 'Growth Solutions',
-    mode: 'ongoing',
-    audience: 'Growing businesses building or evolving a core product',
-    description:
-      'A continuing product engagement — design, build, and iterate on SaaS products, platforms, or commerce systems in regular cycles.',
-    scope: [
-      'Dedicated design and engineering capacity',
-      'Roadmap planning and regular releases',
-      'Integrations, automation, and analytics',
-      'Priority support and iteration',
+    id: 'growth',
+    name: 'Growth',
+    price: '$1,500',
+    priceValue: 1500,
+    period: 'month',
+    audience: 'For Growing Teams',
+    features: [
+      'One active request at a time.',
+      'Fully customized design.',
+      'Advanced feature implementation.',
+      'API integrations.',
+      'CRM or e-commerce configuration.',
+      'Performance optimization.',
+      'Communication via Slack and email.',
+      'One week of post-launch support.',
     ],
-    timeline: 'Ongoing, reviewed each cycle',
-    price: 'Inquiry-based',
-    isPlaceholder: true,
+    ctaLabel: 'Get Started with Growth',
     featured: true,
   },
   {
-    id: 'enterprise-engagements',
-    name: 'Custom Enterprise Engagements',
-    mode: 'fixed-scope',
-    audience: 'Established companies with complex, multi-system requirements',
-    description:
-      'A tailored engagement for platform modernization, large-scale builds, or multi-team delivery with formal planning and governance.',
-    scope: [
-      'Architecture and solution planning',
-      'Phased delivery with milestone reviews',
-      'System integrations and modernization',
-      'Training, documentation, and support options',
+    id: 'scale',
+    name: 'Scale',
+    price: '$3,000',
+    priceValue: 3000,
+    period: 'month',
+    audience: 'For Large Companies',
+    features: [
+      'Two active requests at a time.',
+      'Advanced custom theme development.',
+      'Custom application development.',
+      'Advanced automation workflows.',
+      'Multi-platform integrations.',
+      'Advanced performance optimization.',
+      'Dedicated technical support.',
+      'Communication via Slack and email.',
     ],
-    timeline: 'Defined per engagement',
-    price: 'Inquiry-based',
-    isPlaceholder: true,
+    ctaLabel: 'Get Started with Scale',
   },
 ]
 
-export const engagementModels = [
+export const getPlanById = (id: string): SubscriptionPlan | undefined =>
+  subscriptionPlans.find((plan) => plan.id === id)
+
+/** How the subscription request system works — derived only from plan inclusions. */
+export const requestSystemSteps = [
   {
-    id: 'fixed-scope',
-    title: 'Fixed-scope development',
+    id: 'submit',
+    title: 'Submit a request',
     description:
-      'A defined scope, milestone plan, and deliverable. Best when the problem and requirements are clear.',
+      'Send your next website, feature, or integration request through Slack or email — whichever your plan includes.',
   },
   {
-    id: 'dedicated-team',
-    title: 'Ongoing product team',
+    id: 'one-at-a-time',
+    title: 'One active request at a time',
     description:
-      'Monthly design and engineering capacity that works as an extension of your team, shipping in regular cycles.',
+      'Your team works through requests one at a time (two at a time on Scale), so priorities stay clear and progress stays visible.',
   },
   {
-    id: 'maintenance-retainer',
-    title: 'Maintenance subscription',
+    id: 'review',
+    title: 'Review working software',
     description:
-      'Recurring support covering monitoring, fixes, security updates, and continuous product improvements.',
+      'You review each piece of work as it is completed, with changes folded into the next request in the queue.',
+  },
+  {
+    id: 'continue',
+    title: 'Continue every month',
+    description:
+      'The subscription continues monthly. Plan details, pausing, and any scope questions are agreed in writing before you start.',
   },
 ] as const
+
+export const pricingFaqs: FaqItem[] = [
+  {
+    id: 'pricing-active-requests',
+    question: 'What does “one active request at a time” mean?',
+    answer:
+      'Your plan includes one request in progress at any moment (two on Scale). When that request is delivered, the next one in your queue starts. This is how the listed prices stay predictable — it is not an unlimited-requests service.',
+  },
+  {
+    id: 'pricing-scope',
+    question: 'What kind of work fits these plans?',
+    answer:
+      'Starter covers CMS website setup up to 5 pages with low-code theme work and basic integrations. Growth adds fully customized design, advanced features, API integrations, and CRM or e-commerce configuration. Scale adds custom application development, advanced automation, and multi-platform integrations. Work outside a plan’s listed scope is quoted separately as a project.',
+  },
+  {
+    id: 'pricing-communication',
+    question: 'How do we communicate during the subscription?',
+    answer:
+      'All three plans include communication via Slack and email. Response expectations and working hours are confirmed when you start, based on your team’s location and availability.',
+  },
+  {
+    id: 'pricing-billing',
+    question: 'How does billing work?',
+    answer:
+      'Each plan is a monthly subscription at the listed USD price. Payment method, invoicing schedule, and the start date of your first month are confirmed in the agreement before any work begins. This site does not process payments automatically.',
+  },
+  {
+    id: 'pricing-support',
+    question: 'What support is included?',
+    answer:
+      'Support is included through the Slack and email channels listed in your plan. Growth additionally includes one week of post-launch support after a launch. Ongoing maintenance beyond the listed inclusions can be discussed separately.',
+  },
+  {
+    id: 'pricing-not-included',
+    question: 'What is not included in the monthly price?',
+    answer:
+      'Hosting accounts, third-party software licenses, paid APIs, and ad spend are not included unless explicitly agreed. Source-code ownership transfers to you for work delivered under the engagement terms — this is confirmed in your agreement.',
+  },
+  {
+    id: 'pricing-vs-projects',
+    question: 'Is a subscription the right fit, or should I scope a project?',
+    answer:
+      'If your needs are continuous and vary month to month, a subscription fits well. If you have a fixed, well-defined deliverable (for example a ready-made product from our catalog or a large one-off build), a fixed-scope project or a marketplace product may cost less. Ask — we will say so honestly.',
+  },
+]

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { CtaBand } from '@/components/ui/CtaBand'
+import { BiDashboard } from '@/components/ui/BiDashboard'
 import NotFound from '@/pages/NotFound'
 
 export default function ServiceDetail() {
@@ -140,6 +141,37 @@ export default function ServiceDetail() {
           </div>
         </Container>
       </Section>
+
+      {service.offerings ? (
+        <Section dark>
+          <Container>
+            <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+              <Reveal>
+                <p className="eyebrow text-gold-300">What&apos;s included</p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  Eight ways this service works in practice
+                </h2>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {service.offerings.map((offering) => (
+                    <li
+                      key={offering.title}
+                      className="rounded-xl border border-navy-800 bg-navy-900 p-4"
+                    >
+                      <h3 className="text-sm font-semibold text-white">{offering.title}</h3>
+                      <p className="mt-1.5 text-xs leading-relaxed text-navy-300">
+                        {offering.description}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+              <Reveal delayMs={100}>
+                <BiDashboard />
+              </Reveal>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className="border-y border-navy-100 bg-white">
         <Container>

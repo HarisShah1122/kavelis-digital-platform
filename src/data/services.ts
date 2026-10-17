@@ -1,4 +1,5 @@
 import {
+  BarChart3,
   Blocks,
   Bot,
   Headphones,
@@ -188,6 +189,78 @@ export const services: Service[] = [
       'AI discovery workshop',
       'Pilot feature build',
       'Production rollout and monitoring',
+    ],
+  },
+  {
+    id: 'business-intelligence-analytics',
+    title: 'Business Intelligence & Data Analytics',
+    shortDescription: 'Dashboards, reporting, and analytics that make business data usable.',
+    description:
+      'Your business already generates data — in CRMs, spreadsheets, stores, and operations tools. We turn that data into dashboards, reports, and analytics your team can act on. From KPI scoreboards and sales analytics to custom reporting pipelines, every build starts with the decisions you need to make, not the tools we want to sell.',
+    icon: BarChart3,
+    outcomes: [
+      'Faster access to the numbers that drive daily and monthly decisions',
+      'Shared source of truth across teams instead of conflicting spreadsheets',
+      'Clear visibility into trends, targets, and exceptions',
+    ],
+    deliverables: [
+      'Metrics and KPI definition workshops',
+      'Data source mapping and connection setup',
+      'Interactive dashboards and scorecards',
+      'Scheduled and on-demand reporting',
+      'Team training and documentation',
+    ],
+    useCases: [
+      'Replacing manual spreadsheet reporting with live dashboards',
+      'Giving leadership a single view of revenue, pipeline, and operations',
+      'Unifying data from multiple systems into consistent metrics',
+    ],
+    engagementOptions: [
+      'BI discovery and data audit',
+      'Dashboard build engagement',
+      'Ongoing reporting and analytics support',
+    ],
+    offerings: [
+      {
+        title: 'Business dashboards',
+        description:
+          'Single-screen views of the KPIs your leadership and teams track daily, with filters and drill-downs.',
+      },
+      {
+        title: 'Sales analytics and reporting',
+        description:
+          'Pipeline, revenue, win-rate, and team performance reports built around how you actually sell.',
+      },
+      {
+        title: 'KPI and operational reporting',
+        description:
+          'Recurring operational metrics delivered through dashboards or scheduled reports — without manual assembly.',
+      },
+      {
+        title: 'Data visualization',
+        description:
+          'Charts and views designed for readability: the right chart type, clear labels, no decorative noise.',
+      },
+      {
+        title: 'ETL and data preparation',
+        description:
+          'Extracting, cleaning, and combining data from multiple systems so reports agree with each other.',
+      },
+      {
+        title: 'Custom BI solutions',
+        description:
+          'Tailored analytics systems for complex data models that off-the-shelf BI tools handle poorly.',
+      },
+      {
+        title: 'Dashboard design and implementation',
+        description:
+          'From information architecture to production dashboards your team can maintain and extend.',
+      },
+      {
+        title: 'Analytics strategy and consultation',
+        description:
+          'Deciding what to measure, how often, and which data investments are worth making — before building anything.',
+      },
     ],
   },
   {

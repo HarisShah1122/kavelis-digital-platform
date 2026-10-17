@@ -8,6 +8,7 @@ const Home = lazy(() => import('@/pages/Home'))
 const Services = lazy(() => import('@/pages/Services'))
 const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'))
 const Products = lazy(() => import('@/pages/Products'))
+const ProductDetail = lazy(() => import('@/pages/ProductDetail'))
 const Work = lazy(() => import('@/pages/Work'))
 const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
 const Pricing = lazy(() => import('@/pages/Pricing'))
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductDetail />} />
             <Route path="/work" element={<Work />} />
             <Route path="/work/:caseStudyId" element={<CaseStudy />} />
             <Route path="/pricing" element={<Pricing />} />

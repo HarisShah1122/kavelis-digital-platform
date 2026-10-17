@@ -133,7 +133,7 @@ export const homeFaqs: FaqItem[] = [
     id: 'what-kavelis-does',
     question: 'What services does Kavelis offer?',
     answer:
-      'SaaS product development, custom software and web applications, business automation, AI-assisted solutions, e-commerce, API development and third-party integrations, and ongoing maintenance and technical support.',
+      'SaaS product development, custom software and web applications, business automation, AI-assisted solutions, e-commerce, API development and third-party integrations, business intelligence and data analytics, and ongoing maintenance and technical support. We also sell ready-made digital products at listed starting prices.',
   },
   {
     id: 'starting-a-project',
@@ -157,7 +157,19 @@ export const homeFaqs: FaqItem[] = [
     id: 'pricing-models',
     question: 'How does pricing work?',
     answer:
-      'Engagements are priced as fixed-scope projects, ongoing product-team arrangements, or maintenance retainers. Commercial details are confirmed after discovery, once scope is understood — we do not publish generic price lists that would not reflect your actual needs.',
+      'Three ways to work with us, depending on the job. Monthly development subscriptions start at $950/month for continuous small-to-medium work. Ready-made digital products in our catalog have one-time starting prices from $199. Custom projects (large builds, complex integrations, enterprise work) are quoted after discovery, because scope genuinely varies.',
+  },
+  {
+    id: 'bi-services',
+    question: 'Do you build dashboards and reporting?',
+    answer:
+      'Yes. Business intelligence is a core service: KPI dashboards, sales analytics, operational reporting, ETL and data preparation, and custom BI solutions. We start with the decisions you need to make, then design the metrics and visuals around them — including connecting data from systems you already use.',
+  },
+  {
+    id: 'marketplace-products',
+    question: 'What are the digital products in the catalog?',
+    answer:
+      'Ready-made software products — inventory systems, e-commerce stores, dashboards, workflow automation, and more — with defined base scopes and one-time starting prices. Each product page lists what is included, customization options, and what is not covered. They are a faster, cheaper alternative to building from scratch when the base scope fits your needs.',
   },
   {
     id: 'code-ownership',

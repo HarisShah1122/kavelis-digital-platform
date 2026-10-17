@@ -8,6 +8,8 @@ const homepageFaqIds = [
   'requirements-planning',
   'project-timeline',
   'pricing-models',
+  'bi-services',
+  'marketplace-products',
   'post-launch-support',
 ]
 

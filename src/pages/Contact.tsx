@@ -1,6 +1,9 @@
-import { useState, type FormEvent } from 'react'
-import { AlertCircle, CheckCircle2, Info, Mail, Send } from 'lucide-react'
+import { useMemo, useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { AlertCircle, CheckCircle2, Info, Mail, Send, Tag, X } from 'lucide-react'
 import { services } from '@/data/services'
+import { getPlanById } from '@/data/pricing'
+import { formatPrice, getMarketplaceProductById } from '@/data/marketplace'
 import { useSeo } from '@/hooks/useSeo'
 import { siteConfig, submitContactForm } from '@/lib/site'
 import { isEmail } from '@/lib/utils'
@@ -95,9 +98,46 @@ export default function Contact() {
     path: '/contact',
   })
 
+  const [searchParams, setSearchParams] = useSearchParams()
   const [formData, setFormData] = useState<ContactFormData>(emptyForm)
   const [errors, setErrors] = useState<ContactFormErrors>({})
   const [status, setStatus] = useState<ContactStatus>('idle')
+
+  // Plan or product prefill from CTA links (?plan=growth or ?product=crm-software)
+  const reference = useMemo(() => {
+    const planId = searchParams.get('plan')
+    if (planId) {
+      const plan = getPlanById(planId)
+      if (plan) {
+        return {
+          id: `plan-${plan.id}`,
+          label: `${plan.name} plan`,
+          detail: `${plan.price}/month`,
+        }
+      }
+    }
+    const productId = searchParams.get('product')
+    if (productId) {
+      const product = getMarketplaceProductById(productId)
+      if (product) {
+        return {
+          id: `product-${product.id}`,
+          label: product.name,
+          detail: `Starting at ${formatPrice(product.startingPrice)}`,
+        }
+      }
+    }
+    return null
+  }, [searchParams])
+
+  const referenceText = reference ? `${reference.label} — ${reference.detail}` : undefined
+
+  const clearReference = () => {
+    const next = new URLSearchParams(searchParams)
+    next.delete('plan')
+    next.delete('product')
+    setSearchParams(next, { replace: true })
+  }
 
   const updateField = (field: keyof ContactFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -129,7 +169,7 @@ export default function Contact() {
 
     setStatus('submitting')
     try {
-      await submitContactForm(formData)
+      await submitContactForm(formData, referenceText)
       setStatus('success')
       setFormData(emptyForm)
       setErrors({})
@@ -194,6 +234,34 @@ export default function Contact() {
                       {statusInfo.body}
                     </p>
                   </div>
+                </div>
+              ) : null}
+
+              {reference ? (
+                <div
+                  role="status"
+                  className="mb-6 flex items-start justify-between gap-3 rounded-2xl border border-gold-200 bg-gold-50 p-4"
+                >
+                  <div className="flex items-start gap-3">
+                    <Tag aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-700" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gold-700">
+                        Your selection
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold text-navy-950">
+                        {reference.label}
+                      </p>
+                      <p className="text-sm text-charcoal-600">{reference.detail}</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={clearReference}
+                    aria-label="Clear selection and send a general inquiry"
+                    className="rounded-lg p-1.5 text-charcoal-400 transition-colors hover:bg-white hover:text-navy-900"
+                  >
+                    <X aria-hidden="true" className="h-4 w-4" />
+                  </button>
                 </div>
               ) : null}
 

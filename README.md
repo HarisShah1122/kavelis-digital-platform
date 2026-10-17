@@ -8,16 +8,17 @@ Built with **React 18**, **TypeScript (strict)**, **Vite**, **Tailwind CSS**, **
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home — hero, services, product categories, selected work, capabilities, 7-step process, pricing, differentiators, trust principles, FAQs, CTA |
-| `/services` | Service overview with cards linking to detail pages |
-| `/services/:serviceId` | Service detail — outcomes, deliverables, use cases, engagement options, related services (unknown IDs show 404) |
-| `/products` | Product capability categories + product portfolio (editable placeholders until verified products are published) |
+| `/` | Home — hero, intro, services list, featured digital products, BI showcase, selected work, 7-step process, subscription pricing comparison, trust principles, FAQs, CTA |
+| `/services` | Service overview (8 services) linking to detail pages |
+| `/services/:serviceId` | Service detail — outcomes, deliverables, use cases, engagement options, related services (BI service also shows its 8 offerings and a sample dashboard; unknown IDs show 404) |
+| `/products` | Digital product marketplace — 15 products in 4 categories with one-time starting prices, category filters (editable placeholders until commercial terms are confirmed) |
+| `/products/:productId` | Product detail — features, customization, implementation, add-ons, recurring costs, “Get This Product” CTA (unknown IDs show 404) |
 | `/work` | Varied portfolio layout with CSS visuals (structural templates until verified projects are added) |
 | `/work/:caseStudyId` | Case-study detail — challenge, solution, features, approach, technologies (placeholders flagged in-page) |
-| `/pricing` | Engagement models and pricing tiers (inquiry-based placeholders until commercial terms are confirmed) |
+| `/pricing` | Monthly subscription plans ($950 / $1,500 / $3,000), how the request system works, products vs subscriptions vs custom, pricing FAQ |
 | `/solutions` | Industry / business-type engagement patterns |
 | `/about` | Mission, principles, delivery process, engineering quality |
-| `/contact` | Project inquiry form with validation and honest submission states |
+| `/contact` | Project inquiry form with validation and honest submission states; plan/product CTAs prefill a selection chip via `?plan=` / `?product=` query params |
 | `/privacy` | Privacy policy template (requires legal review before publication) |
 | `/terms` | Terms of service template (requires legal review before publication) |
 | `*` | 404 page |
@@ -93,6 +94,7 @@ To enable delivery, deploy any endpoint that accepts:
   "budget": "string",
   "timeline": "string",
   "message": "string",
+  "reference": "optional — selected plan or product, e.g. \"Growth plan — $1,500/month\"",
   "submittedAt": "ISO-8601 timestamp"
 }
 ```
@@ -122,14 +124,13 @@ public/                # Static assets (favicon)
 
 All business content is centralized and typed:
 
-- **Services** — `src/data/services.ts`
-- **Products** — `src/data/products.ts` (entries marked `isPlaceholder: true` must be replaced with verified products before publishing)
-- **Product categories** — `src/data/productCategories.ts`
+- **Services (incl. Business Intelligence)** — `src/data/services.ts`
+- **Marketplace products (15) & categories** — `src/data/marketplace.ts` (entries marked `isPlaceholder: true` are proposed pricing examples — confirm commercial terms before publishing)
 - **Case studies** — `src/data/caseStudies.ts` (templates only; add outcomes only with evidence)
-- **Pricing tiers & engagement models** — `src/data/pricing.ts` (all tiers are inquiry-based placeholders until commercial terms are approved)
+- **Subscription plans, request system, pricing FAQs** — `src/data/pricing.ts` (Starter $950/mo, Growth $1,500/mo, Scale $3,000/mo — names, prices, and inclusions are the commercial offer; keep copy in sync)
 - **Industries** — `src/data/industries.ts`
 - **Process (7 steps), FAQs, differentiators, trust principles** — `src/data/content.ts`
-- **Navigation** — `src/data/navigation.ts`
+- **Navigation** — `src/data/navigation.ts` (service dropdown and footer links derive from `services.ts`)
 
 ## Design system
 
@@ -178,10 +179,9 @@ Import the repository, framework preset **Vite**, and set the SPA fallback to se
 
 - [ ] Set `VITE_SITE_URL` to the confirmed production domain
 - [ ] Set `VITE_CONTACT_EMAIL` to the confirmed business email (or leave empty to hide)
-- [ ] Connect `VITE_CONTACT_ENDPOINT` to a real form backend and test end-to-end
-- [ ] Replace product placeholders in `src/data/products.ts` with verified products
+- [ ] Connect `VITE_CONTACT_ENDPOINT` to a real form backend and test end-to-end (including a `reference` from a plan/product CTA)
+- [ ] Confirm marketplace pricing in `src/data/marketplace.ts` and flip `isPlaceholder` flags (remove the “Example” badges)
 - [ ] Replace case-study templates in `src/data/caseStudies.ts` with approved write-ups
-- [ ] Confirm commercial terms and replace inquiry-based placeholders in `src/data/pricing.ts` (remove the placeholder notices on `/pricing` and the homepage pricing section)
 - [ ] Have legal counsel review `/privacy` and `/terms` before publishing
 - [ ] Add verified structured data (Organization JSON-LD) once the legal entity details are confirmed
 

@@ -9,7 +9,7 @@ const proofPoints = [
   'SaaS products & portals',
   'Business automation',
   'E-commerce platforms',
-  'API integrations',
+  'BI dashboards & reporting',
 ]
 
 export function Hero() {
@@ -27,9 +27,9 @@ export function Hero() {
               <span className="text-gold-700">your business forward.</span>
             </h1>
             <p className="lead mt-6 max-w-xl">
-              Kavelis designs and builds SaaS products, business automation, and AI-assisted
-              software — helping businesses launch faster, operate smarter, and grow with
-              confidence.
+              Kavelis designs and builds SaaS products, business automation, BI dashboards, and
+              ready-made digital products — helping businesses launch faster, operate smarter, and
+              grow with confidence.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button to="/contact" className="group">
@@ -39,8 +39,8 @@ export function Hero() {
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 />
               </Button>
-              <Button to="/services" variant="secondary">
-                Explore Our Services
+              <Button to="/products" variant="secondary">
+                Browse digital products
               </Button>
             </div>
             <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2">

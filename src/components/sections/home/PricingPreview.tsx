@@ -1,85 +1,50 @@
-import { ArrowRight, Check, Info } from 'lucide-react'
+import { ArrowRight, Info } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { pricingTiers } from '@/data/pricing'
 import { Button } from '@/components/ui/Button'
-import { Container, Section, SectionHeader } from '@/components/ui/Section'
+import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
-import { cn } from '@/lib/utils'
+import { PricingComparison } from '@/components/sections/pricing/PricingComparison'
 
+/** Homepage pricing band — real comparison, not teaser cards. */
 export function PricingPreview() {
   return (
     <Section className="border-t border-navy-100 bg-white">
       <Container>
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeader
-            eyebrow="Pricing"
-            title="Engagements shaped to the work"
-            description="Fixed-scope builds, ongoing product teams, or maintenance retainers — commercial details are confirmed after discovery, when scope is understood."
-          />
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Pricing</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+              Subscriptions from $950 a month
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-charcoal-600">
+              Continuous development work on a predictable monthly price. One-time digital
+              products start at $199, and larger custom builds are quoted after discovery.
+            </p>
+          </Reveal>
           <Reveal>
             <Link
               to="/pricing"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
-              View pricing
+              Full pricing details
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {pricingTiers.map((tier, index) => (
-            <Reveal key={tier.id} delayMs={index * 70} className="h-full">
-              <div
-                className={cn(
-                  'card flex h-full flex-col p-6',
-                  tier.featured && 'border-2 border-gold-500',
-                )}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-base font-bold text-navy-950">{tier.name}</h3>
-                  {tier.featured ? (
-                    <span className="rounded-full bg-gold-500 px-2.5 py-1 text-xs font-semibold text-navy-950">
-                      Most common
-                    </span>
-                  ) : null}
-                </div>
-                <p className="mt-4 text-xl font-bold tracking-tight text-navy-950">
-                  {tier.price}
-                </p>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
-                  {tier.description}
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {tier.scope.slice(0, 3).map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm text-charcoal-600"
-                    >
-                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5">
-                  <Button to="/pricing" variant={tier.featured ? 'primary' : 'secondary'} className="w-full">
-                    View details
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+        <div className="mt-12">
+          <PricingComparison />
         </div>
 
-        <Reveal className="mt-6">
+        <Reveal className="mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <p className="flex items-start gap-2.5 text-sm text-charcoal-500">
             <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
-            All prices are inquiry-based until commercial terms are confirmed — see the{' '}
-            <Link to="/pricing" className="font-semibold text-gold-700 hover:text-gold-800">
-              pricing page
-            </Link>{' '}
-            for details.
+            Not sure a subscription fits? Products and custom projects cover the rest — see all
+            three models on the pricing page.
           </p>
+          <Button to="/pricing" variant="secondary">
+            Compare all options
+          </Button>
         </Reveal>
       </Container>
     </Section>

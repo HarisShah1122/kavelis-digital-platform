@@ -56,7 +56,13 @@ export function Button(props: ButtonProps) {
     )
   }
 
-  const { to: _to, href: _href, ...buttonProps } = props as ButtonAsButton & {
+  const {
+    to: _to,
+    href: _href,
+    className: _className,
+    children: _children,
+    ...buttonProps
+  } = props as ButtonAsButton & {
     to?: undefined
     href?: undefined
   }

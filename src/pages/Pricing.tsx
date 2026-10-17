@@ -1,6 +1,5 @@
-import { AlertTriangle, ArrowRight, Check, HelpCircle } from 'lucide-react'
-import { pricingTiers, engagementModels } from '@/data/pricing'
-import { homeFaqs } from '@/data/content'
+import { ArrowRight, Info } from 'lucide-react'
+import { pricingFaqs, requestSystemSteps } from '@/data/pricing'
 import { useSeo } from '@/hooks/useSeo'
 import { Button } from '@/components/ui/Button'
 import { Container, Section } from '@/components/ui/Section'
@@ -8,19 +7,13 @@ import { Reveal } from '@/components/ui/Reveal'
 import { PageHero } from '@/components/ui/PageHero'
 import { Accordion } from '@/components/ui/Accordion'
 import { CtaBand } from '@/components/ui/CtaBand'
-import { cn } from '@/lib/utils'
-
-const pricingFaqs = homeFaqs.filter((faq) =>
-  ['pricing-models', 'starting-a-project', 'project-timeline', 'code-ownership', 'post-launch-support'].includes(
-    faq.id,
-  ),
-)
+import { PricingComparison } from '@/components/sections/pricing/PricingComparison'
 
 export default function Pricing() {
   useSeo({
     title: 'Pricing',
     description:
-      'Engagement models and pricing structure for Kavelis projects — fixed-scope builds, product teams, and maintenance retainers.',
+      'Monthly development subscriptions from $950/month, one-time digital products from $199, and custom project quotes — transparent ways to work with Kavelis.',
     path: '/pricing',
   })
 
@@ -28,120 +21,160 @@ export default function Pricing() {
     <>
       <PageHero
         eyebrow="Pricing"
-        title="Engagements shaped to the work"
-        description="Kavelis prices projects by engagement model — a fixed-scope build, an ongoing product team, or a maintenance retainer. Commercial details are confirmed after discovery, when scope is actually understood."
+        title="Three ways to work with us"
+        description="Monthly subscriptions for continuous development work, ready-made digital products at listed one-time prices, and custom quotes for larger builds. Pick the model that fits the job — not a one-size plan."
       >
         <div className="flex flex-wrap gap-3">
           <Button to="/contact" className="group">
-            Discuss Your Project
+            Talk to us
             <ArrowRight
               aria-hidden="true"
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
             />
           </Button>
-          <Button to="/services" variant="secondary">
-            Explore services
+          <Button to="/products" variant="secondary">
+            Browse products
           </Button>
         </div>
       </PageHero>
 
-      <div className="border-b border-warning/25 bg-warning/10">
-        <Container className="py-3.5">
-          <p className="flex items-start gap-2.5 text-sm text-warning">
-            <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-            <span>
-              <strong className="font-semibold">Pricing placeholders.</strong> Commercial terms are
-              not confirmed. Every tier below shows inquiry-based pricing until real package details
-              are approved and this notice is removed.
-            </span>
-          </p>
-        </Container>
-      </div>
-
+      {/* Subscription plans */}
       <Section>
         <Container>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {pricingTiers.map((tier, index) => (
-              <Reveal key={tier.id} delayMs={index * 70}>
-                <div
-                  className={cn(
-                    'card flex h-full flex-col p-7',
-                    tier.featured && 'border-2 border-gold-500 shadow-card',
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <h2 className="text-lg font-bold text-navy-950">{tier.name}</h2>
-                    {tier.featured ? (
-                      <span className="rounded-full bg-gold-500 px-2.5 py-1 text-xs font-semibold text-navy-950">
-                        Most common
-                      </span>
-                    ) : null}
-                  </div>
-                  <p className="mt-2 text-sm font-medium text-gold-700">{tier.audience}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
-                    {tier.description}
-                  </p>
+          <Reveal className="mb-10 max-w-2xl">
+            <p className="eyebrow">Monthly subscriptions</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+              Ongoing development, one price per month
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-charcoal-600">
+              For teams that need continuous website, feature, and integration work without
+              scoping every task as a separate project. Prices in USD, billed monthly.
+            </p>
+          </Reveal>
 
-                  <div className="mt-6 border-t border-navy-100 pt-5">
-                    <p className="text-2xl font-bold tracking-tight text-navy-950">
-                      {tier.price}
-                    </p>
-                    <p className="mt-1 text-xs text-charcoal-500">{tier.timeline}</p>
-                  </div>
+          <PricingComparison />
 
-                  <ul className="mt-5 flex-1 space-y-3">
-                    {tier.scope.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-sm leading-relaxed text-charcoal-600"
-                      >
-                        <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-7">
-                    <Button
-                      to="/contact"
-                      variant={tier.featured ? 'primary' : 'secondary'}
-                      className="w-full"
-                    >
-                      Request pricing
-                    </Button>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="mt-8">
+            <p className="flex items-start gap-2.5 text-sm text-charcoal-500">
+              <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
+              <span>
+                Subscriptions cover the work listed in each plan. Large fixed-scope builds and
+                anything outside the listed inclusions are quoted as custom projects — ask and we
+                will say so honestly.
+              </span>
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
+      {/* How the request system works */}
       <Section className="border-y border-navy-100 bg-white">
         <Container>
-          <p className="eyebrow">How we work together</p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-navy-950 sm:text-3xl">
-            Engagement models
-          </h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {engagementModels.map((model, index) => (
-              <Reveal key={model.id} delayMs={index * 70}>
-                <div className="card h-full p-6">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
-                    <HelpCircle aria-hidden="true" className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold text-navy-950">{model.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal-500">
-                    {model.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <Reveal>
+              <p className="eyebrow">How it works</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+                The request system, explained
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-charcoal-600">
+                Subscriptions are not unlimited-requests service. Work moves through a clear
+                queue, so priorities stay honest and progress stays visible.
+              </p>
+              <div className="mt-6">
+                <Button to="/contact" variant="secondary">
+                  Ask about subscriptions
+                </Button>
+              </div>
+            </Reveal>
+
+            <ol className="space-y-4">
+              {requestSystemSteps.map((step, index) => (
+                <Reveal key={step.id} delayMs={index * 70}>
+                  <li className="flex gap-4 rounded-2xl border border-navy-100 bg-canvas p-5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-950 text-sm font-bold text-gold-400">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold text-navy-950">{step.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-charcoal-600">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
           </div>
         </Container>
       </Section>
 
+      {/* Products vs subscriptions vs custom */}
       <Section>
+        <Container>
+          <Reveal className="mb-10 max-w-2xl">
+            <p className="eyebrow">Which model fits</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+              Products, subscriptions, and custom projects
+            </h2>
+          </Reveal>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <Reveal delayMs={0}>
+              <article className="card flex h-full flex-col p-6">
+                <h3 className="text-base font-bold text-navy-950">Digital products</h3>
+                <p className="mt-1 text-sm font-semibold text-gold-700">From $199 · one-time</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
+                  Ready-made software with a defined base scope — inventory systems, stores,
+                  dashboards, automation. Fastest and most predictable when the base scope fits.
+                </p>
+                <div className="mt-5">
+                  <Button to="/products" variant="secondary" className="w-full">
+                    Browse the catalog
+                  </Button>
+                </div>
+              </article>
+            </Reveal>
+
+            <Reveal delayMs={70}>
+              <article className="card flex h-full flex-col border-gold-500 p-6">
+                <h3 className="text-base font-bold text-navy-950">Subscriptions</h3>
+                <p className="mt-1 text-sm font-semibold text-gold-700">
+                  $950 – $3,000 · monthly
+                </p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
+                  Continuous development capacity through a request queue. Best when needs vary
+                  month to month and you want predictable monthly cost.
+                </p>
+                <div className="mt-5">
+                  <Button to="/contact?plan=growth" className="w-full">
+                    Get Started with Growth
+                  </Button>
+                </div>
+              </article>
+            </Reveal>
+
+            <Reveal delayMs={140}>
+              <article className="card flex h-full flex-col p-6">
+                <h3 className="text-base font-bold text-navy-950">Custom projects</h3>
+                <p className="mt-1 text-sm font-semibold text-gold-700">Quoted after discovery</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
+                  Large builds, complex integrations, and enterprise work with genuinely variable
+                  scope. You get a fixed proposal after a short discovery — no generic price list
+                  pretending to fit everyone.
+                </p>
+                <div className="mt-5">
+                  <Button to="/contact" variant="secondary" className="w-full">
+                    Request a project quote
+                  </Button>
+                </div>
+              </article>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* FAQ */}
+      <Section className="border-y border-navy-100 bg-white">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
             <div>
@@ -150,8 +183,8 @@ export default function Pricing() {
                 Pricing questions, answered honestly
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
-                If something you need is not covered here, ask us directly — we would rather give a
-                precise answer than a generic one.
+                If something you need is not covered here, ask us directly — we would rather give
+                a precise answer than a generic one.
               </p>
               <div className="mt-6">
                 <Button to="/contact" variant="secondary">
@@ -167,10 +200,10 @@ export default function Pricing() {
       </Section>
 
       <CtaBand
-        title="Ready to scope your project?"
-        description="Tell us what you are building. We will respond with clarifying questions and engagement options that fit the actual work."
-        secondaryLabel="See our work"
-        secondaryTo="/work"
+        title="Not sure which model fits?"
+        description="Describe the work in plain language. We will point you to a product, a subscription, or a custom quote — whichever genuinely costs less for what you need."
+        secondaryLabel="Browse products"
+        secondaryTo="/products"
       />
     </>
   )
