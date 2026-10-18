@@ -68,8 +68,8 @@ export function WorkPreview() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionHeader
             eyebrow="Selected work"
-            title="Case studies behind the capability"
-            description="A structured view of the problems we solve and how we deliver. Client details stay private unless publication is agreed."
+            title="Dashboards we have shipped"
+            description="Real Power BI projects in fleet operations and sales analytics. Client details stay private; dashboard exports are published with permission."
           />
           <Reveal>
             <Link

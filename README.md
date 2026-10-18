@@ -72,9 +72,11 @@ Copy `.env.example` to `.env` and fill in values as they become available:
 
 | Variable | Purpose |
 |----------|---------|
-| `VITE_SITE_URL` | Production origin for canonical URLs and Open Graph tags. Leave empty until the domain is confirmed. |
+| `VITE_SITE_URL` | Production origin for canonical URLs, Open Graph tags, robots.txt, and sitemap (`https://kavelis.llc`). |
 | `VITE_CONTACT_EMAIL` | Public business email. Rendered on the contact page and footer only when set. |
-| `VITE_CONTACT_ENDPOINT` | HTTP endpoint accepting `POST` JSON project inquiries. When unset, the contact form shows an honest “not connected” state. |
+| `VITE_CONTACT_ENDPOINT` | HTTP endpoint accepting `POST` JSON project inquiries (Formspree form endpoint configured). When unset, the contact form shows an honest “not connected” state. |
+
+Live sitemap: `public/sitemap.xml` · robots: `public/robots.txt` (both point at `https://kavelis.llc`).
 
 ### Contact form integration
 

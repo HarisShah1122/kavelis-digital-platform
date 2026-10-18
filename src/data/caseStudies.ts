@@ -3,100 +3,122 @@ import type { CaseStudy } from '@/types'
 /**
  * Case study portfolio.
  *
- * Entries with `isPlaceholder: true` are structural templates for verified
- * projects. Replace them with real client work (with permission) before
- * publishing. Outcomes must only be included when supported by project evidence.
+ * These three entries are real Power BI dashboard projects. Figures quoted in
+ * features and outcomes come from the dashboard exports themselves (PDFs in
+ * /public). Client names remain unpublished. Add new projects with
+ * `isPlaceholder: true` until their write-up is verified.
  */
 export const caseStudies: CaseStudy[] = [
   {
-    id: 'subscription-platform-template',
-    title: 'Subscription platform for a service business',
-    category: 'SaaS product',
+    id: 'fleet-cost-maintenance-dashboard',
+    title: 'Fleet Cost & Maintenance Executive Dashboard',
+    category: 'Business intelligence',
     summary:
-      'A multi-tenant subscription application replacing manual invoicing with customer self-service.',
-    clientLabel: 'Placeholder — replace with verified project',
+      'A four-page Power BI executive report covering fleet operating cost, vehicle performance, maintenance spend, and downtime health for a trucking operation.',
+    clientLabel: 'Confidential logistics fleet operator',
     overview:
-      'A structured template case study showing how a service business can move from manual, spreadsheet-driven billing to a proper subscription product with customer accounts and an operations dashboard.',
+      'An executive dashboard built in Power BI Desktop for a freight fleet running long-haul routes across Saudi Arabia. Leadership needed one place to see fuel and maintenance cost, vehicle utilization, driver and route performance, and which trucks were draining budget — without waiting for monthly spreadsheet packs.',
     challenge:
-      'A service business needed to move from manual invoicing and email-based onboarding to a structured subscription experience for its customers.',
+      'Fleet costs lived in separate systems and spreadsheets. Fuel, maintenance, trips, and downtime were reported in isolation, so expensive vehicles, weak routes, and workshop vendors were only discovered after the money was spent.',
     solution:
-      'A multi-tenant web application with customer accounts, plan management, invoicing hooks, and an internal operations dashboard.',
+      'A single Power BI report with four connected pages — Overview, Fleet Performance, Maintenance, and Cost Analysis — driven by a fleet data model with month, year, vehicle-type, and driver slicers on every page.',
     features: [
-      'Customer account and profile management',
-      'Plan and subscription lifecycle views',
-      'Invoicing and payment status surfaces',
-      'Role-based operations dashboard',
-      'Onboarding and notification flows',
+      'Executive KPI cards: fuel cost, maintenance cost, trips, operating cost, utilization %, KM per liter, cost per km, active trucks',
+      'Cost trend over time (fuel vs maintenance, Jan 2024 → Jan 2026)',
+      'Top 5 most expensive vehicles and top 5 drivers/routes by trips',
+      'Maintenance cost breakdown by type (engine, suspension, AC, electrical, tires, brakes, battery, oil) and by vendor',
+      'Fleet performance page: total distance, distance by vehicle type, utilization by fleet number',
+      'Vehicle downtime summary with event counts, downtime hours, and Good/Poor health status',
+      'Trip map with location heat and month/year slicers across all pages',
     ],
     approach: [
-      'Discovery workshops to map billing and onboarding processes',
-      'Domain model and multi-tenant architecture design',
-      'Iterative delivery with working demos each cycle',
-      'Handover documentation and team training',
+      'Modelled fleet, trip, maintenance, and vendor data into a star schema',
+      'Defined DAX measures for cost, utilization, and downtime KPIs',
+      'Built the four report pages in priority order: executive overview first, detail pages after',
+      'Added slicers, top-N visuals, and map layers, then validated totals against source data',
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
-    outcomes: [],
-    isPlaceholder: true,
+    technologies: ['Power BI', 'DAX', 'Data modeling', 'Mapping visuals'],
+    outcomes: [
+      'One four-page executive report replacing disconnected cost and maintenance reports',
+      'Month, year, vehicle-type, and driver filtering available on every page',
+      'Vehicle health flags (Good / Poor) derived from downtime events and hours',
+      'Cost-driver visibility: maintenance by type and vendor, top expensive vehicles, route and driver leaderboards',
+    ],
+    reportUrl: '/fleet-cost-maintenance-dashboard.pdf',
+    isPlaceholder: false,
   },
   {
-    id: 'operations-automation-template',
-    title: 'Operations automation for a multi-team workflow',
-    category: 'Business automation',
+    id: 'regional-sales-dashboard',
+    title: 'Regional Sales Overview Dashboard',
+    category: 'Sales analytics',
     summary:
-      'Event-driven integrations and a workflow console replacing manual data entry between systems.',
-    clientLabel: 'Placeholder — replace with verified project',
+      'A one-page Power BI sales overview comparing current-year vs previous-year revenue, profit, and quantity across four US regions — with monthly trends and a state map.',
+    clientLabel: 'Confidential US retail business',
     overview:
-      'A template showing how an operations-heavy business can connect its CRM, tracking spreadsheets, and finance tools with monitored, event-driven workflows.',
+      'A sales overview report that gives leadership a fast, honest read on how each US region is performing against the previous year — sales, profit, and quantity in one interactive page.',
     challenge:
-      'Repetitive data entry and handoffs between a CRM, spreadsheet tracking, and finance tools created delays and error-prone reconciliation.',
+      'Regional performance was reviewed from static monthly exports. Comparing current year to previous year, spotting which regions carried growth, and seeing profit vs revenue direction required manual spreadsheet work every cycle.',
     solution:
-      'An event-driven integration layer with an internal workflow console, approvals, and monitoring for failed runs.',
+      'A single-page Power BI dashboard with region cards (current-year sales with previous-year reference and monthly sparklines), an interactive US state map, and a region matrix with YOY sales, profit, and quantity — filtered by a year slicer.',
     features: [
-      'Visual workflow definitions with approval steps',
-      'Run history, retries, and failure alerting',
-      'CRM and finance tool connectors',
-      'Exception queue for human review',
-      'Audit trail for compliance',
+      'Four region cards (South, Central, East, West) with CY sales, PY sales, and 12-month sparklines',
+      'Interactive US state map tied to the region view',
+      'Region matrix: CY vs PY sales, profit, and quantity with YOY percentages',
+      'Totals row: $733.95K CY sales (+20% YOY), $93.58K profit (+14%), 12,515 units (+27%)',
+      'Year slicer covering 2021–2024 and measure selector (Sales / Profit / Qty)',
     ],
     approach: [
-      'Process audit with the people who run the workflow daily',
-      'Integration architecture and data mapping',
-      'Phased rollout with parallel running',
-      'Monitoring dashboards and runbooks',
+      'Consolidated order data into a region-friendly model with CY/PY measures',
+      'Built YOY comparison logic in DAX, including the no-prior-year edge case for 2021',
+      'Designed the page for one-glance regional reading: cards → map → detail matrix',
+      'Validated regional totals and YOY percentages against source exports',
     ],
-    technologies: ['TypeScript', 'REST APIs', 'Message queues', 'Cloud functions'],
-    outcomes: [],
-    isPlaceholder: true,
+    technologies: ['Power BI', 'DAX', 'Data modeling'],
+    outcomes: [
+      'Single-page regional view of sales, profit, and quantity with CY vs PY comparison',
+      'Interactive filtering by year, region, and measure',
+      'Transparent YOY calculations, including correct handling when no previous-year data exists',
+      'Monthly sparklines per region so trend direction is visible without leaving the page',
+    ],
+    reportUrl: '/regional-sales-dashboard.pdf',
+    isPlaceholder: false,
   },
   {
-    id: 'commerce-replatform-template',
-    title: 'E-commerce replatform for a growing brand',
-    category: 'E-commerce',
+    id: 'sales-growth-forecast-dashboard',
+    title: 'Sales Growth & Forecast Dashboard',
+    category: 'Sales analytics',
     summary:
-      'A faster storefront and calmer operations behind a modern commerce stack.',
-    clientLabel: 'Placeholder — replace with verified project',
+      'A Power BI dashboard tracking product and category sales growth against budget, with a multi-year sales trend and forecast.',
+    clientLabel: 'Confidential multi-category retailer',
     overview:
-      'A template for documenting a storefront replatform — from catalog and checkout redesign to the operational tooling behind it.',
+      'A growth-focused sales report for a multi-category retailer: how sales are growing by product and category, how actuals track against budget, and what the trend looks like going forward.',
     challenge:
-      'A slow, hard-to-manage storefront limited conversion and forced the team into manual order and catalog work.',
+      'Sales growth, budget variance, and category performance lived in different reports. Answering “are we ahead of budget, and where is growth coming from?” meant assembling numbers by hand each period.',
     solution:
-      'A rebuilt storefront with structured product management, payment and shipping integrations, and an operations dashboard for orders.',
+      'A Power BI dashboard combining a product-level growth view, a multi-year sales trend with forecast, a category mix breakdown, and a monthly CY vs PY vs budget comparison with a variance table.',
     features: [
-      'Fast, accessible product catalog and search',
-      'Streamlined checkout with payment integration',
-      'Promotions and merchandising tools',
-      'Order and inventory operations views',
-      'Analytics and conversion tracking',
+      'Sales growth % vs sales by product (products ranked by YoY growth, 30–34% band)',
+      'Sales trend with forecast line spanning 2014–2021',
+      'CY sales by category with share-of-total breakdown',
+      'Monthly comparison of CY sales, PY sales, and budgeted sales',
+      'Category table with CY/PY sales, growth %, budgeted sales, and budget variance %',
+      'Headline totals: 888.11M CY sales vs 853.34M budget (+4.07% variance), +32.10% YoY',
     ],
     approach: [
-      'Performance and conversion audit of the existing store',
-      'Information architecture and checkout flow design',
-      'Incremental migration to protect SEO and operations',
-      'Post-launch conversion improvement sprints',
+      'Modelled sales, budget, and product/category hierarchies into one dataset',
+      'Built growth, variance, and forecast measures in DAX',
+      'Laid out the page around the three leadership questions: growth source, budget status, trend',
+      'Cross-checked category and product totals against source figures',
     ],
-    technologies: ['React', 'TypeScript', 'Headless commerce', 'Payments API'],
-    outcomes: [],
-    isPlaceholder: true,
+    technologies: ['Power BI', 'DAX', 'Forecasting', 'Data modeling'],
+    outcomes: [
+      'One dashboard answering growth, budget, and trend questions without spreadsheet assembly',
+      'Product-level and category-level growth visibility in the same view',
+      'Budget variance shown per category and in total',
+      'Forecast line extending the sales trend beyond actuals for planning conversations',
+    ],
+    reportUrl: '/sales-growth-forecast-dashboard.pdf',
+    isPlaceholder: false,
   },
 ]
 

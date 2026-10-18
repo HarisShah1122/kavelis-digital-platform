@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, FolderKanban } from 'lucide-react'
+import { ArrowRight, FileText } from 'lucide-react'
 import { caseStudies } from '@/data/caseStudies'
 import { useSeo } from '@/hooks/useSeo'
 import { Badge } from '@/components/ui/Badge'
@@ -93,7 +93,7 @@ function WorkThumb({
         )}
       </div>
       <p className="mt-4 text-center text-[10px] uppercase tracking-widest text-navy-500">
-        Visual placeholder — {title}
+        {title} dashboard preview
       </p>
     </div>
   )
@@ -113,8 +113,8 @@ export default function Work() {
     <>
       <PageHero
         eyebrow="Work"
-        title="Case studies from real engagements"
-        description="A structured view of the problems we solve and how we deliver. Client details are kept private unless publication is agreed."
+        title="Dashboards and analytics we have shipped"
+        description="Real Power BI projects — fleet operations and sales analytics. Client names stay private; the dashboard exports are published with permission."
       >
         <Button to="/contact" className="group">
           Discuss a similar project
@@ -127,22 +127,6 @@ export default function Work() {
 
       <Section>
         <Container>
-          <Reveal className="mb-10 flex items-start gap-4 rounded-2xl border border-navy-200 bg-navy-50 p-5">
-            <FolderKanban aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-navy-700" />
-            <div>
-              <h2 className="text-sm font-semibold text-navy-900">Case study templates</h2>
-              <p className="mt-1 text-sm leading-relaxed text-charcoal-600">
-                The entries below are structural templates. Replace them with verified project
-                write-ups in{' '}
-                <code className="rounded bg-white px-1.5 py-0.5 text-xs">
-                  src/data/caseStudies.ts
-                </code>{' '}
-                — only include outcomes you can evidence, and never publish confidential client
-                information without permission.
-              </p>
-            </div>
-          </Reveal>
-
           <div className="grid gap-6 lg:grid-cols-6">
             {caseStudies.map((study, index) => (
               <Reveal
@@ -204,6 +188,12 @@ export default function Work() {
                         className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                       />
                     </span>
+                    {study.reportUrl ? (
+                      <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-charcoal-400">
+                        <FileText aria-hidden="true" className="h-3.5 w-3.5" />
+                        Dashboard export (PDF) on the case study page
+                      </span>
+                    ) : null}
                   </div>
                 </Link>
               </Reveal>
