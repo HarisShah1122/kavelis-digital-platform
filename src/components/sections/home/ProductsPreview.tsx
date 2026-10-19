@@ -45,41 +45,59 @@ export function ProductsPreview() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((product, index) => (
             <Reveal key={product.id} delayMs={index * 70} className="h-full">
-              <article className="card card-hover flex h-full flex-col p-6">
-                <ProductThumb visual={product.visual} image={product.image} />
-                <h3 className="mt-5 text-base font-bold tracking-tight text-navy-950">
-                  {product.name}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
-                  {product.description}
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {product.features.slice(0, 2).map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start gap-2 text-xs leading-relaxed text-charcoal-600"
-                    >
-                      <Check aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex items-center justify-between border-t border-navy-100 pt-4">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">
-                      Starting at
-                    </p>
-                    <p className="text-lg font-bold text-navy-950">
-                      {formatPrice(product.startingPrice)}
-                    </p>
+              <article className="card card-hover group flex h-full flex-col overflow-hidden p-0">
+                {product.image ? (
+                  <div className="h-48 overflow-hidden bg-navy-950">
+                    <img
+                      src={product.image}
+                      alt={`${product.name} preview`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
                   </div>
-                  <Link
-                    to={`/products/${product.id}`}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-gold-700 hover:text-gold-800"
-                  >
-                    Details
-                    <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
-                  </Link>
+                ) : (
+                  <div className="p-6 pb-0">
+                    <ProductThumb visual={product.visual} />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-base font-bold tracking-tight text-navy-950">
+                    {product.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
+                    {product.description}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {product.features.slice(0, 2).map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-2 text-xs leading-relaxed text-charcoal-600"
+                      >
+                        <Check
+                          aria-hidden="true"
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600"
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex items-center justify-between border-t border-navy-100 pt-4">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">
+                        Starting at
+                      </p>
+                      <p className="text-lg font-bold text-navy-950">
+                        {formatPrice(product.startingPrice)}
+                      </p>
+                    </div>
+                    <Link
+                      to={`/products/${product.id}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-gold-700 hover:text-gold-800"
+                    >
+                      Details
+                      <ArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             </Reveal>

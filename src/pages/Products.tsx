@@ -129,49 +129,64 @@ export default function Products() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((product, index) => (
               <Reveal key={product.id} delayMs={(index % 3) * 60} className="h-full">
-                <article className="card card-hover flex h-full flex-col p-6">
-                  <ProductThumb visual={product.visual} image={product.image} />
-                  <div className="mt-5 flex items-start justify-between gap-3">
-                    <h3 className="text-base font-bold leading-snug tracking-tight text-navy-950">
-                      {product.name}
-                    </h3>
-                    {product.isPlaceholder ? <Badge tone="warning">Example</Badge> : null}
-                  </div>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
-                    {product.description}
-                  </p>
-
-                  <ul className="mt-4 space-y-2">
-                    {product.features.slice(0, 3).map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-xs leading-relaxed text-charcoal-600"
-                      >
-                        <Check aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-5 flex items-center justify-between border-t border-navy-100 pt-4">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">
-                        Starting at
-                      </p>
-                      <p className="text-lg font-bold text-navy-950">
-                        {formatPrice(product.startingPrice)}
-                        <span className="ml-1 text-xs font-medium text-charcoal-400">one-time</span>
-                      </p>
+                <article className="card card-hover group flex h-full flex-col overflow-hidden p-0">
+                  {product.image ? (
+                    <div className="h-44 overflow-hidden bg-navy-950">
+                      <img
+                        src={product.image}
+                        alt={`${product.name} preview`}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="p-6 pb-0">
+                      <ProductThumb visual={product.visual} />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-base font-bold leading-snug tracking-tight text-navy-950">
+                        {product.name}
+                      </h3>
+                      {product.isPlaceholder ? <Badge tone="warning">Example</Badge> : null}
+                    </div>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
+                      {product.description}
+                    </p>
 
-                  <div className="mt-4 flex gap-2">
-                    <Button to={`/products/${product.id}`} variant="secondary" className="flex-1">
-                      View details
-                    </Button>
-                    <Button to={`/contact?product=${product.id}`} className="flex-1">
-                      Get This Product
-                    </Button>
+                    <ul className="mt-4 space-y-2">
+                      {product.features.slice(0, 3).map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-start gap-2 text-xs leading-relaxed text-charcoal-600"
+                        >
+                          <Check aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 flex items-center justify-between border-t border-navy-100 pt-4">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">
+                          Starting at
+                        </p>
+                        <p className="text-lg font-bold text-navy-950">
+                          {formatPrice(product.startingPrice)}
+                          <span className="ml-1 text-xs font-medium text-charcoal-400">one-time</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex gap-2">
+                      <Button to={`/products/${product.id}`} variant="secondary" className="flex-1">
+                        View details
+                      </Button>
+                      <Button to={`/contact?product=${product.id}`} className="flex-1">
+                        Get This Product
+                      </Button>
+                    </div>
                   </div>
                 </article>
               </Reveal>
