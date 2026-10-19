@@ -7,7 +7,6 @@ import {
   marketplaceProducts,
 } from '@/data/marketplace'
 import { useSeo } from '@/hooks/useSeo'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section } from '@/components/ui/Section'
@@ -145,12 +144,9 @@ export default function Products() {
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-base font-bold leading-snug tracking-tight text-navy-950">
-                        {product.name}
-                      </h3>
-                      {product.isPlaceholder ? <Badge tone="warning">Example</Badge> : null}
-                    </div>
+                    <h3 className="text-base font-bold leading-snug tracking-tight text-navy-950">
+                      {product.name}
+                    </h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-500">
                       {product.description}
                     </p>

@@ -3,8 +3,6 @@ import type { MarketplaceCategory, MarketplaceProduct } from '@/types'
 /**
  * Digital product marketplace — one-time starting prices in USD.
  *
- * All entries are PROPOSED pricing examples (`isPlaceholder: true`).
- * Confirm commercial terms, delivery scope, and screenshots before launch.
  * "Starting at" prices cover the defined base scope only; hosting, licenses,
  * and ongoing support are listed separately per product.
  */
@@ -70,7 +68,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'dashboard',
     relatedServiceId: 'custom-web-applications',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'hr-employee-management-system',
@@ -106,7 +104,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'Optional maintenance'],
     visual: 'portal',
     relatedServiceId: 'custom-web-applications',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'crm-software',
@@ -142,7 +140,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'Optional support retainer'],
     visual: 'dashboard',
     relatedServiceId: 'custom-web-applications',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'invoicing-billing-system',
@@ -178,7 +176,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'Optional maintenance'],
     visual: 'portal',
     relatedServiceId: 'business-automation',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 
   // ——— E-commerce & Online Business ———
@@ -220,7 +218,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'storefront',
     relatedServiceId: 'ecommerce-development',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'professional-ecommerce-store',
@@ -260,7 +258,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'storefront',
     relatedServiceId: 'ecommerce-development',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'custom-business-website',
@@ -296,7 +294,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (your account or ours)', 'Optional content updates'],
     visual: 'mobile',
     relatedServiceId: 'custom-web-applications',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'booking-appointment-platform',
@@ -332,7 +330,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'SMS fees (if enabled)', 'Optional support'],
     visual: 'portal',
     relatedServiceId: 'custom-web-applications',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 
   // ——— Data & Business Intelligence ———
@@ -370,7 +368,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'Optional updates as metrics evolve'],
     visual: 'analytics',
     relatedServiceId: 'business-intelligence-analytics',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'sales-analytics-dashboard',
@@ -406,7 +404,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting (quoted separately)', 'Optional ongoing analytics support'],
     visual: 'analytics',
     relatedServiceId: 'business-intelligence-analytics',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'custom-bi-solution',
@@ -446,7 +444,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'dashboard',
     relatedServiceId: 'business-intelligence-analytics',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 
   // ——— Automation & Integrations ———
@@ -484,7 +482,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     recurringCosts: ['Hosting or automation-platform fees', 'Optional monitoring support'],
     visual: 'automation',
     relatedServiceId: 'business-automation',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'api-integration-package',
@@ -524,7 +522,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'automation',
     relatedServiceId: 'api-system-integrations',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'custom-reporting-automation',
@@ -564,7 +562,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'analytics',
     relatedServiceId: 'business-intelligence-analytics',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
     id: 'email-journey-automation',
@@ -603,7 +601,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
     ],
     visual: 'automation',
     relatedServiceId: 'business-automation',
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 ]
 

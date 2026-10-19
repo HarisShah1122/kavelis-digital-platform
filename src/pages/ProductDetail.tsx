@@ -7,7 +7,6 @@ import {
 } from '@/data/marketplace'
 import { getServiceById } from '@/data/services'
 import { useSeo } from '@/hooks/useSeo'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
@@ -50,10 +49,7 @@ export default function ProductDetail() {
             </Link>
             <div className="mt-6 grid items-start gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
               <div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <p className="eyebrow">{category?.title}</p>
-                  {product.isPlaceholder ? <Badge tone="warning">Example pricing</Badge> : null}
-                </div>
+                <p className="eyebrow">{category?.title}</p>
                 <h1 className="mt-3 text-4xl font-bold tracking-tight text-navy-950 sm:text-5xl">
                   {product.name}
                 </h1>
