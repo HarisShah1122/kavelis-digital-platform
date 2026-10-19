@@ -22,10 +22,7 @@ function WorkImage({
 }) {
   return (
     <div
-      className={cn(
-        'overflow-hidden border-b border-navy-100 bg-navy-950 rounded-t-2xl',
-        className,
-      )}
+      className={cn('overflow-hidden bg-navy-950 rounded-t-2xl', className)}
     >
       <img
         src={src}

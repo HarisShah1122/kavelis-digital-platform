@@ -52,20 +52,14 @@ export function Hero() {
           </Reveal>
 
           <Reveal delayMs={120}>
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute -inset-3 rounded-3xl border border-gold-100 bg-white/60 sm:-inset-4"
-              />
-              <img
-                src="/digital-products.jpg"
-                alt="Analytics dashboards open on a laptop — digital products and reporting by Kavelis"
-                width={1536}
-                height={922}
-                loading="eager"
-                className="relative w-full rounded-2xl border border-navy-100 shadow-card"
-              />
-            </div>
+            <img
+              src="/digital-products.jpg"
+              alt="Analytics dashboards open on a laptop — digital products and reporting by Kavelis"
+              width={1536}
+              height={922}
+              loading="eager"
+              className="aspect-[16/10] w-full rounded-2xl object-cover object-top shadow-card"
+            />
           </Reveal>
         </div>
       </Container>

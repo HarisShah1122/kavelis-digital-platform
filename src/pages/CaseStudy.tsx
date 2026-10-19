@@ -52,11 +52,11 @@ export default function CaseStudy() {
         <section className="border-b border-navy-100 bg-white">
           <Container className="section-tight">
             <Reveal>
-              <figure className="overflow-hidden rounded-2xl border border-navy-100 shadow-card">
+              <figure className="overflow-hidden rounded-2xl shadow-card">
                 <img
                   src={study.image}
                   alt={`${study.title} — dashboard preview`}
-                  className="w-full"
+                  className="aspect-[16/9] w-full object-cover object-top"
                   loading="lazy"
                 />
               </figure>

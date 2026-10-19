@@ -24,7 +24,7 @@ export function ProductThumb({
     return (
       <div
         className={cn(
-          'relative h-40 overflow-hidden rounded-xl border border-navy-100 bg-navy-950',
+          'relative h-40 overflow-hidden rounded-xl bg-navy-950',
           className,
         )}
         aria-hidden="true"

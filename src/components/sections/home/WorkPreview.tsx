@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 function WorkImage({ src, title }: { src: string; title: string }) {
   return (
-    <div className="overflow-hidden border-b border-navy-100 bg-navy-950">
+    <div className="overflow-hidden bg-navy-950">
       <img
         src={src}
         alt={`${title} dashboard preview`}
