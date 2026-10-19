@@ -47,8 +47,8 @@ export interface CaseStudy {
   approach: string[]
   technologies: string[]
   outcomes: string[]
-  /** Optional link to a dashboard export or similar artifact (served from /public). */
-  reportUrl?: string
+  /** Optional dashboard screenshot served from /public. */
+  image?: string
   isPlaceholder: boolean
 }
 

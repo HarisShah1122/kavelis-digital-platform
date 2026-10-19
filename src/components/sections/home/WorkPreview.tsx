@@ -6,6 +6,19 @@ import { Container, Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { cn } from '@/lib/utils'
 
+function WorkImage({ src, title }: { src: string; title: string }) {
+  return (
+    <div className="overflow-hidden border-b border-navy-100 bg-navy-950">
+      <img
+        src={src}
+        alt={`${title} dashboard preview`}
+        loading="lazy"
+        className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+      />
+    </div>
+  )
+}
+
 function WorkThumb({ variant }: { variant: number }) {
   return (
     <div
@@ -69,7 +82,7 @@ export function WorkPreview() {
           <SectionHeader
             eyebrow="Selected work"
             title="Dashboards we have shipped"
-            description="Real Power BI projects in fleet operations and sales analytics. Client details stay private; dashboard exports are published with permission."
+            description="Real Power BI projects in fleet operations and sales analytics. Client details stay private; dashboard screenshots are published with permission."
           />
           <Reveal>
             <Link
@@ -89,7 +102,11 @@ export function WorkPreview() {
                 to={`/work/${study.id}`}
                 className="card card-hover group flex h-full flex-col overflow-hidden p-0"
               >
-                <WorkThumb variant={index % 3} />
+                {study.image ? (
+                  <WorkImage src={study.image} title={study.title} />
+                ) : (
+                  <WorkThumb variant={index % 3} />
+                )}
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">

@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, AlertTriangle, FileText } from 'lucide-react'
+import { ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react'
 import { caseStudies, getCaseStudyById } from '@/data/caseStudies'
 import { useSeo } from '@/hooks/useSeo'
 import { Container, Section } from '@/components/ui/Section'
@@ -43,21 +43,27 @@ export default function CaseStudy() {
             <p className="lead mt-5 max-w-3xl">{study.overview}</p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <p className="text-sm font-medium text-charcoal-500">{study.clientLabel}</p>
-              {study.reportUrl ? (
-                <a
-                  href={study.reportUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary"
-                >
-                  <FileText aria-hidden="true" className="h-4 w-4" />
-                  View dashboard export (PDF)
-                </a>
-              ) : null}
             </div>
           </Reveal>
         </Container>
       </section>
+
+      {study.image ? (
+        <section className="border-b border-navy-100 bg-white">
+          <Container className="section-tight">
+            <Reveal>
+              <figure className="overflow-hidden rounded-2xl border border-navy-100 shadow-card">
+                <img
+                  src={study.image}
+                  alt={`${study.title} — dashboard preview`}
+                  className="w-full"
+                  loading="lazy"
+                />
+              </figure>
+            </Reveal>
+          </Container>
+        </section>
+      ) : null}
 
       {study.isPlaceholder ? (
         <div className="border-b border-warning/25 bg-warning/10">

@@ -4,9 +4,9 @@ import type { CaseStudy } from '@/types'
  * Case study portfolio.
  *
  * These three entries are real Power BI dashboard projects. Figures quoted in
- * features and outcomes come from the dashboard exports themselves (PDFs in
- * /public). Client names remain unpublished. Add new projects with
- * `isPlaceholder: true` until their write-up is verified.
+ * features and outcomes come from the dashboard screenshots in /public. Client
+ * names remain unpublished. Add new projects with `isPlaceholder: true` until
+ * their write-up is verified.
  */
 export const caseStudies: CaseStudy[] = [
   {
@@ -44,7 +44,7 @@ export const caseStudies: CaseStudy[] = [
       'Vehicle health flags (Good / Poor) derived from downtime events and hours',
       'Cost-driver visibility: maintenance by type and vendor, top expensive vehicles, route and driver leaderboards',
     ],
-    reportUrl: '/fleet-cost-maintenance-dashboard.pdf',
+    image: '/fleet-cost-maintenance.png',
     isPlaceholder: false,
   },
   {
@@ -80,7 +80,7 @@ export const caseStudies: CaseStudy[] = [
       'Transparent YOY calculations, including correct handling when no previous-year data exists',
       'Monthly sparklines per region so trend direction is visible without leaving the page',
     ],
-    reportUrl: '/regional-sales-dashboard.pdf',
+    image: '/sales-overview.png',
     isPlaceholder: false,
   },
   {
@@ -117,7 +117,7 @@ export const caseStudies: CaseStudy[] = [
       'Budget variance shown per category and in total',
       'Forecast line extending the sales trend beyond actuals for planning conversations',
     ],
-    reportUrl: '/sales-growth-forecast-dashboard.pdf',
+    image: '/comparative-analysis.png',
     isPlaceholder: false,
   },
 ]

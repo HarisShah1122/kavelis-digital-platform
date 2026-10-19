@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, MapPin } from 'lucide-react'
 import { footerCompanyLinks, footerLegalLinks, footerServiceLinks } from '@/data/navigation'
 import { siteConfig } from '@/lib/site'
 import { formatYear } from '@/lib/utils'
@@ -71,6 +71,11 @@ export function Footer() {
                 .
               </p>
             )}
+
+            <p className="mt-5 flex items-start gap-2 text-sm text-navy-300">
+              <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+              {siteConfig.address}
+            </p>
 
             <a
               href="https://wa.me/923135002818"

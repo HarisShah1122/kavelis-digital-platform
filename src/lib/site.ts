@@ -11,6 +11,8 @@ export const siteConfig = {
   contactEmail: import.meta.env.VITE_CONTACT_EMAIL ?? '',
   /** Optional POST endpoint for project inquiries. */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
+  /** Public office location. */
+  address: 'Dammam, Saudi Arabia',
   startPath: '/contact',
 } as const
 

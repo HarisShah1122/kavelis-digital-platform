@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, FileText } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { caseStudies } from '@/data/caseStudies'
 import { useSeo } from '@/hooks/useSeo'
 import { Badge } from '@/components/ui/Badge'
@@ -10,7 +10,34 @@ import { Reveal } from '@/components/ui/Reveal'
 import { CtaBand } from '@/components/ui/CtaBand'
 import { cn } from '@/lib/utils'
 
-/** CSS-only visual placeholders — no fabricated client screenshots. */
+/** Dashboard screenshot served from /public. */
+function WorkImage({
+  src,
+  title,
+  className,
+}: {
+  src: string
+  title: string
+  className?: string
+}) {
+  return (
+    <div
+      className={cn(
+        'overflow-hidden border-b border-navy-100 bg-navy-950 rounded-t-2xl',
+        className,
+      )}
+    >
+      <img
+        src={src}
+        alt={`${title} dashboard preview`}
+        loading="lazy"
+        className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] lg:h-full"
+      />
+    </div>
+  )
+}
+
+/** CSS-only visual placeholders — used only when a study has no screenshot. */
 function WorkThumb({
   variant,
   title,
@@ -141,15 +168,27 @@ export default function Work() {
                     index === 2 && 'lg:flex-row',
                   )}
                 >
-                  <WorkThumb
-                    variant={index % 3}
-                    title={study.category}
-                    className={
-                      index === 2
-                        ? 'lg:w-1/3 lg:shrink-0 lg:rounded-bl-2xl lg:rounded-t-none lg:border-b-0 lg:border-r'
-                        : undefined
-                    }
-                  />
+                  {study.image ? (
+                    <WorkImage
+                      src={study.image}
+                      title={study.title}
+                      className={
+                        index === 2
+                          ? 'lg:w-1/3 lg:shrink-0 lg:rounded-bl-2xl lg:rounded-t-none lg:border-b-0 lg:border-r'
+                          : undefined
+                      }
+                    />
+                  ) : (
+                    <WorkThumb
+                      variant={index % 3}
+                      title={study.category}
+                      className={
+                        index === 2
+                          ? 'lg:w-1/3 lg:shrink-0 lg:rounded-bl-2xl lg:rounded-t-none lg:border-b-0 lg:border-r'
+                          : undefined
+                      }
+                    />
+                  )}
                   <div
                     className={cn(
                       'flex flex-1 flex-col p-6 sm:p-7',
@@ -188,12 +227,6 @@ export default function Work() {
                         className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                       />
                     </span>
-                    {study.reportUrl ? (
-                      <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-charcoal-400">
-                        <FileText aria-hidden="true" className="h-3.5 w-3.5" />
-                        Dashboard export (PDF) on the case study page
-                      </span>
-                    ) : null}
                   </div>
                 </Link>
               </Reveal>

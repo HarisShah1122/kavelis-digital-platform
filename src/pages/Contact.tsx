@@ -1,6 +1,6 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { AlertCircle, CheckCircle2, Info, Mail, Send, Tag, X } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Info, Mail, MapPin, Send, Tag, X } from 'lucide-react'
 import { services } from '@/data/services'
 import { getPlanById } from '@/data/pricing'
 import { formatPrice, getMarketplaceProductById } from '@/data/marketplace'
@@ -404,6 +404,14 @@ export default function Contact() {
                   </p>
                 </div>
               )}
+
+              <div className="card p-6">
+                <h2 className="text-base font-semibold text-navy-950">Office</h2>
+                <p className="mt-3 flex items-start gap-2 text-sm leading-relaxed text-charcoal-600">
+                  <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                  {siteConfig.address}
+                </p>
+              </div>
 
               <div className="card p-6">
                 <h2 className="text-base font-semibold text-navy-950">Good to include</h2>
