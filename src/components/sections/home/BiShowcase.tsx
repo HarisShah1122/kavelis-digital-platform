@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Container } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
-import { BiDashboard } from '@/components/ui/BiDashboard'
 
 const offerings = [
   'Business dashboards',
@@ -13,7 +12,7 @@ const offerings = [
   'Analytics strategy',
 ]
 
-/** Dark navy BI band with realistic illustrative dashboard. */
+/** Dark navy BI band with a real Power BI dashboard export. */
 export function BiShowcase() {
   return (
     <section className="section bg-navy-950 text-white">
@@ -57,7 +56,14 @@ export function BiShowcase() {
           </Reveal>
 
           <Reveal delayMs={120}>
-            <BiDashboard />
+            <img
+              src="/sales-overview.png"
+              alt="Business intelligence dashboard — regional sales overview with year-over-year comparisons, map, and KPI matrix"
+              width={1170}
+              height={661}
+              loading="lazy"
+              className="aspect-[16/9] w-full rounded-2xl object-cover object-top"
+            />
           </Reveal>
         </div>
       </Container>
