@@ -10,14 +10,35 @@ const labels: Record<ProductVisual, string> = {
   mobile: 'Website',
 }
 
-/** Miniature CSS preview used on marketplace product cards. */
+/** Product card visual — real screenshot when available, otherwise a CSS miniature. */
 export function ProductThumb({
   visual,
+  image,
   className,
 }: {
   visual: ProductVisual
+  image?: string
   className?: string
 }) {
+  if (image) {
+    return (
+      <div
+        className={cn(
+          'relative h-40 overflow-hidden rounded-xl border border-navy-100 bg-navy-950',
+          className,
+        )}
+        aria-hidden="true"
+      >
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+    )
+  }
+
   return (
     <div
       className={cn(

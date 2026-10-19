@@ -36,6 +36,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'inventory-management-system',
     name: 'Inventory Management System',
+    image: '/inventory-management-system.jpg',
     categoryId: 'business-management',
     description:
       'Track stock levels, locations, and movements in one system — built for small warehouses and retail operations.',
@@ -181,6 +182,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'starter-ecommerce-website',
     name: 'Starter E-commerce Website',
+    image: '/starter-ecommerce-website.jpg',
     categoryId: 'ecommerce-online-business',
     description:
       'A clean, conversion-focused online store for small catalogs — designed to launch quickly.',
@@ -331,6 +333,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'business-kpi-dashboard',
     name: 'Business KPI Dashboard',
+    image: '/business-kpi-dashboard.jpg',
     categoryId: 'data-business-intelligence',
     description:
       'A single screen with the numbers that matter — revenue, customers, operations, and goals at a glance.',

@@ -98,6 +98,8 @@ export interface MarketplaceProduct {
   addons: ProductAddon[]
   recurringCosts: string[]
   visual: ProductVisual
+  /** Optional product screenshot served from /public. */
+  image?: string
   /** Related Kavelis service for cross-linking. */
   relatedServiceId: string
   /** Proposed pricing example — confirm before launch. */

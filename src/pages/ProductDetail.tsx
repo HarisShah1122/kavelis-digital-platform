@@ -33,7 +33,8 @@ export default function ProductDetail() {
 
   const category = getMarketplaceCategoryById(product.categoryId)
   const relatedService = getServiceById(product.relatedServiceId)
-  const showBiDashboard = product.visual === 'analytics' || product.visual === 'dashboard'
+  const showBiDashboard =
+    !product.image && (product.visual === 'analytics' || product.visual === 'dashboard')
 
   return (
     <>
@@ -90,7 +91,11 @@ export default function ProductDetail() {
               {showBiDashboard ? (
                 <BiDashboard className="lg:mt-2" />
               ) : (
-                <ProductThumb visual={product.visual} className="h-56 lg:mt-2" />
+                <ProductThumb
+                  visual={product.visual}
+                  image={product.image}
+                  className="h-56 lg:mt-2"
+                />
               )}
             </div>
           </Reveal>

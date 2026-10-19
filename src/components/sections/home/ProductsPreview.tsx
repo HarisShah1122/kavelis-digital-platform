@@ -46,7 +46,7 @@ export function ProductsPreview() {
           {featured.map((product, index) => (
             <Reveal key={product.id} delayMs={index * 70} className="h-full">
               <article className="card card-hover flex h-full flex-col p-6">
-                <ProductThumb visual={product.visual} />
+                <ProductThumb visual={product.visual} image={product.image} />
                 <h3 className="mt-5 text-base font-bold tracking-tight text-navy-950">
                   {product.name}
                 </h3>

@@ -130,7 +130,7 @@ export default function Products() {
             {filtered.map((product, index) => (
               <Reveal key={product.id} delayMs={(index % 3) * 60} className="h-full">
                 <article className="card card-hover flex h-full flex-col p-6">
-                  <ProductThumb visual={product.visual} />
+                  <ProductThumb visual={product.visual} image={product.image} />
                   <div className="mt-5 flex items-start justify-between gap-3">
                     <h3 className="text-base font-bold leading-snug tracking-tight text-navy-950">
                       {product.name}
