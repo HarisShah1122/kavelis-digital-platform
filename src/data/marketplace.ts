@@ -75,6 +75,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'hr-employee-management-system',
     name: 'HR & Employee Management System',
+    image: '/hr-employee-management-system.jpg',
     categoryId: 'business-management',
     description:
       'Manage employee records, leave, and basic HR workflows in a secure internal system.',
@@ -110,6 +111,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'crm-software',
     name: 'CRM Software',
+    image: '/crm-software.jpg',
     categoryId: 'business-management',
     description:
       'A customer relationship system for contacts, deals, and follow-ups — shaped around your sales process.',
@@ -145,6 +147,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'invoicing-billing-system',
     name: 'Invoicing & Billing System',
+    image: '/invoicing-billing-system.jpg',
     categoryId: 'business-management',
     description:
       'Create invoices, track payments, and manage billing records without juggling spreadsheets.',
@@ -222,6 +225,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'professional-ecommerce-store',
     name: 'Professional E-commerce Store',
+    image: '/professional-ecommerce-store.jpg',
     categoryId: 'ecommerce-online-business',
     description:
       'A fully customized online store with merchandising tools, promotions, and operational dashboards.',
@@ -261,6 +265,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'custom-business-website',
     name: 'Custom Business Website',
+    image: '/custom-business-website.jpg',
     categoryId: 'ecommerce-online-business',
     description:
       'A professional marketing website designed around your brand, services, and customer journey.',
@@ -296,6 +301,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'booking-appointment-platform',
     name: 'Booking & Appointment Platform',
+    image: '/booking-appointment-platform.jpg',
     categoryId: 'ecommerce-online-business',
     description:
       'Let customers book appointments online with availability, reminders, and a staff calendar.',
@@ -369,6 +375,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'sales-analytics-dashboard',
     name: 'Sales Analytics Dashboard',
+    image: '/sales-analytics-dashboard.jpg',
     categoryId: 'data-business-intelligence',
     description:
       'Track pipeline, revenue, and sales-team performance with reports built for sales leaders.',
@@ -404,6 +411,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'custom-bi-solution',
     name: 'Custom Business Intelligence Solution',
+    image: '/custom-bi-solution.jpg',
     categoryId: 'data-business-intelligence',
     description:
       'A tailored analytics system for complex data: multiple sources, custom metrics, and department-specific reporting.',
@@ -445,6 +453,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'business-workflow-automation',
     name: 'Business Workflow Automation',
+    image: '/business-workflow-automation.jpg',
     categoryId: 'automation-integrations',
     description:
       'Automate a defined business process end-to-end — approvals, notifications, and handoffs included.',
@@ -480,6 +489,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'api-integration-package',
     name: 'API Integration Package',
+    image: '/api-integration-package.jpg',
     categoryId: 'automation-integrations',
     description:
       'Connect two specific systems — CRM, accounting, marketing, or custom APIs — with reliable, monitored sync.',
@@ -519,6 +529,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'custom-reporting-automation',
     name: 'Custom Reporting Automation',
+    image: '/custom-reporting-automation.jpg',
     categoryId: 'automation-integrations',
     description:
       'Scheduled reports built once and delivered automatically — replacing manual spreadsheet assembly.',
@@ -558,6 +569,7 @@ export const marketplaceProducts: MarketplaceProduct[] = [
   {
     id: 'email-journey-automation',
     name: 'Email & Customer Journey Automation',
+    image: '/email-journey-automation.jpg',
     categoryId: 'automation-integrations',
     description:
       'Automated customer journeys — welcome series, follow-ups, and lifecycle emails triggered by real behavior, not manual lists.',
