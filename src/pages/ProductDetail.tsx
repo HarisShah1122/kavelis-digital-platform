@@ -90,7 +90,7 @@ export default function ProductDetail() {
                 <ProductThumb
                   visual={product.visual}
                   image={product.image}
-                  className="h-56 lg:mt-2"
+                  className="lg:mt-2"
                 />
               )}
             </div>

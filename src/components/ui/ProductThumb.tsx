@@ -24,7 +24,7 @@ export function ProductThumb({
     return (
       <div
         className={cn(
-          'relative h-40 overflow-hidden rounded-xl bg-navy-950',
+          'relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-navy-950',
           className,
         )}
         aria-hidden="true"
@@ -33,7 +33,7 @@ export function ProductThumb({
           src={image}
           alt=""
           loading="lazy"
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          className="mx-auto h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
     )
