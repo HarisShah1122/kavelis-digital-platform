@@ -11,9 +11,11 @@ const Products = lazy(() => import('@/pages/Products'))
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'))
 const Work = lazy(() => import('@/pages/Work'))
 const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
+const Portfolio = lazy(() => import('@/pages/Portfolio'))
 const Pricing = lazy(() => import('@/pages/Pricing'))
 const Solutions = lazy(() => import('@/pages/Solutions'))
 const About = lazy(() => import('@/pages/About'))
+const Careers = lazy(() => import('@/pages/Careers'))
 const Contact = lazy(() => import('@/pages/Contact'))
 const Privacy = lazy(() => import('@/pages/Privacy'))
 const Terms = lazy(() => import('@/pages/Terms'))
@@ -53,9 +55,11 @@ export default function App() {
             <Route path="/products/:productId" element={<ProductDetail />} />
             <Route path="/work" element={<Work />} />
             <Route path="/work/:caseStudyId" element={<CaseStudy />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

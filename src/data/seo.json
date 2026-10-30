@@ -1,0 +1,172 @@
+{
+  "/": {
+    "title": "Custom Software, Automation & E-commerce",
+    "description": "Kavelis builds custom software, business automation, e-commerce experiences, and data-driven solutions that help businesses work more efficiently."
+  },
+  "/services": {
+    "title": "Services",
+    "description": "SaaS product development, custom web applications, business automation, e-commerce, API integrations, AI-enabled solutions, business intelligence, and technical support."
+  },
+  "/services/saas-product-development": {
+    "title": "SaaS Product Development",
+    "description": "Design, build, and launch subscription software — architecture, billing foundations, dashboards, onboarding, and admin tooling."
+  },
+  "/services/business-automation": {
+    "title": "Business Automation",
+    "description": "Remove repetitive work with reliable, observable workflows, internal tools, and integrations across the systems you already use."
+  },
+  "/services/ecommerce-development": {
+    "title": "E-commerce Development",
+    "description": "Online stores and commerce platforms built for conversion and operations — storefronts, catalogs, checkout, promotions, and back-office tooling."
+  },
+  "/services/custom-web-applications": {
+    "title": "Custom Web Applications",
+    "description": "Purpose-built platforms for operations, customers, and internal teams — portals, operations platforms, booking systems, and dashboards."
+  },
+  "/services/api-system-integrations": {
+    "title": "API & System Integrations",
+    "description": "Connect payment providers, CRMs, ERPs, accounting, and custom APIs with proper error handling, retries, and monitoring."
+  },
+  "/services/ai-enabled-solutions": {
+    "title": "AI-Enabled Business Solutions",
+    "description": "Practical AI applied to real workflows — document processing, assisted decisions, and automation with human oversight."
+  },
+  "/services/business-intelligence-analytics": {
+    "title": "Business Intelligence & Data Analytics",
+    "description": "KPI dashboards, sales analytics, operational reporting, ETL, and data preparation designed around the decisions you need to make."
+  },
+  "/services/maintenance-support": {
+    "title": "Product Maintenance & Technical Support",
+    "description": "Monitoring, bug fixes, dependency and security updates, and iterative improvement for products already in production."
+  },
+  "/products": {
+    "title": "Digital Products",
+    "description": "Ready-made software — inventory systems, HR systems, e-commerce stores, BI dashboards, and automation — with one-time starting prices."
+  },
+  "/products/inventory-management-system": {
+    "title": "Inventory Management System",
+    "description": "Track stock levels, locations, and movements in one system, built for small warehouses and retail operations."
+  },
+  "/products/hr-employee-management-system": {
+    "title": "HR & Employee Management System",
+    "description": "Manage employee records, leave, and basic HR workflows in a secure internal system."
+  },
+  "/products/crm-software": {
+    "title": "CRM Software",
+    "description": "Track leads, customers, and follow-ups in one system designed around how your sales process actually works."
+  },
+  "/products/invoicing-billing-system": {
+    "title": "Invoicing & Billing System",
+    "description": "Create invoices, track payments, and manage billing records without spreadsheet work."
+  },
+  "/products/starter-ecommerce-website": {
+    "title": "Starter E-commerce Website",
+    "description": "A launch-ready online store with catalog, cart, and checkout — deployed and configured for your products."
+  },
+  "/products/professional-ecommerce-store": {
+    "title": "Professional E-commerce Store",
+    "description": "A fuller commerce build with catalog management, promotions, and operational tooling behind the storefront."
+  },
+  "/products/custom-business-website": {
+    "title": "Custom Business Website",
+    "description": "A professional business website with the pages, content structure, and inquiry handling your company needs."
+  },
+  "/products/booking-appointment-platform": {
+    "title": "Booking & Appointment Platform",
+    "description": "Let customers book appointments online with availability, confirmations, and reminders handled automatically."
+  },
+  "/products/business-kpi-dashboard": {
+    "title": "Business KPI Dashboard",
+    "description": "A dashboard that gives leadership one place to see the numbers that run the business."
+  },
+  "/products/sales-analytics-dashboard": {
+    "title": "Sales Analytics Dashboard",
+    "description": "Sales performance reporting with trends, comparisons, and the breakdowns needed to act on them."
+  },
+  "/products/custom-bi-solution": {
+    "title": "Custom Business Intelligence Solution",
+    "description": "A BI solution shaped around your data sources and the decisions your team actually makes."
+  },
+  "/products/business-workflow-automation": {
+    "title": "Business Workflow Automation",
+    "description": "Automate repetitive processes — approvals, handoffs, notifications — with monitoring when something fails."
+  },
+  "/products/api-integration-package": {
+    "title": "API Integration Package",
+    "description": "Connect two or more systems so data moves reliably instead of being re-entered by hand."
+  },
+  "/products/custom-reporting-automation": {
+    "title": "Custom Reporting Automation",
+    "description": "Scheduled reports assembled and delivered automatically from the systems your team already uses."
+  },
+  "/products/email-journey-automation": {
+    "title": "Email & Customer Journey Automation",
+    "description": "Triggered email journeys for onboarding, follow-up, and retention, connected to your customer data."
+  },
+  "/portfolio": {
+    "title": "E-commerce Portfolio",
+    "description": "E-commerce projects by Kavelis - premium accessories, consumer brands, online grocery, and technical apparel storefronts, each linked to its live public site."
+  },
+  "/work": {
+    "title": "Analytics Work Samples",
+    "description": "Power BI reports by Kavelis covering fleet operations and sales analytics — dashboard design, data modelling, and reporting capability."
+  },
+  "/work/fleet-cost-maintenance-dashboard": {
+    "title": "Fleet Cost & Maintenance Executive Dashboard",
+    "description": "A four-page Power BI executive report covering fleet operating cost, vehicle performance, maintenance spend, and downtime health."
+  },
+  "/work/regional-sales-dashboard": {
+    "title": "Regional Sales Overview Dashboard",
+    "description": "A one-page Power BI sales overview comparing current year against previous year across four US regions."
+  },
+  "/work/sales-growth-forecast-dashboard": {
+    "title": "Sales Growth & Forecast Dashboard",
+    "description": "A Power BI dashboard tracking product and category sales growth against budget, with a multi-year trend and forecast."
+  },
+  "/pricing": {
+    "title": "Pricing",
+    "description": "Monthly development subscriptions from $950, one-time digital products from $199, and custom project quotes — three honest ways to work with Kavelis."
+  },
+  "/solutions": {
+    "title": "Solutions",
+    "description": "How Kavelis works with startups, e-commerce businesses, growing enterprises, and operations-heavy organisations."
+  },
+  "/about": {
+    "title": "About",
+    "description": "Kavelis is a focused software studio building custom software, automation, and e-commerce with engineering discipline and transparent delivery."
+  },
+  "/careers": {
+    "fullTitle": "Careers at Kavelis | Join Our Team",
+    "title": "Careers",
+    "description": "Build meaningful digital products at Kavelis — custom software, business automation, and e-commerce for real business problems. Explore open positions and apply.",
+    "jsonLd": {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": "Full Stack Developer — MERN Stack",
+      "description": "Kavelis is looking for an experienced full stack developer to build and maintain web applications, automation tools, and e-commerce platforms for international clients.",
+      "employmentType": "FULL_TIME",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "Kavelis",
+        "email": "careers@kavelis.llc"
+      },
+      "jobLocationType": "TELECOMMUTE",
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "Worldwide"
+      }
+    }
+  },
+  "/contact": {
+    "title": "Contact",
+    "description": "Discuss a software product, automation project, e-commerce build, or custom web application with the Kavelis team."
+  },
+  "/privacy": {
+    "title": "Privacy Policy",
+    "description": "How Kavelis handles information collected through this website."
+  },
+  "/terms": {
+    "title": "Terms of Service",
+    "description": "The terms that apply when working with Kavelis."
+  }
+}

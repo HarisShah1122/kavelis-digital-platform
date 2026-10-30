@@ -220,6 +220,7 @@ export const services: Service[] = [
       'Dashboard build engagement',
       'Ongoing reporting and analytics support',
     ],
+    image: '/business-intelligence.jpg',
     offerings: [
       {
         title: 'Business dashboards',

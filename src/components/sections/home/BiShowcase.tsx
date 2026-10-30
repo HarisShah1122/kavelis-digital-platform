@@ -41,7 +41,7 @@ export function BiShowcase() {
               ))}
             </ul>
 
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/services/business-intelligence-analytics"
                 className="btn btn-dark group"
@@ -51,6 +51,9 @@ export function BiShowcase() {
                   aria-hidden="true"
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 />
+              </Link>
+              <Link to="/work" className="btn btn-ghost-light">
+                See analytics work samples
               </Link>
             </div>
           </Reveal>

@@ -7,6 +7,7 @@ import {
   marketplaceProducts,
 } from '@/data/marketplace'
 import { useSeo } from '@/hooks/useSeo'
+import { internalProducts } from '@/data/internalProducts'
 import { Button } from '@/components/ui/Button'
 import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section } from '@/components/ui/Section'
@@ -58,6 +59,51 @@ export default function Products() {
           </Button>
         </div>
       </PageHero>
+
+      {/* Internal products in development */}
+      <Section className="border-b border-navy-100 bg-white">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">Kavelis products in development</p>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-navy-950 sm:text-3xl">
+              Built for ourselves, coming soon
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-charcoal-600">
+              Two internal products are in the build pipeline. They are listed here so you can
+              register interest — no feature list or screenshot is published until the product is
+              genuinely ready to show.
+            </p>
+          </Reveal>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {internalProducts.map((product, index) => (
+              <Reveal key={product.id} delayMs={index * 70} className="h-full">
+                <article className="card flex h-full flex-col p-6">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full bg-warning/10 px-3 py-1 text-xs font-semibold text-warning ring-1 ring-inset ring-warning/30">
+                      {product.statusLabel}
+                    </span>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-charcoal-400">
+                      {product.category}
+                    </p>
+                  </div>
+                  <h3 className="mt-3 text-xl font-bold tracking-tight text-navy-950">
+                    {product.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-charcoal-600">
+                    {product.summary}
+                  </p>
+                  <div className="mt-5">
+                    <Button to={`/contact?product=${product.id}`} variant="secondary">
+                      Register your interest
+                    </Button>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       {/* Category intro — editorial row, not cards */}
       <Section className="border-b border-navy-100 bg-white">
@@ -205,6 +251,12 @@ export default function Products() {
                 customized for your business — the listed starting price covers the defined base
                 scope.
               </p>
+              <img
+                src="/digital-products.jpg"
+                alt=""
+                loading="lazy"
+                className="mt-8 aspect-[2/1] w-full rounded-2xl object-cover"
+              />
             </Reveal>
             <ol className="space-y-4">
               {[

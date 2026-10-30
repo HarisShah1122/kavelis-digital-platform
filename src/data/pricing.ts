@@ -106,7 +106,13 @@ export const pricingFaqs: FaqItem[] = [
     id: 'pricing-scope',
     question: 'What kind of work fits these plans?',
     answer:
-      'Starter covers CMS website setup up to 5 pages with low-code theme work and basic integrations. Growth adds fully customized design, advanced features, API integrations, and CRM or e-commerce configuration. Scale adds custom application development, advanced automation, and multi-platform integrations. Work outside a plan’s listed scope is quoted separately as a project.',
+      'Starter covers CMS website work up to 5 pages with low-code theme customization and basic integrations. Growth adds fully customized design, advanced features, API integrations, and CRM or e-commerce configuration. Scale adds custom application development, advanced automation, and multi-platform integrations. Work outside a plan’s listed scope is quoted separately as a project.',
+  },
+  {
+    id: 'pricing-subscription-vs-website',
+    question: 'Is the subscription the same as buying a website?',
+    answer:
+      'No. A subscription buys ongoing development capacity month to month — it is not a one-off website purchase, and there is no fixed website deliverable attached to it. If you want a finished website with a defined scope that you buy outright, the one-time website products in the catalog or a custom project quote are the right model. Both can be discussed honestly on a first call.',
   },
   {
     id: 'pricing-communication',

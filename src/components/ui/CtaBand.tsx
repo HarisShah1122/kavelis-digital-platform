@@ -8,8 +8,11 @@ interface CtaBandProps {
   description?: string
   primaryLabel?: string
   primaryTo?: string
+  /** Optional external (mailto:) action — used when a page has no route target. */
+  primaryHref?: string
   secondaryLabel?: string
   secondaryTo?: string
+  secondaryHref?: string
 }
 
 export function CtaBand({
@@ -17,8 +20,10 @@ export function CtaBand({
   description = 'Tell us what you are working on. We will respond with honest scoping questions, realistic options, and a clear next step.',
   primaryLabel = 'Discuss Your Project',
   primaryTo = '/contact',
+  primaryHref,
   secondaryLabel = 'Explore services',
   secondaryTo = '/services',
+  secondaryHref,
 }: CtaBandProps) {
   return (
     <section className="section-tight bg-navy-900">
@@ -29,13 +34,26 @@ export function CtaBand({
             <p className="mt-3 text-sm leading-relaxed text-navy-300 sm:text-base">{description}</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button to={primaryTo} className="group">
-              {primaryLabel}
-              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Button>
-            <Button to={secondaryTo} variant="ghost-light">
-              {secondaryLabel}
-            </Button>
+            {primaryHref ? (
+              <Button href={primaryHref} className="group">
+                {primaryLabel}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Button>
+            ) : (
+              <Button to={primaryTo} className="group">
+                {primaryLabel}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Button>
+            )}
+            {secondaryHref ? (
+              <Button href={secondaryHref} variant="ghost-light">
+                {secondaryLabel}
+              </Button>
+            ) : (
+              <Button to={secondaryTo} variant="ghost-light">
+                {secondaryLabel}
+              </Button>
+            )}
           </div>
         </Reveal>
       </Container>

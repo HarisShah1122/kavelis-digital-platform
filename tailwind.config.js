@@ -67,6 +67,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
+        // Editorial display face — used for large headings only, never body copy.
+        display: ['"Instrument Serif"', 'Iowan Old Style', 'Georgia', 'serif'],
       },
       boxShadow: {
         card: '0 1px 2px rgba(17, 22, 41, 0.04), 0 8px 24px -12px rgba(17, 22, 41, 0.10)',

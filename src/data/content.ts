@@ -11,44 +11,30 @@ export const processSteps: ProcessStep[] = [
   {
     id: 'planning',
     number: '02',
-    title: 'Planning & architecture',
+    title: 'Planning & design',
     description:
-      'We shape the solution: system architecture, data models, integration points, and a milestone plan you can track against.',
-  },
-  {
-    id: 'design',
-    number: '03',
-    title: 'UI/UX design',
-    description:
-      'Information architecture, user flows, and interface design come before heavy implementation — so the product is validated visually and logically early.',
+      'Architecture, data models, integration points, user flows, and interface design are settled before heavy implementation — so the solution is validated on paper and on screen first.',
   },
   {
     id: 'development',
-    number: '04',
-    title: 'Development & integrations',
+    number: '03',
+    title: 'Development & integration',
     description:
       'Iterative build in short cycles with working software, regular demos, and third-party integrations wired in as they are agreed.',
   },
   {
     id: 'testing',
-    number: '05',
-    title: 'Testing & quality assurance',
+    number: '04',
+    title: 'Testing & refinement',
     description:
       'Functional testing, accessibility checks, performance passes, and edge-case review — issues are found before your users find them.',
   },
   {
     id: 'deployment',
-    number: '06',
-    title: 'Deployment & launch',
+    number: '05',
+    title: 'Deployment & ongoing support',
     description:
-      'Deployment pipelines, monitoring, and a launch plan go in before release. Go-live is prepared, not improvised.',
-  },
-  {
-    id: 'maintenance',
-    number: '07',
-    title: 'Maintenance & improvement',
-    description:
-      'After release we track real usage, fix issues, apply security updates, and prioritize improvements through a retainer or planned cycles.',
+      'Deployment pipelines, monitoring, and a launch plan go in before release. After launch we fix issues, apply security updates, and prioritise improvements through a retainer or planned cycles.',
   },
 ]
 
@@ -157,7 +143,7 @@ export const homeFaqs: FaqItem[] = [
     id: 'pricing-models',
     question: 'How does pricing work?',
     answer:
-      'Three ways to work with us, depending on the job. Monthly development subscriptions start at $950/month for continuous small-to-medium work. Ready-made digital products in our catalog have one-time starting prices from $199. Custom projects (large builds, complex integrations, enterprise work) are quoted after discovery, because scope genuinely varies.',
+      'Three ways to work with us, depending on the job. Monthly development subscriptions from $950/month buy continuous development capacity for website, feature, and integration work — they are not a one-off website purchase. Ready-made digital products in the catalog have one-time starting prices from $199 and are deployed and configured for you. Custom projects (large builds, complex integrations, enterprise work) are quoted after discovery, because scope genuinely varies.',
   },
   {
     id: 'bi-services',

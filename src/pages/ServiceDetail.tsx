@@ -58,6 +58,14 @@ export default function ServiceDetail() {
                 <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
             </div>
+            {service.image ? (
+              <img
+                src={service.image}
+                alt=""
+                loading="lazy"
+                className="mt-8 aspect-[21/9] w-full rounded-2xl object-cover"
+              />
+            ) : null}
           </Reveal>
         </Container>
       </section>

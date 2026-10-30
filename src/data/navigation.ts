@@ -12,8 +12,9 @@ export const navItems: NavItem[] = [
     })),
   },
   { label: 'Products', to: '/products' },
-  { label: 'Work', to: '/work' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Pricing', to: '/pricing' },
+  { label: 'Careers', to: '/careers' },
   { label: 'About', to: '/about' },
 ]
 
@@ -24,9 +25,10 @@ export const footerServiceLinks = services.map((service) => ({
 
 export const footerCompanyLinks = [
   { label: 'Products', to: '/products' },
-  { label: 'Work', to: '/work' },
+  { label: 'Portfolio', to: '/portfolio' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Solutions', to: '/solutions' },
+  { label: 'Careers', to: '/careers' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]

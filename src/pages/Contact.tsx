@@ -1,9 +1,10 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { AlertCircle, CheckCircle2, Info, Mail, MapPin, Send, Tag, X } from 'lucide-react'
+import { AlertCircle, ArrowUpRight, CheckCircle2, Info, Mail, Send, Tag, X } from 'lucide-react'
 import { services } from '@/data/services'
 import { getPlanById } from '@/data/pricing'
 import { formatPrice, getMarketplaceProductById } from '@/data/marketplace'
+import { getInternalProductById } from '@/data/internalProducts'
 import { useSeo } from '@/hooks/useSeo'
 import { siteConfig, submitContactForm } from '@/lib/site'
 import { isEmail } from '@/lib/utils'
@@ -32,12 +33,12 @@ const serviceOptions = [
 
 const budgetOptions = [
   { value: '', label: 'Select a range (optional)' },
-  { value: 'Under $10k', label: 'Under $10k' },
-  { value: '$10k – $25k', label: '$10k – $25k' },
-  { value: '$25k – $50k', label: '$25k – $50k' },
-  { value: '$50k – $100k', label: '$50k – $100k' },
-  { value: '$100k+', label: '$100k+' },
-  { value: 'Prefer to discuss', label: 'Prefer to discuss' },
+  { value: 'Under $1,000', label: 'Under $1,000' },
+  { value: '$1,000 – $5,000', label: '$1,000 – $5,000' },
+  { value: '$5,000 – $10,000', label: '$5,000 – $10,000' },
+  { value: '$10,000 – $25,000', label: '$10,000 – $25,000' },
+  { value: '$25,000+', label: '$25,000+' },
+  { value: 'Not sure yet', label: 'Not sure yet' },
 ]
 
 const timelineOptions = [
@@ -124,6 +125,14 @@ export default function Contact() {
           id: `product-${product.id}`,
           label: product.name,
           detail: `Starting at ${formatPrice(product.startingPrice)}`,
+        }
+      }
+      const internal = getInternalProductById(productId)
+      if (internal) {
+        return {
+          id: `product-${internal.id}`,
+          label: internal.name,
+          detail: `${internal.statusLabel} — interest registration`,
         }
       }
     }
@@ -384,32 +393,34 @@ export default function Contact() {
                 </ol>
               </div>
 
-              {siteConfig.contactEmail ? (
-                <div className="card p-6">
-                  <h2 className="text-base font-semibold text-navy-950">Direct email</h2>
-                  <a
-                    href={`mailto:${siteConfig.contactEmail}`}
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-800"
-                  >
-                    <Mail aria-hidden="true" className="h-4 w-4" />
-                    {siteConfig.contactEmail}
-                  </a>
-                </div>
-              ) : (
-                <div className="card p-6">
-                  <h2 className="text-base font-semibold text-navy-950">Contact details</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal-600">
-                    A public contact email has not been published for this deployment yet. Use the
-                    inquiry form — it is the fastest way to reach the team.
-                  </p>
-                </div>
-              )}
+              <div className="card p-6">
+                <h2 className="text-base font-semibold text-navy-950">Direct email</h2>
+                <a
+                  href={`mailto:${siteConfig.businessEmail}`}
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-800"
+                >
+                  <Mail aria-hidden="true" className="h-4 w-4" />
+                  {siteConfig.businessEmail}
+                </a>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal-600">
+                  Prefer to write directly? Email works just as well as the form — include as much
+                  context as you can.
+                </p>
+              </div>
 
               <div className="card p-6">
-                <h2 className="text-base font-semibold text-navy-950">Office</h2>
-                <p className="mt-3 flex items-start gap-2 text-sm leading-relaxed text-charcoal-600">
-                  <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
-                  {siteConfig.address}
+                <h2 className="text-base font-semibold text-navy-950">WhatsApp</h2>
+                <a
+                  href={siteConfig.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold-700 hover:text-gold-800"
+                >
+                  Message the Kavelis team
+                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                </a>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal-600">
+                  For quick questions before you commit to a full brief.
                 </p>
               </div>
 

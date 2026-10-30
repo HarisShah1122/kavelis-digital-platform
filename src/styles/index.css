@@ -26,6 +26,12 @@
     @apply bg-canvas font-sans text-navy-950 antialiased;
   }
 
+  /* Display headings use the editorial serif face; body copy stays on Inter. */
+  h1,
+  h2 {
+    @apply font-display font-normal;
+  }
+
   :focus-visible {
     @apply outline-none ring-2 ring-gold-600 ring-offset-2 ring-offset-canvas;
   }
@@ -49,19 +55,29 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-gold-700;
+    @apply flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold-700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-6 shrink-0 bg-gold-500;
   }
 
   .display-heading {
-    @apply text-4xl font-bold tracking-tight text-navy-950 sm:text-5xl;
+    @apply font-display text-5xl leading-[1.04] tracking-tight text-navy-950 sm:text-6xl lg:text-7xl;
   }
 
   .section-heading {
-    @apply text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl;
+    @apply font-display text-4xl leading-[1.08] tracking-tight text-navy-950 sm:text-5xl;
   }
 
   .lead {
     @apply text-lg leading-relaxed text-charcoal-500;
+  }
+
+  /* Body copy never runs wider than ~68 characters for comfortable reading. */
+  .prose-measure {
+    @apply max-w-[68ch];
   }
 
   .btn {
@@ -69,11 +85,11 @@
   }
 
   .btn-primary {
-    @apply bg-navy-950 text-white hover:bg-navy-900;
+    @apply bg-gold-500 text-navy-950 hover:bg-gold-400;
   }
 
   .btn-secondary {
-    @apply border border-navy-100 bg-white text-navy-950 hover:border-gold-300 hover:bg-gold-50;
+    @apply border border-navy-200 bg-white text-navy-950 hover:border-gold-400 hover:bg-gold-50;
   }
 
   .btn-dark {
@@ -89,7 +105,7 @@
   }
 
   .card-hover {
-    @apply transition duration-200 hover:-translate-y-0.5 hover:border-gold-200 hover:shadow-lift;
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-lift;
   }
 
   .input-field {
@@ -99,10 +115,15 @@
   .input-error {
     @apply border-error/60 focus:border-error focus:ring-error;
   }
+
+  /* External link affordance for outbound references. */
+  .link-out {
+    @apply font-semibold text-gold-700 underline decoration-gold-300 underline-offset-4 transition-colors hover:text-gold-800 hover:decoration-gold-600;
+  }
 }
 
-/* Scroll reveal */
-.reveal {
+/* Scroll reveal — only applied when JavaScript is running (see main.tsx). */
+.has-reveal .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -110,26 +131,19 @@
     transform 0.55s ease;
 }
 
-.reveal-visible {
+.has-reveal .reveal-visible {
   opacity: 1;
   transform: none;
 }
 
-/* WhatsApp icon — pulsing green ring, springy hover */
-@keyframes whatsapp-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
+/* WhatsApp icon — gentle ring on hover only */
+.whatsapp-icon {
+  transition: box-shadow 0.25s ease;
 }
 
-.whatsapp-icon {
-  animation: whatsapp-ring 2.2s cubic-bezier(0.66, 0, 0, 1) infinite;
+.whatsapp-link:hover .whatsapp-icon,
+.whatsapp-link:focus-visible .whatsapp-icon {
+  box-shadow: 0 0 0 6px rgba(37, 211, 102, 0.22);
 }
 
 .whatsapp-link svg {
@@ -140,12 +154,12 @@
 
 .whatsapp-link:hover svg,
 .whatsapp-link:focus-visible svg {
-  transform: scale(1.15) rotate(-6deg);
+  transform: scale(1.1) rotate(-6deg);
   filter: drop-shadow(0 4px 10px rgba(37, 211, 102, 0.45));
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .has-reveal .reveal {
     opacity: 1;
     transform: none;
     transition: none;

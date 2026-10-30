@@ -125,7 +125,8 @@ export default function Pricing() {
                 <p className="mt-1 text-sm font-semibold text-gold-700">From $199 · one-time</p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
                   Ready-made software with a defined base scope — inventory systems, stores,
-                  dashboards, automation. Fastest and most predictable when the base scope fits.
+                  dashboards, automation. Bought outright and deployed for your business. The
+                  fastest and most predictable route when the base scope fits.
                 </p>
                 <div className="mt-5">
                   <Button to="/products" variant="secondary" className="w-full">
@@ -142,8 +143,10 @@ export default function Pricing() {
                   $950 – $3,000 · monthly
                 </p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal-600">
-                  Continuous development capacity through a request queue. Best when needs vary
-                  month to month and you want predictable monthly cost.
+                  Ongoing development capacity through a request queue — website, feature, and
+                  integration work, month to month. Not a one-off website purchase: there is no
+                  fixed deliverable attached, and the price stays predictable because requests move
+                  through the queue one at a time.
                 </p>
                 <div className="mt-5">
                   <Button to="/contact?plan=growth" className="w-full">

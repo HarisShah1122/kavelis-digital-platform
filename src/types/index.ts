@@ -32,6 +32,8 @@ export interface Service {
   engagementOptions: string[]
   /** Optional detailed offering breakdown (e.g. Business Intelligence). */
   offerings?: ServiceOffering[]
+  /** Optional supporting photo served from /public. */
+  image?: string
 }
 
 export interface CaseStudy {

@@ -125,9 +125,9 @@ function WorkThumb({
 
 export default function Work() {
   useSeo({
-    title: 'Work',
+    title: 'Analytics Work Samples',
     description:
-      'Selected Kavelis engagements and case studies — business challenge, solution delivered, and the technologies involved.',
+      'Power BI reports by Kavelis covering fleet operations and sales analytics — dashboard design, data modelling, and reporting capability.',
     path: '/work',
   })
 
@@ -136,17 +136,22 @@ export default function Work() {
   return (
     <>
       <PageHero
-        eyebrow="Work"
-        title="Dashboards and analytics we have shipped"
-        description="Real Power BI projects — fleet operations and sales analytics. Client names stay private; the dashboard exports are published with permission."
+        eyebrow="Analytics work"
+        title="Dashboards and reporting work samples"
+        description="Power BI reports covering fleet operations and sales analytics — published to show how Kavelis models data and designs reporting. Figures shown come from the dashboard datasets. No client, deployment, or business-result claims are made."
       >
-        <Button to="/contact" className="group">
-          Discuss a similar project
-          <ArrowRight
-            aria-hidden="true"
-            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-          />
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button to="/contact" className="group">
+            Discuss a similar project
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            />
+          </Button>
+          <Button to="/portfolio" variant="secondary">
+            E-commerce portfolio
+          </Button>
+        </div>
       </PageHero>
 
       <Section>

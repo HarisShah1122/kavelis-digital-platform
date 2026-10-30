@@ -59,6 +59,10 @@ export default function CaseStudy() {
                   className="aspect-[16/9] w-full object-cover object-top"
                   loading="lazy"
                 />
+                <figcaption className="border-t border-navy-100 bg-canvas px-5 py-3 text-xs text-charcoal-500">
+                  Dashboard export from the report. Figures shown come from the dataset used to
+                  build it and are not business results claimed by Kavelis or any client.
+                </figcaption>
               </figure>
             </Reveal>
           </Container>

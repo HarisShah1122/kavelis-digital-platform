@@ -1,20 +1,36 @@
 import type { ContactFormData, ContactPayload } from '@/types'
 
+/**
+ * Verified public business information.
+ *
+ * Only details that are confirmed may appear here — this object is rendered
+ * across the site (footer, contact, careers) and injected into SEO metadata.
+ */
 export const siteConfig = {
   name: 'Kavelis',
-  tagline: 'SaaS, automation, and custom software for growing businesses',
+  slogan: 'Build Smarter. Automate Better. Scale Faster.',
+  tagline: 'Custom software, automation, and e-commerce for growing businesses',
   description:
-    'Kavelis designs, builds, and maintains SaaS products, custom web applications, automation systems, and digital commerce platforms for growing businesses.',
-  /** Production origin. Leave empty until the final domain is confirmed. */
-  url: import.meta.env.VITE_SITE_URL ?? '',
-  /** Public business email. Rendered only when configured. */
-  contactEmail: import.meta.env.VITE_CONTACT_EMAIL ?? '',
-  /** Optional POST endpoint for project inquiries. */
+    'Kavelis designs, builds, and maintains custom software, business automation, e-commerce experiences, and data-driven solutions for growing businesses.',
+  /** Production origin. Used for canonical URLs, Open Graph tags, and the sitemap. */
+  url: import.meta.env.VITE_SITE_URL ?? 'https://kavelis.llc',
+  /** Verified public business email — used for project inquiries. */
+  businessEmail: 'info@kavelis.llc',
+  /** Verified recruitment email — used on the Careers page only. */
+  careersEmail: 'careers@kavelis.llc',
+  /** Existing verified WhatsApp contact. */
+  whatsappUrl: 'https://wa.me/923135002818',
+  whatsappLabel: '+92 313 5002818',
+  /** Optional POST endpoint for project inquiries (Formspree). */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
-  /** Public office location. */
-  address: 'Dammam, Saudi Arabia',
   startPath: '/contact',
 } as const
+
+/** Absolute URL for the site origin (used for canonical and social tags). */
+export function absoluteUrl(path = '/'): string {
+  const origin = siteConfig.url.replace(/\/$/, '')
+  return `${origin}${path.startsWith('/') ? path : `/${path}`}`
+}
 
 export function buildContactPayload(
   data: ContactFormData,
@@ -42,4 +58,21 @@ export async function submitContactForm(data: ContactFormData, reference?: strin
   if (!response.ok) {
     throw new Error('CONTACT_SUBMIT_FAILED')
   }
+}
+
+/** Builds a mailto: link with a pre-filled subject and body. */
+export function mailtoLink({
+  to,
+  subject,
+  body,
+}: {
+  to: string
+  subject?: string
+  body?: string
+}): string {
+  const params = new URLSearchParams()
+  if (subject) params.set('subject', subject)
+  if (body) params.set('body', body)
+  const query = params.toString()
+  return `mailto:${to}${query ? `?${query}` : ''}`
 }
