@@ -1,4 +1,9 @@
-import type { ContactFormData, ContactPayload } from '@/types'
+import type {
+  ApplicationFormData,
+  ApplicationPayload,
+  ContactFormData,
+  ContactPayload,
+} from '@/types'
 
 /**
  * Verified public business information.
@@ -21,7 +26,7 @@ export const siteConfig = {
   /** Existing verified WhatsApp contact. */
   whatsappUrl: 'https://wa.me/923135002818',
   whatsappLabel: '+92 313 5002818',
-  /** Optional POST endpoint for project inquiries (Formspree). */
+  /** Optional POST endpoint for form submissions (Formspree) — inquiries and applications. */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
   startPath: '/contact',
 } as const
@@ -57,6 +62,39 @@ export async function submitContactForm(data: ContactFormData, reference?: strin
 
   if (!response.ok) {
     throw new Error('CONTACT_SUBMIT_FAILED')
+  }
+}
+
+/**
+ * Sends a job application to the shared Formspree endpoint.
+ * The payload is tagged with `form: 'application'` and a role-based subject
+ * so applications can be told apart from project inquiries in one inbox.
+ */
+export async function submitApplicationForm(
+  data: ApplicationFormData,
+  gotcha?: string,
+): Promise<void> {
+  const endpoint = siteConfig.contactEndpoint
+  if (!endpoint) {
+    throw new Error('CONTACT_ENDPOINT_MISSING')
+  }
+
+  const payload: ApplicationPayload = {
+    ...data,
+    ...(gotcha ? { _gotcha: gotcha } : {}),
+    _subject: data.role ? `Application — ${data.role}` : 'General application — Kavelis',
+    form: 'application',
+    submittedAt: new Date().toISOString(),
+  }
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  if (!response.ok) {
+    throw new Error('APPLICATION_SUBMIT_FAILED')
   }
 }
 

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ArrowRight, Briefcase, Code2, Mail, MapPin, Users } from 'lucide-react'
 import { jobListings, generalApplicationNote, type JobListing } from '@/data/careers'
 import { siteConfig, mailtoLink } from '@/lib/site'
@@ -8,6 +9,7 @@ import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { CtaBand } from '@/components/ui/CtaBand'
+import { ApplicationForm, GENERAL_APPLICATION } from '@/components/careers/ApplicationForm'
 
 const whyWorkHere = [
   {
@@ -36,13 +38,18 @@ const whyWorkHere = [
   },
 ]
 
-function applyLink(jobTitle?: string): string {
-  const subject = jobTitle ? `Application — ${jobTitle}` : 'General application — Kavelis'
+/**
+ * Fallback mailto: draft, used when a candidate prefers to apply by email
+ * (for example to attach a CV as a file). The inline form is the primary path.
+ */
+function applyLink(role?: string): string {
+  const isGeneral = !role || role === GENERAL_APPLICATION
+  const subject = isGeneral ? 'General application — Kavelis' : `Application — ${role}`
   const lines = ['Hello Kavelis hiring team,', '']
-  if (jobTitle) {
-    lines.push(`I would like to apply for the ${jobTitle} position.`)
-  } else {
+  if (isGeneral) {
     lines.push('I would like to send my details for future opportunities at Kavelis.')
+  } else {
+    lines.push(`I would like to apply for the ${role} position.`)
   }
   lines.push(
     '',
@@ -61,7 +68,15 @@ function applyLink(jobTitle?: string): string {
   return mailtoLink({ to: siteConfig.careersEmail, subject, body: lines.join('\n') })
 }
 
-function JobCard({ job }: { job: JobListing }) {
+/** Scrolls the application form into view, respecting reduced-motion settings. */
+function scrollToApply(): void {
+  const target = document.getElementById('apply')
+  if (!target) return
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' })
+}
+
+function JobCard({ job, onApply }: { job: JobListing; onApply: () => void }) {
   const meta = [
     { label: 'Employment type', value: job.employmentType },
     { label: 'Work arrangement', value: job.workArrangement },
@@ -165,7 +180,7 @@ function JobCard({ job }: { job: JobListing }) {
           <strong className="font-semibold text-navy-950">How to apply:</strong>{' '}
           {job.applicationNote}
         </p>
-        <Button href={applyLink(job.title)} className="shrink-0 group">
+        <Button onClick={onApply} className="shrink-0 group">
           Apply for this role
           <ArrowRight
             aria-hidden="true"
@@ -215,6 +230,14 @@ export default function Careers() {
     },
   })
 
+  const [applyRole, setApplyRole] = useState<string>(GENERAL_APPLICATION)
+
+  /** Prefills the form's role select and scrolls the applicant to the form. */
+  const handleApply = (role: string) => {
+    setApplyRole(role)
+    scrollToApply()
+  }
+
   return (
     <>
       <PageHero
@@ -230,7 +253,7 @@ export default function Careers() {
               className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
             />
           </Button>
-          <Button href={applyLink()} variant="secondary">
+          <Button onClick={() => handleApply(GENERAL_APPLICATION)} variant="secondary">
             Send Your CV
             <Mail aria-hidden="true" className="h-4 w-4" />
           </Button>
@@ -268,7 +291,7 @@ export default function Careers() {
         </Container>
       </Section>
 
-      <Section id="open-positions" className="border-y border-navy-100 bg-white">
+      <Section id="open-positions" className="scroll-mt-24 border-y border-navy-100 bg-white">
         <Container>
           <SectionHeader
             eyebrow="Open positions"
@@ -284,7 +307,7 @@ export default function Careers() {
             <div className="mt-12 space-y-8">
               {jobListings.map((job) => (
                 <Reveal key={job.id}>
-                  <JobCard job={job} />
+                  <JobCard job={job} onApply={() => handleApply(job.title)} />
                 </Reveal>
               ))}
             </div>
@@ -298,7 +321,7 @@ export default function Careers() {
                     strong engineers are contacted when a matching role opens.
                   </p>
                 </div>
-                <Button href={applyLink()} className="shrink-0">
+                <Button onClick={() => handleApply(GENERAL_APPLICATION)} className="shrink-0">
                   Send Your CV
                 </Button>
               </div>
@@ -307,72 +330,76 @@ export default function Careers() {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="apply" className="scroll-mt-24 border-t border-navy-100 bg-white">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+          <SectionHeader
+            eyebrow="Apply"
+            title="Send your application"
+            description="Applications are reviewed on a rolling basis. Choose the role you are applying for, tell us about your experience, and add links to your work. If no role fits, send an open application — we keep your details for roles that match your experience."
+          />
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
             <Reveal>
-              <p className="eyebrow">General application</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
-                No suitable role listed?
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-charcoal-600">
-                {generalApplicationNote} Send an open application and we will keep your details
-                for roles that match your experience.
-              </p>
-              <div className="mt-6">
-                <Button href={applyLink()} className="group">
-                  Send an open application
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                  />
-                </Button>
-              </div>
+              <ApplicationForm role={applyRole} onRoleChange={setApplyRole} />
             </Reveal>
 
-            <Reveal delayMs={80} className="card p-7 sm:p-8">
-              <h3 className="text-lg font-semibold text-navy-950">What to include</h3>
-              <ul className="mt-4 space-y-3">
-                {[
-                  'Your CV, attached to the email',
-                  'Links to GitHub, a portfolio, or LinkedIn where available',
-                  'A short note on the kind of work you do best',
-                  'Your availability and preferred work arrangement',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-600"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <Reveal delayMs={80} className="space-y-6">
+              <div className="card p-7 sm:p-8">
+                <h3 className="text-lg font-semibold text-navy-950">What to include</h3>
+                <ul className="mt-4 space-y-3">
+                  {[
+                    'Your experience and the kind of work you do best',
+                    'Links to GitHub, a portfolio, or LinkedIn where available',
+                    'A link to your CV hosted online, if you have one',
+                    'Your availability and preferred work arrangement',
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm leading-relaxed text-charcoal-600"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <div className="mt-6 border-t border-navy-100 pt-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-400">
-                  Recruitment email
+              <div className="card p-7 sm:p-8">
+                <h3 className="text-lg font-semibold text-navy-950">
+                  No suitable role listed?
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal-600">
+                  {generalApplicationNote} Send an open application using the form and we will
+                  keep your details for roles that match your experience.
                 </p>
-                <a
-                  href={`mailto:${siteConfig.careersEmail}`}
-                  className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-gold-700 hover:text-gold-800"
-                >
-                  <Mail aria-hidden="true" className="h-4 w-4" />
-                  {siteConfig.careersEmail}
-                </a>
-                <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
-                  This address is monitored for hiring only. For project inquiries, write to{' '}
+
+                <div className="mt-5 border-t border-navy-100 pt-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-400">
+                    Recruitment email
+                  </p>
                   <a
-                    href={`mailto:${siteConfig.businessEmail}`}
-                    className="font-medium text-navy-900 underline decoration-gold-300 underline-offset-4 hover:text-gold-800"
+                    href={applyLink(applyRole)}
+                    className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-gold-700 hover:text-gold-800"
                   >
-                    {siteConfig.businessEmail}
+                    <Mail aria-hidden="true" className="h-4 w-4" />
+                    {siteConfig.careersEmail}
                   </a>
-                  .
-                </p>
+                  <p className="mt-3 text-xs leading-relaxed text-charcoal-500">
+                    Prefer to attach your CV as a file? Email it to this address and mention the
+                    role — the link above drafts the email for you. This address is monitored for
+                    hiring only. For project inquiries, write to{' '}
+                    <a
+                      href={`mailto:${siteConfig.businessEmail}`}
+                      className="font-medium text-navy-900 underline decoration-gold-300 underline-offset-4 hover:text-gold-800"
+                    >
+                      {siteConfig.businessEmail}
+                    </a>
+                    .
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -383,10 +410,7 @@ export default function Careers() {
         title="Interested in working with us long-term?"
         description="Tell us what you build best. We keep in touch with engineers whose experience matches the work we take on."
         primaryLabel="Send Your CV"
-        primaryHref={mailtoLink({
-          to: siteConfig.careersEmail,
-          subject: 'General application — Kavelis',
-        })}
+        primaryHref="#apply"
         secondaryLabel="About Kavelis"
         secondaryTo="/about"
       />

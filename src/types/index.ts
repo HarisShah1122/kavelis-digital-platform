@@ -160,3 +160,28 @@ export interface ContactPayload extends ContactFormData {
   reference?: string
   submittedAt: string
 }
+
+export type ApplicationStatus = 'idle' | 'submitting' | 'success' | 'error' | 'unconfigured'
+
+export interface ApplicationFormData {
+  name: string
+  email: string
+  /** Selected job title, or the general application value. */
+  role: string
+  message: string
+  github: string
+  portfolio: string
+  linkedin: string
+}
+
+export type ApplicationFormErrors = Partial<Record<keyof ApplicationFormData, string>>
+
+export interface ApplicationPayload extends ApplicationFormData {
+  /** Formspree spam trap — must stay empty for human submissions. */
+  _gotcha?: string
+  /** Custom inbox subject so applications are distinguishable from inquiries. */
+  _subject?: string
+  /** Marks the source form in the shared inbox. */
+  form: 'application'
+  submittedAt: string
+}
