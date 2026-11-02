@@ -6,6 +6,7 @@ import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section, SectionHeader } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { CtaBand } from '@/components/ui/CtaBand'
+import { FounderMessage } from '@/components/sections/about/FounderMessage'
 
 const principles = [
   {
@@ -56,6 +57,17 @@ export default function About() {
       url: 'https://kavelis.llc/about',
       description:
         'Kavelis is a focused software studio building custom software, automation, and e-commerce for growing businesses.',
+      mainEntity: {
+        '@type': 'Organization',
+        name: 'Kavelis Solutions',
+        url: 'https://kavelis.llc/',
+        founder: {
+          '@type': 'Person',
+          name: 'Asad Ullah Khan',
+          jobTitle: 'Founder & CEO',
+          image: 'https://kavelis.llc/CEO.jpg',
+        },
+      },
     },
   })
 
@@ -98,7 +110,9 @@ export default function About() {
         </Container>
       </Section>
 
-      <Section className="border-y border-navy-100 bg-white">
+      <FounderMessage />
+
+      <Section className="border-b border-navy-100 bg-white">
         <Container>
           <SectionHeader
             eyebrow="The team"
