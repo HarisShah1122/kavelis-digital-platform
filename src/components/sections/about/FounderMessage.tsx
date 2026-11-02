@@ -89,10 +89,9 @@ export function FounderMessage() {
                 <p className="font-display text-3xl italic text-white">Asad Ullah Khan</p>
                 <p className="mt-2 text-sm font-medium text-navy-300">
                   Founder &amp; CEO, Kavelis Solutions
-                  <span aria-hidden="true" className="mx-2 text-gold-500">
-                    ·
-                  </span>
-                  <span className="text-gold-300">Build smarter. Automate better. Scale faster.</span>
+                </p>
+                <p className="mt-1 text-sm font-medium text-gold-300">
+                  Build smarter. Automate better. Scale faster.
                 </p>
               </div>
               <Button to="/contact" className="group shrink-0 self-start sm:self-auto">
