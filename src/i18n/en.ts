@@ -17,8 +17,6 @@ export const en = {
     next: 'Next',
     goToSlide: 'Go to slide',
     of: 'of',
-    englishOnly:
-      'This page is currently available in English only. Navigation and contact details remain in Arabic.',
     switchTo: 'العربية',
     switchLabel: 'Switch language to Arabic',
     slogan: 'Build smarter. Automate better. Scale faster.',
@@ -158,17 +156,56 @@ export const en = {
     seoDescription:
       'Kavelis Solutions builds custom software, automates business operations, and turns scattered data into intelligent business systems and dashboards.',
     hero: {
-      eyebrow: 'Software studio · Kavelis Solutions',
-      lines: ['Turn complex business', 'challenges into smarter', 'digital solutions.'],
-      accentLine: 2,
-      lead: 'Kavelis Solutions builds custom software, automates business operations, and transforms scattered data into intelligent business systems.',
+      label: 'Featured highlights',
+      pause: 'Pause slideshow',
+      play: 'Play slideshow',
+      scroll: 'Scroll to explore',
+      slides: {
+        overview: {
+          tab: 'Digital solutions',
+          eyebrow: 'Software studio · Kavelis Solutions',
+          lines: ['Turn complex business', 'challenges into smarter', 'digital solutions.'],
+          lead: 'Kavelis Solutions builds custom software, automates business operations, and transforms scattered data into intelligent business systems.',
+          cta: 'Explore Our Work',
+          imageAlt: 'Business KPI dashboard shown on a laptop',
+        },
+        software: {
+          tab: 'Custom software',
+          eyebrow: 'Custom software development',
+          lines: ['Software shaped', 'around how your', 'business works.'],
+          lead: 'Web applications, SaaS platforms, portals, and internal tools — designed around your processes instead of forcing your processes around software.',
+          cta: 'Explore the service',
+          imageAlt: 'Custom business web application shown on a laptop and phone',
+        },
+        automation: {
+          tab: 'Automation',
+          eyebrow: 'Business automation',
+          lines: ['Automate the work', 'that slows your', 'team down.'],
+          lead: 'Workflow automation, system integrations, and API connections that remove the copy-paste steps between the tools you already use.',
+          cta: 'Explore the service',
+          imageAlt: 'Workflow automation builder shown on a laptop',
+        },
+        ecommerce: {
+          tab: 'E-commerce',
+          eyebrow: 'Client work · Show Tote',
+          lines: ['Storefronts built', 'for conversion', 'and operations.'],
+          lead: 'Kavelis designed and built live e-commerce stores for brands such as Show Tote — from catalogue structure to checkout.',
+          cta: 'View the case study',
+          imageAlt: 'Show Tote storefront homepage, designed and built by Kavelis',
+        },
+      },
+    },
+    spotlight: {
+      eyebrow: 'Live work sample',
+      title: 'Real dashboards, built in Power BI',
+      description:
+        'A regional sales overview designed by Kavelis — current-year against previous-year sales, profit, and quantity, with a state map and monthly trends. One of three Power BI work samples published with full write-ups.',
+      link: 'See the analytics case studies',
       visualCaption: 'Regional sales overview — a Power BI report designed by Kavelis.',
       visualAlt:
         'Regional sales overview dashboard built in Power BI by Kavelis — year-over-year sales, profit, and quantity by region',
       chipLabel: 'Live work sample',
       chipValue: 'Power BI · DAX',
-      scroll: 'Scroll to explore',
-      points: ['Custom software', 'Automation', 'Dashboards', 'E-commerce'],
     },
     capabilities: [
       'Custom Software',
@@ -486,6 +523,7 @@ export const en = {
     selectService: 'Select a service',
     notSure: 'Not sure yet',
     selectBudget: 'Select a range (optional)',
+    budgetUnder: 'Under $1,000',
     selectTimeline: 'Select a timeline (optional)',
     timelines: {
       asap: 'As soon as possible',
@@ -638,12 +676,14 @@ export const en = {
 }
 
 /** Recursively widens literal types so translations are not pinned to English text. */
-type Widen<T> = T extends string
+export type Widen<T> = T extends string
   ? string
   : T extends number
     ? number
-    : T extends readonly (infer U)[]
-      ? Widen<U>[]
-      : { [K in keyof T]: Widen<T[K]> }
+    : T extends (...args: infer A) => infer R
+      ? (...args: A) => Widen<R>
+      : T extends readonly (infer U)[]
+        ? Widen<U>[]
+        : { [K in keyof T]: Widen<T[K]> }
 
 export type Dictionary = Widen<typeof en>

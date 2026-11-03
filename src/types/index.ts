@@ -107,13 +107,6 @@ export interface FaqItem {
   answer: string
 }
 
-export interface ProcessStep {
-  id: string
-  number: string
-  title: string
-  description: string
-}
-
 export type ContactStatus = 'idle' | 'submitting' | 'success' | 'error' | 'unconfigured'
 
 export interface ContactFormData {

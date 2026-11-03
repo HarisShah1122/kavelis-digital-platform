@@ -13,6 +13,7 @@ import { FounderMessage } from '@/components/sections/FounderMessage'
 import { ImpactFacts } from '@/components/sections/home/ImpactFacts'
 import { HomeFaq } from '@/components/sections/home/HomeFaq'
 import { HomeContact } from '@/components/sections/home/HomeContact'
+import { WorkSpotlight } from '@/components/sections/home/WorkSpotlight'
 
 export default function Home() {
   const { t } = useI18n()
@@ -55,6 +56,7 @@ export default function Home() {
       <FounderMessage />
       <ImpactFacts />
       <HomeFaq />
+      <WorkSpotlight />
       <HomeContact />
     </>
   )

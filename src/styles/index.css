@@ -154,19 +154,6 @@
   font-style: normal;
 }
 
-/* English-only page bodies keep Latin typography inside the Arabic chrome. */
-:root:lang(ar) [lang='en'] {
-  font-family: Inter, system-ui, sans-serif;
-}
-
-:root:lang(ar) [lang='en'] h1,
-:root:lang(ar) [lang='en'] h2,
-:root:lang(ar) [lang='en'] .font-display {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-weight: 400;
-  line-height: 1.08;
-}
-
 /* ——— Hero line-by-line reveal ——— */
 .line-mask {
   display: block;
@@ -254,7 +241,40 @@
   }
 }
 
-/* ——— Floating accent (hero) ——— */
+/* ——— Hero slider ——— */
+.hero-kenburns {
+  animation: hero-kenburns 9s ease-out both;
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Slide progress bar; paused with the slideshow via animation-play-state. */
+.hero-progress {
+  transform-origin: left center;
+  animation: hero-progress var(--hero-interval, 6500ms) linear both;
+}
+
+:root[dir='rtl'] .hero-progress {
+  transform-origin: right center;
+}
+
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ——— Floating accent ——— */
 .float-slow {
   animation: float-slow 9s ease-in-out infinite;
 }

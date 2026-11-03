@@ -127,6 +127,3 @@ export const caseStudies: CaseStudy[] = [
     isPlaceholder: false,
   },
 ]
-
-export const getCaseStudyById = (id: string): CaseStudy | undefined =>
-  caseStudies.find((study) => study.id === id)

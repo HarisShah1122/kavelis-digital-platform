@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { ArrowUpRight, Mail, Phone } from 'lucide-react'
 import { getPlanById } from '@/data/pricing'
 import { formatPrice, getMarketplaceProductById } from '@/data/marketplace'
+import { useMarketplace } from '@/i18n/data/marketplace'
 import { getInternalProductById } from '@/data/internalProducts'
 import { useSeo } from '@/hooks/useSeo'
 import { useI18n } from '@/i18n'
@@ -30,22 +31,38 @@ export default function Contact() {
   })
 
   const [searchParams, setSearchParams] = useSearchParams()
+  const { getProduct, internal } = useMarketplace()
 
   // Plan or product prefill from CTA links (?plan=growth or ?product=crm-software).
   // Product names stay as published; only the labels around them are translated.
   const reference = useMemo(() => {
     const planId = searchParams.get('plan')
     const plan = planId ? getPlanById(planId) : undefined
-    if (plan) return { label: `${plan.name} ${f.plan}`, detail: `${plan.price}${f.perMonth}` }
+    if (plan) {
+      return { label: `${plan.name} ${f.plan}`, detail: `${plan.price}${f.perMonth}`, inbox: `${plan.name} plan — ${plan.price}/month` }
+    }
 
     const productId = searchParams.get('product')
     if (!productId) return null
     const product = getMarketplaceProductById(productId)
-    if (product) return { label: product.name, detail: `${f.startingAt} ${formatPrice(product.startingPrice)}` }
-    const internal = getInternalProductById(productId)
-    if (internal) return { label: internal.name, detail: f.interest }
+    if (product) {
+      const price = formatPrice(product.startingPrice)
+      return {
+        label: getProduct(productId)?.name ?? product.name,
+        detail: `${f.startingAt} ${price}`,
+        inbox: `${product.name} — Starting at ${price}`,
+      }
+    }
+    const pipeline = getInternalProductById(productId)
+    if (pipeline) {
+      return {
+        label: pipeline.name,
+        detail: `${internal.find((item) => item.id === pipeline.id)?.statusLabel ?? pipeline.statusLabel} — ${f.interest}`,
+        inbox: `${pipeline.name} — ${pipeline.statusLabel} — interest registration`,
+      }
+    }
     return null
-  }, [searchParams, f])
+  }, [searchParams, f, getProduct, internal])
 
   const clearReference = () => {
     const next = new URLSearchParams(searchParams)

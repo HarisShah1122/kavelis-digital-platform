@@ -252,9 +252,6 @@ export const portfolioEntries: PortfolioEntry[] = [
   },
 ]
 
-export const getPortfolioEntryById = (id: string): PortfolioEntry | undefined =>
-  portfolioEntries.find((entry) => entry.id === id)
-
 /**
  * Explains the classification labels used on the portfolio page.
  * Kept next to the data so labels and explanation cannot drift apart.

@@ -64,12 +64,3 @@ export function useI18n(): I18nValue {
   return context
 }
 
-/**
- * Routes whose page content is fully translated. Other routes keep their
- * English body content (rendered LTR) inside the translated site chrome.
- */
-export const translatedRoutes = ['/', '/about', '/contact', '/services']
-
-export function isTranslatedRoute(pathname: string): boolean {
-  return translatedRoutes.includes(pathname.replace(/\/$/, '') || '/')
-}

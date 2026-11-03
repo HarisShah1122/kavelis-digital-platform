@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
+import { useI18n } from '@/i18n'
 
 interface CtaBandProps {
   title?: string
@@ -18,13 +19,16 @@ interface CtaBandProps {
 export function CtaBand({
   title = 'Have a product to build or a process to fix?',
   description = 'Tell us what you are working on. We will respond with honest scoping questions, realistic options, and a clear next step.',
-  primaryLabel = 'Discuss Your Project',
+  primaryLabel,
   primaryTo = '/contact',
   primaryHref,
-  secondaryLabel = 'Explore services',
+  secondaryLabel,
   secondaryTo = '/services',
   secondaryHref,
 }: CtaBandProps) {
+  const { t } = useI18n()
+  primaryLabel ??= t.common.startProject
+  secondaryLabel ??= t.nav.allServices
   return (
     <section className="section-tight bg-navy-900">
       <Container>

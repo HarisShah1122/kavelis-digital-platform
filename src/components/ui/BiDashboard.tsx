@@ -20,6 +20,7 @@ export function BiDashboard({ className }: { className?: string }) {
 
   return (
     <div
+      dir="ltr"
       className={cn(
         'overflow-hidden rounded-2xl border border-navy-800 bg-navy-950 shadow-lift',
         className,

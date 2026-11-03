@@ -295,6 +295,3 @@ export const services: Service[] = [
     ],
   },
 ]
-
-export const getServiceById = (id: string): Service | undefined =>
-  services.find((service) => service.id === id)

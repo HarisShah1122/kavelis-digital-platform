@@ -1,10 +1,9 @@
 import { Suspense, lazy } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { Languages } from 'lucide-react'
 import { Navbar } from '@/components/navigation/Navbar'
 import { Footer } from '@/components/navigation/Footer'
 import { useScrollManager } from '@/hooks/useScrollManager'
-import { isTranslatedRoute, useI18n } from '@/i18n'
+import { useI18n } from '@/i18n'
 
 const Home = lazy(() => import('@/pages/Home'))
 const Services = lazy(() => import('@/pages/Services'))
@@ -35,10 +34,7 @@ function RouteFallback() {
 export default function App() {
   useScrollManager()
   const { pathname } = useLocation()
-  const { lang, t } = useI18n()
-
-  // Untranslated pages keep their English body LTR inside the Arabic chrome.
-  const englishOnly = lang === 'ar' && !isTranslatedRoute(pathname)
+  const { t } = useI18n()
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -49,18 +45,7 @@ export default function App() {
         {t.common.skipToContent}
       </a>
       <Navbar />
-      {englishOnly ? (
-        <p className="flex items-center justify-center gap-2 border-b border-gold-200 bg-gold-50 px-5 py-2.5 text-center text-sm text-gold-900">
-          <Languages aria-hidden="true" className="h-4 w-4 shrink-0" />
-          {t.common.englishOnly}
-        </p>
-      ) : null}
-      <main
-        id="main-content"
-        className="flex-1"
-        lang={englishOnly ? 'en' : undefined}
-        dir={englishOnly ? 'ltr' : undefined}
-      >
+      <main id="main-content" className="flex-1">
         <Suspense fallback={<RouteFallback />}>
           <div key={pathname} className="page-enter">
             <Routes>

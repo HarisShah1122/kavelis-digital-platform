@@ -89,3 +89,23 @@ export const solutionLinks = [
   { id: 'kpi', to: '/products/business-kpi-dashboard' },
   { id: 'saas', to: '/services/saas-product-development' },
 ] as const
+
+export type HeroSlideId = keyof Dictionary['home']['hero']['slides']
+
+export interface HeroSlide {
+  id: HeroSlideId
+  image: string
+  /** object-position utility for the full-bleed crop. */
+  imagePosition: string
+  to: string
+}
+
+export const heroSlides: HeroSlide[] = [
+  { id: 'overview', image: '/business-kpi-dashboard.jpg', imagePosition: 'object-center', to: '/portfolio' },
+  { id: 'software', image: '/custom-business-website.jpg', imagePosition: 'object-center', to: '/services/custom-web-applications' },
+  { id: 'automation', image: '/business-workflow-automation.jpg', imagePosition: 'object-center', to: '/services/business-automation' },
+  { id: 'ecommerce', image: '/show-tote.png', imagePosition: 'object-[88%_center]', to: '/portfolio#show-tote' },
+]
+
+/** Autoplay interval for the hero slider, in milliseconds. */
+export const HERO_INTERVAL = 6500

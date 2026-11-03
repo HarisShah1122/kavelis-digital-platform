@@ -36,7 +36,7 @@ interface EnquiryFormProps {
   /** `full` adds budget and timeline (contact page). */
   variant?: 'compact' | 'full'
   /** Plan or product the visitor arrived from, shown as a removable chip. */
-  reference?: { label: string; detail: string } | null
+  reference?: { label: string; detail: string; /** English text sent to the inbox. */ inbox: string } | null
   onClearReference?: () => void
   onDark?: boolean
 }
@@ -65,7 +65,7 @@ export function EnquiryForm({ variant = 'compact', reference, onClearReference, 
   ]
   const budgetOptions = [
     { value: '', label: f.selectBudget },
-    ...budgets.map((value) => ({ value, label: value })),
+    ...budgets.map((value) => ({ value, label: value === 'Under $1,000' ? f.budgetUnder : value })),
     { value: 'Not sure yet', label: f.notSure },
   ]
   const timelineOptions = [
@@ -102,8 +102,7 @@ export function EnquiryForm({ variant = 'compact', reference, onClearReference, 
     }
     setStatus('submitting')
     try {
-      const referenceText = reference ? `${reference.label} — ${reference.detail}` : undefined
-      await submitContactForm(formData, referenceText, gotchaRef.current?.value)
+      await submitContactForm(formData, reference?.inbox, gotchaRef.current?.value)
       setStatus('success')
       setFormData(emptyForm)
       setErrors({})

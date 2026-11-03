@@ -608,7 +608,4 @@ export const marketplaceProducts: MarketplaceProduct[] = [
 export const getMarketplaceProductById = (id: string): MarketplaceProduct | undefined =>
   marketplaceProducts.find((product) => product.id === id)
 
-export const getMarketplaceCategoryById = (id: string): MarketplaceCategory | undefined =>
-  marketplaceCategories.find((category) => category.id === id)
-
 export const formatPrice = (value: number): string => `$${value.toLocaleString('en-US')}`
