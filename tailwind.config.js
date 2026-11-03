@@ -66,9 +66,27 @@ export default {
         error: '#C43D43',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
+        sans: ['Inter', '"IBM Plex Sans Arabic"', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
         // Editorial display face — used for large headings only, never body copy.
         display: ['"Instrument Serif"', 'Iowan Old Style', 'Georgia', 'serif'],
+        // Arabic UI and display face — applied automatically under :lang(ar).
+        arabic: ['"IBM Plex Sans Arabic"', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      // Motion tokens — keep durations short; reduced motion disables them globally.
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+      transitionDuration: {
+        250: '250ms',
+        400: '400ms',
+        600: '600ms',
+      },
+      // Layering tokens — every stacked surface uses one of these.
+      zIndex: {
+        raised: '10',
+        nav: '50',
+        menu: '60',
+        skip: '70',
       },
       boxShadow: {
         card: '0 1px 2px rgba(17, 22, 41, 0.04), 0 8px 24px -12px rgba(17, 22, 41, 0.10)',

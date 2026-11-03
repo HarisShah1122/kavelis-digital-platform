@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { FaqItem } from '@/types'
+
+interface AccordionItem {
+  id: string
+  question: string
+  answer: string
+}
 
 interface AccordionProps {
-  items: FaqItem[]
+  items: AccordionItem[]
   className?: string
 }
 
@@ -24,7 +29,7 @@ export function Accordion({ items, className }: AccordionProps) {
                 aria-controls={`faq-panel-${item.id}`}
                 id={`faq-button-${item.id}`}
                 onClick={() => setOpenId(open ? null : item.id)}
-                className="flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold text-navy-950 transition-colors hover:text-gold-700"
+                className="flex w-full items-center justify-between gap-4 py-5 text-start text-base font-semibold text-navy-950 transition-colors hover:text-gold-700"
               >
                 {item.question}
                 <ChevronDown
@@ -47,7 +52,7 @@ export function Accordion({ items, className }: AccordionProps) {
               )}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 pr-8 text-sm leading-relaxed text-charcoal-500">
+                <p className="pb-5 pe-8 text-sm leading-relaxed text-charcoal-500">
                   {item.answer}
                 </p>
               </div>

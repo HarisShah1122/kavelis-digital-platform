@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Apply the saved language before first paint so RTL never flashes as LTR.
+      try {
+        if (localStorage.getItem('kavelis-lang') === 'ar') {
+          document.documentElement.lang = 'ar'
+          document.documentElement.dir = 'rtl'
+        }
+      } catch (e) {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#111629" />
     <meta
@@ -14,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <meta property="og:type" content="website" />
@@ -45,18 +54,31 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Kavelis",
+        "name": "Kavelis Solutions",
+        "alternateName": "Kavelis",
         "url": "https://kavelis.llc",
         "logo": "https://kavelis.llc/favicon.svg",
         "slogan": "Build Smarter. Automate Better. Scale Faster.",
         "description": "Kavelis designs, builds, and maintains custom software, business automation, e-commerce experiences, and data-driven solutions for growing businesses.",
         "email": "info@kavelis.llc",
+        "telephone": "+971507221495",
+        "founder": { "@type": "Person", "name": "Asad Ullah Khan", "jobTitle": "Founder & CEO" },
         "contactPoint": [
           {
             "@type": "ContactPoint",
-            "contactType": "customer support",
+            "contactType": "sales",
             "email": "info@kavelis.llc",
-            "availableLanguage": "English"
+            "telephone": "+971507221495",
+            "areaServed": "AE",
+            "availableLanguage": ["English", "Arabic"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "info@kavelis.llc",
+            "telephone": "+966559645341",
+            "areaServed": "SA",
+            "availableLanguage": ["English", "Arabic"]
           },
           {
             "@type": "ContactPoint",

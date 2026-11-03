@@ -10,6 +10,8 @@ interface FieldWrapperProps {
   error?: string
   hint?: string
   required?: boolean
+  /** Text shown after optional labels. */
+  optionalLabel?: string
   children: ReactNode
 }
 
@@ -19,6 +21,7 @@ export function FieldWrapper({
   error,
   hint,
   required = false,
+  optionalLabel = 'optional',
   children,
 }: FieldWrapperProps) {
   return (
@@ -26,11 +29,11 @@ export function FieldWrapper({
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy-900">
         {label}
         {required ? (
-          <span aria-hidden="true" className="ml-0.5 text-gold-600">
+          <span aria-hidden="true" className="ms-0.5 text-gold-600">
             *
           </span>
         ) : (
-          <span className="ml-1.5 text-xs font-normal text-charcoal-400">(optional)</span>
+          <span className="ms-1.5 text-xs font-normal text-charcoal-400">({optionalLabel})</span>
         )}
       </label>
       {children}
@@ -52,6 +55,7 @@ type TextFieldProps = Omit<ComponentPropsWithoutRef<'input'>, 'id' | 'className'
   id: string
   error?: string
   hint?: string
+  optionalLabel?: string
   wrapperClassName?: string
 }
 
@@ -61,6 +65,7 @@ export function TextField({
   error,
   hint,
   required,
+  optionalLabel,
   wrapperClassName,
   ...inputProps
 }: TextFieldProps & { label: string }) {
@@ -69,7 +74,7 @@ export function TextField({
     .join(' ')
 
   return (
-    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required}>
+    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required} optionalLabel={optionalLabel}>
       <input
         id={id}
         required={required}
@@ -87,6 +92,7 @@ type SelectFieldProps = Omit<ComponentPropsWithoutRef<'select'>, 'id' | 'classNa
   label: string
   error?: string
   hint?: string
+  optionalLabel?: string
   options: Array<{ value: string; label: string }>
 }
 
@@ -96,6 +102,7 @@ export function SelectField({
   error,
   hint,
   required,
+  optionalLabel,
   options,
   ...selectProps
 }: SelectFieldProps) {
@@ -104,7 +111,7 @@ export function SelectField({
     .join(' ')
 
   return (
-    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required}>
+    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required} optionalLabel={optionalLabel}>
       <select
         id={id}
         required={required}
@@ -128,6 +135,7 @@ type TextareaFieldProps = Omit<ComponentPropsWithoutRef<'textarea'>, 'id' | 'cla
   label: string
   error?: string
   hint?: string
+  optionalLabel?: string
 }
 
 export function TextareaField({
@@ -136,6 +144,7 @@ export function TextareaField({
   error,
   hint,
   required,
+  optionalLabel,
   ...textareaProps
 }: TextareaFieldProps) {
   const describedBy = [error ? `${id}-error` : null, hint && !error ? `${id}-hint` : null]
@@ -143,7 +152,7 @@ export function TextareaField({
     .join(' ')
 
   return (
-    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required}>
+    <FieldWrapper id={id} label={label} error={error} hint={hint} required={required} optionalLabel={optionalLabel}>
       <textarea
         id={id}
         required={required}

@@ -191,13 +191,13 @@ export default function ServiceDetail() {
               </h2>
             </div>
             <Link
-              to="/about"
+              to="/about#process"
               className="text-sm font-semibold text-gold-700 hover:text-gold-800"
             >
               Full process details →
             </Link>
           </div>
-          <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
+          <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step) => (
               <li
                 key={step.id}

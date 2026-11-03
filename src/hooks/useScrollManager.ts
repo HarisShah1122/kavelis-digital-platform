@@ -6,13 +6,22 @@ export function useScrollManager(): void {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    if (hash) {
-      const target = document.querySelector(hash)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    if (!hash) return
+
+    // Pages are lazy-loaded, so the hash target may not exist yet. Poll for
+    // it briefly instead of giving up on the first frame.
+    let attempts = 0
+    let timer = 0
+    const tryScroll = () => {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)))
       if (target) {
         target.scrollIntoView({ behavior: 'auto', block: 'start' })
-        return
+      } else if (attempts++ < 30) {
+        timer = window.setTimeout(tryScroll, 50)
       }
     }
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    tryScroll()
+    return () => window.clearTimeout(timer)
   }, [pathname, hash])
 }

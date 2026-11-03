@@ -1,20 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
 
-export interface NavLinkItem {
-  label: string
-  to: string
-}
-
-export interface NavDropdownItem extends NavLinkItem {
-  description: string
-}
-
-export interface NavItem {
-  label: string
-  to?: string
-  children?: NavDropdownItem[]
-}
-
 export interface ServiceOffering {
   title: string
   description: string
@@ -108,12 +93,6 @@ export interface MarketplaceProduct {
   isPlaceholder: boolean
 }
 
-export interface TrustItem {
-  id: string
-  title: string
-  description: string
-}
-
 export interface Industry {
   id: string
   title: string
@@ -122,21 +101,15 @@ export interface Industry {
   approaches: string[]
 }
 
-export interface ProcessStep {
-  id: string
-  number: string
-  title: string
-  description: string
-}
-
 export interface FaqItem {
   id: string
   question: string
   answer: string
 }
 
-export interface Differentiator {
+export interface ProcessStep {
   id: string
+  number: string
   title: string
   description: string
 }
@@ -158,6 +131,10 @@ export type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>
 export interface ContactPayload extends ContactFormData {
   /** Prefilled plan or product reference, when arriving from a CTA. */
   reference?: string
+  /** Formspree spam trap — must stay empty for human submissions. */
+  _gotcha?: string
+  /** Inbox subject line. */
+  _subject?: string
   submittedAt: string
 }
 

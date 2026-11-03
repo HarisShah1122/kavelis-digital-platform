@@ -1,52 +1,61 @@
 import { useSeo } from '@/hooks/useSeo'
-import { Hero } from '@/components/sections/home/Hero'
-import { IntroStrip } from '@/components/sections/home/IntroStrip'
-import { ServicesOverview } from '@/components/sections/home/ServicesOverview'
-import { ProductsSolutions } from '@/components/sections/home/ProductsSolutions'
-import { PortfolioPreview } from '@/components/sections/home/PortfolioPreview'
-import { BiShowcase } from '@/components/sections/home/BiShowcase'
-import { ProcessSection } from '@/components/sections/home/ProcessSection'
-import { PricingPreview } from '@/components/sections/home/PricingPreview'
-import { TrustSection } from '@/components/sections/home/TrustSection'
-import { FaqSection } from '@/components/sections/home/FaqSection'
-import { CtaBand } from '@/components/ui/CtaBand'
+import { useI18n } from '@/i18n'
 import { siteConfig } from '@/lib/site'
+import { Hero } from '@/components/sections/home/Hero'
+import { CapabilitiesBand } from '@/components/sections/home/CapabilitiesBand'
+import { WhatWeDo } from '@/components/sections/home/WhatWeDo'
+import { FeaturedWork } from '@/components/sections/home/FeaturedWork'
+import { TechStack } from '@/components/sections/home/TechStack'
+import { ProcessTimeline } from '@/components/sections/home/ProcessTimeline'
+import { ProductShowcase } from '@/components/sections/home/ProductShowcase'
+import { WhyKavelis } from '@/components/sections/home/WhyKavelis'
+import { FounderMessage } from '@/components/sections/FounderMessage'
+import { ImpactFacts } from '@/components/sections/home/ImpactFacts'
+import { HomeFaq } from '@/components/sections/home/HomeFaq'
+import { HomeContact } from '@/components/sections/home/HomeContact'
 
 export default function Home() {
+  const { t } = useI18n()
+
   useSeo({
-    title: 'Custom Software, Automation & E-commerce',
-    description:
-      'Kavelis builds custom software, business automation, e-commerce experiences, and data-driven solutions that help businesses work more efficiently.',
+    title: t.home.seoTitle,
+    description: t.home.seoDescription,
     path: '/',
-    jsonLd: {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: siteConfig.name,
-      url: 'https://kavelis.llc/',
-      description: siteConfig.description,
-    },
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Kavelis Solutions',
+        url: 'https://kavelis.llc/',
+        description: siteConfig.description,
+        inLanguage: ['en', 'ar'],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: t.home.faq.items.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        })),
+      },
+    ],
   })
 
   return (
     <>
       <Hero />
-      <IntroStrip />
-      <ServicesOverview />
-      <ProductsSolutions />
-      <PortfolioPreview />
-      <BiShowcase />
-      <ProcessSection />
-      <PricingPreview />
-      <TrustSection />
-      <FaqSection />
-      <CtaBand
-        title="Have a project in mind?"
-        description="Tell us what you are trying to build or fix. We will respond with honest scoping questions, realistic options, and a clear next step — or tell you plainly if we are not the right fit."
-        primaryLabel="Discuss Your Project"
-        primaryTo="/contact"
-        secondaryLabel={`Email ${siteConfig.businessEmail}`}
-        secondaryHref={`mailto:${siteConfig.businessEmail}`}
-      />
+      <CapabilitiesBand />
+      <WhatWeDo />
+      <FeaturedWork />
+      <TechStack />
+      <ProcessTimeline />
+      <ProductShowcase />
+      <WhyKavelis />
+      <FounderMessage />
+      <ImpactFacts />
+      <HomeFaq />
+      <HomeContact />
     </>
   )
 }

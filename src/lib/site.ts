@@ -26,6 +26,11 @@ export const siteConfig = {
   /** Existing verified WhatsApp contact. */
   whatsappUrl: 'https://wa.me/923135002818',
   whatsappLabel: '+92 313 5002818',
+  /** Verified business phone numbers. `display` is rendered LTR in both languages. */
+  phones: [
+    { id: 'uae', tel: '+971507221495', display: '+971 50 722 1495' },
+    { id: 'ksa', tel: '+966559645341', display: '+966 55 964 5341' },
+  ],
   /** Optional POST endpoint for form submissions (Formspree) — inquiries and applications. */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
   startPath: '/contact',
@@ -40,15 +45,27 @@ export function absoluteUrl(path = '/'): string {
 export function buildContactPayload(
   data: ContactFormData,
   reference?: string,
+  gotcha?: string,
 ): ContactPayload {
   return {
     ...data,
     ...(reference ? { reference } : {}),
+    ...(gotcha ? { _gotcha: gotcha } : {}),
+    _subject: `Project enquiry — ${data.service || 'General'}`,
     submittedAt: new Date().toISOString(),
   }
 }
 
-export async function submitContactForm(data: ContactFormData, reference?: string): Promise<void> {
+/**
+ * Sends a project enquiry to the configured Formspree endpoint. Formspree
+ * performs server-side validation and spam filtering; `_gotcha` is its
+ * honeypot field and must stay empty for human submissions.
+ */
+export async function submitContactForm(
+  data: ContactFormData,
+  reference?: string,
+  gotcha?: string,
+): Promise<void> {
   const endpoint = siteConfig.contactEndpoint
   if (!endpoint) {
     throw new Error('CONTACT_ENDPOINT_MISSING')
@@ -56,8 +73,8 @@ export async function submitContactForm(data: ContactFormData, reference?: strin
 
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildContactPayload(data, reference)),
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(buildContactPayload(data, reference, gotcha)),
   })
 
   if (!response.ok) {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ArrowRight, ArrowUpRight, ExternalLink, Layers } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
@@ -13,6 +14,7 @@ import { PageHero } from '@/components/ui/PageHero'
 import { Container, Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { StudyVisual } from '@/components/ui/StudyVisual'
+import { Picture } from '@/components/ui/Picture'
 import { CtaBand } from '@/components/ui/CtaBand'
 import { cn } from '@/lib/utils'
 
@@ -26,7 +28,8 @@ function StudyBlock({ entry, index }: { entry: PortfolioEntry; index: number }) 
   const flipped = index % 2 === 1
 
   return (
-    <Reveal as="article" className="border-t border-navy-100 py-14 first:border-t-0 first:pt-0">
+    <div id={entry.id} className="scroll-mt-28 border-t border-navy-100 py-14 first:border-t-0 first:pt-0">
+    <Reveal as="article">
       <div
         className={cn(
           'grid items-start gap-10 lg:grid-cols-2 lg:gap-14',
@@ -44,10 +47,10 @@ function StudyBlock({ entry, index }: { entry: PortfolioEntry; index: number }) 
                   {entry.brandUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
                 </span>
               </div>
-              <img
+              <Picture
                 src={entry.image}
                 alt={entry.imageAlt ?? `${entry.brand} storefront screenshot`}
-                loading="lazy"
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="aspect-[16/10] w-full object-cover object-top"
               />
             </figure>
@@ -129,10 +132,20 @@ function StudyBlock({ entry, index }: { entry: PortfolioEntry; index: number }) 
         </div>
       </div>
     </Reveal>
+    </div>
   )
 }
 
+type Filter = 'all' | 'ecommerce' | 'analytics'
+
 export default function Portfolio() {
+  const [filter, setFilter] = useState<Filter>('all')
+  const filters: Array<{ id: Filter; label: string; count: number }> = [
+    { id: 'all', label: 'All work', count: portfolioEntries.length + caseStudies.length },
+    { id: 'ecommerce', label: 'E-commerce', count: portfolioEntries.length },
+    { id: 'analytics', label: 'Analytics & dashboards', count: caseStudies.length },
+  ]
+
   useSeo({
     title: 'E-commerce Portfolio',
     description:
@@ -185,6 +198,33 @@ export default function Portfolio() {
         </Container>
       </Section>
 
+      <div className="sticky top-16 z-raised border-b border-navy-100 bg-canvas/95 backdrop-blur">
+        <Container>
+          <div role="group" aria-label="Filter work by category" className="no-scrollbar flex gap-2 overflow-x-auto py-4">
+            {filters.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                aria-pressed={filter === item.id}
+                onClick={() => setFilter(item.id)}
+                className={cn(
+                  'inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
+                  filter === item.id
+                    ? 'border-navy-950 bg-navy-950 text-white'
+                    : 'border-navy-200 text-charcoal-600 hover:border-gold-400 hover:text-navy-950',
+                )}
+              >
+                {item.label}
+                <span className={cn('text-xs', filter === item.id ? 'text-gold-300' : 'text-charcoal-400')}>
+                  {item.count}
+                </span>
+              </button>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {filter !== 'analytics' ? (
       <Section>
         <Container>
           <Reveal className="mb-12 max-w-3xl">
@@ -202,7 +242,9 @@ export default function Portfolio() {
           ))}
         </Container>
       </Section>
+      ) : null}
 
+      {filter !== 'ecommerce' ? (
       <Section className="border-y border-navy-100 bg-white">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
@@ -269,6 +311,7 @@ export default function Portfolio() {
           </div>
         </Container>
       </Section>
+      ) : null}
 
       <CtaBand
         title="Planning an e-commerce project?"

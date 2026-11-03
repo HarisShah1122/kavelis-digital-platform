@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
 import kavelisLogo from '@/assets/kavelis-logo.jpeg'
 
@@ -10,6 +11,7 @@ interface LogoProps {
 }
 
 export function Logo({ className, onDark = false, linked = true }: LogoProps) {
+  const { t } = useI18n()
   const content = onDark ? (
     <span className={cn('inline-flex items-center gap-2.5', className)}>
       <img
@@ -39,7 +41,7 @@ export function Logo({ className, onDark = false, linked = true }: LogoProps) {
   }
 
   return (
-    <Link to="/" className="rounded-md" aria-label="Kavelis home">
+    <Link to="/" className="rounded-md" aria-label={t.nav.homeLabel}>
       {content}
     </Link>
   )

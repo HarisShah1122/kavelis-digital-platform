@@ -36,6 +36,11 @@
     @apply outline-none ring-2 ring-gold-600 ring-offset-2 ring-offset-canvas;
   }
 
+  /* <Picture> wraps <img>; let the img size against the real container. */
+  picture {
+    display: contents;
+  }
+
   ::selection {
     @apply bg-gold-100 text-navy-950;
   }
@@ -120,6 +125,218 @@
   .link-out {
     @apply font-semibold text-gold-700 underline decoration-gold-300 underline-offset-4 transition-colors hover:text-gold-800 hover:decoration-gold-600;
   }
+}
+
+/* ——— Arabic typography ———
+ * Arabic is cursive: letter-spacing breaks glyph joining, and the Latin display
+ * serif has no Arabic glyphs. Under :lang(ar) every heading uses IBM Plex Sans
+ * Arabic and tracking is reset. Latin fragments (brand names, numbers) inside
+ * Arabic text still fall back to Inter through the font stack.
+ */
+:root:lang(ar) body {
+  @apply font-arabic;
+}
+
+:root:lang(ar) h1,
+:root:lang(ar) h2,
+:root:lang(ar) .font-display {
+  @apply font-arabic font-bold;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+:root:lang(ar) * {
+  letter-spacing: 0 !important;
+}
+
+/* Arabic has no true italic; a synthetic slant reads as a rendering error. */
+:root:lang(ar) .italic {
+  font-style: normal;
+}
+
+/* English-only page bodies keep Latin typography inside the Arabic chrome. */
+:root:lang(ar) [lang='en'] {
+  font-family: Inter, system-ui, sans-serif;
+}
+
+:root:lang(ar) [lang='en'] h1,
+:root:lang(ar) [lang='en'] h2,
+:root:lang(ar) [lang='en'] .font-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+/* ——— Hero line-by-line reveal ——— */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.line-mask > span {
+  display: block;
+  animation: line-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--line, 0) * 110ms + 80ms);
+}
+
+@keyframes line-up {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ——— Image clip reveal (pairs with <Reveal>) ——— */
+.has-reveal .reveal .clip-reveal {
+  clip-path: inset(0 0 100% 0 round 1rem);
+  transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.has-reveal .reveal-visible .clip-reveal {
+  clip-path: inset(0 0 0 0 round 1rem);
+}
+
+/* ——— Infinite marquee ———
+ * The track holds two identical copies and moves by exactly half its width,
+ * so the loop is seamless. The track is always laid out LTR; in Arabic the
+ * animation runs the other way so content flows with the reading direction.
+ */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee-track[data-reverse='true'],
+:root[dir='rtl'] .marquee-track {
+  animation-direction: reverse;
+}
+
+:root[dir='rtl'] .marquee-track[data-reverse='true'] {
+  animation-direction: normal;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ——— Floating accent (hero) ——— */
+.float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.scroll-cue {
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* ——— Menus and page transitions ——— */
+.menu-pop {
+  animation: menu-pop 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: top center;
+}
+
+@keyframes menu-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.45s ease-out both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Horizontal carousel: hide the scrollbar but keep native scrolling. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animated underline for text links. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[dir='rtl'] .link-underline {
+  background-position: 100% 100%;
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
 }
 
 /* Scroll reveal — only applied when JavaScript is running (see main.tsx). */
