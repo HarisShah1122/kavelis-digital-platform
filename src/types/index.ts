@@ -128,6 +128,8 @@ export interface ContactPayload extends ContactFormData {
   _gotcha?: string
   /** Inbox subject line. */
   _subject?: string
+  /** Language the visitor used — picks the confirmation email language. */
+  lang?: 'en' | 'ar'
   submittedAt: string
 }
 
@@ -153,5 +155,7 @@ export interface ApplicationPayload extends ApplicationFormData {
   _subject?: string
   /** Marks the source form in the shared inbox. */
   form: 'application'
+  /** Language the visitor used — picks the confirmation email language. */
+  lang?: 'en' | 'ar'
   submittedAt: string
 }

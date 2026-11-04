@@ -5,6 +5,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Email backend (Nodemailer). Functions declare their own /api/* paths, which
+# take precedence over the SPA fallback below. The signature PNGs ship with
+# the functions so they can be attached inline.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["public/email/*.png"]
+
 # SPA fallback so deep links resolve to the client router.
 [[redirects]]
   from = "/*"

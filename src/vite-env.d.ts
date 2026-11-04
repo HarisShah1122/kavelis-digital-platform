@@ -10,6 +10,8 @@ interface ImportMetaEnv {
    * When unset, the contact form shows an honest "not connected" state.
    */
   readonly VITE_CONTACT_ENDPOINT?: string
+  /** POST endpoint for job applications (e.g. /api/careers). Falls back to VITE_CONTACT_ENDPOINT. */
+  readonly VITE_APPLICATION_ENDPOINT?: string
 }
 
 interface ImportMeta {

@@ -48,7 +48,7 @@ interface EnquiryFormProps {
  * so the shared inbox reads consistently whichever language the visitor used.
  */
 export function EnquiryForm({ variant = 'compact', reference, onClearReference, onDark = false }: EnquiryFormProps) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const f = t.form
   const [formData, setFormData] = useState<ContactFormData>(emptyForm)
   const [errors, setErrors] = useState<ContactFormErrors>({})
@@ -102,7 +102,7 @@ export function EnquiryForm({ variant = 'compact', reference, onClearReference, 
     }
     setStatus('submitting')
     try {
-      await submitContactForm(formData, reference?.inbox, gotchaRef.current?.value)
+      await submitContactForm(formData, reference?.inbox, gotchaRef.current?.value, lang)
       setStatus('success')
       setFormData(emptyForm)
       setErrors({})

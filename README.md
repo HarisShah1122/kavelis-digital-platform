@@ -103,6 +103,27 @@ To enable delivery, deploy any endpoint that accepts:
 
 Options include a transactional-email service (e.g. Resend, Postmark, AWS SES) behind a serverless function, or a form provider (e.g. Formspree) — wire the chosen provider to `VITE_CONTACT_ENDPOINT`. The previous repository contained an unused Express/Nodemailer prototype with unrelated default credentials; it has been removed intentionally.
 
+## Email backend (Nodemailer)
+
+Netlify Functions in `netlify/` send form submissions over SMTP:
+
+| Endpoint | Sends |
+|----------|-------|
+| `POST /api/contact` | Notification to `CONTACT_INBOX` + confirmation to the client (`netlify/emails/client.ts`, info signature) |
+| `POST /api/careers` | Notification to `CAREERS_INBOX` + confirmation to the applicant (`netlify/emails/careers.ts`, careers signature) |
+
+Confirmations follow the visitor's site language (English or Arabic). Notifications are always in English, and replying to one reaches the person who submitted the form.
+
+**To switch on:**
+
+1. In Netlify → Site configuration → Environment variables, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`, and `CAREERS_FROM` (see `.env.example`). Never prefix these with `VITE_`.
+2. Set `VITE_CONTACT_ENDPOINT=/api/contact` and `VITE_APPLICATION_ENDPOINT=/api/careers`, then redeploy. Until then the forms keep using the existing Formspree endpoint.
+3. Make sure the sending domain has SPF and DKIM records for your SMTP provider, or confirmations may land in spam.
+
+**Preview templates** without sending anything: `npm run email:preview`, then open `email-previews/*.html`.
+
+**Signatures:** `public/email/kavelis-signature-*.png` are rendered from the source SVGs in `src/public/svg/`. Emails use PNG because Gmail and Outlook do not display SVG. Regenerate the PNGs if a signature changes.
+
 ## Project structure
 
 ```

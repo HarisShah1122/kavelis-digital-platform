@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { AlertCircle, CheckCircle2, Info, Mail, Send } from 'lucide-react'
 import { jobListings } from '@/data/careers'
+import { useI18n } from '@/i18n'
 import { useCareers } from '@/i18n/data/careers'
 import { usePageCopy } from '@/i18n/localize'
 import { careersCopy } from '@/i18n/pages/careers'
@@ -42,6 +43,7 @@ interface ApplicationFormProps {
 export function ApplicationForm({ role, onRoleChange }: ApplicationFormProps) {
   const copy = usePageCopy(careersCopy).form
   const { jobs } = useCareers()
+  const { lang } = useI18n()
   const [fields, setFields] = useState<ApplicationFormData>({ name: '', email: '', role, message: '', ...emptyLinks })
   const [errors, setErrors] = useState<ApplicationFormErrors>({})
   const [status, setStatus] = useState<ApplicationStatus>('idle')
@@ -98,13 +100,13 @@ export function ApplicationForm({ role, onRoleChange }: ApplicationFormProps) {
       reset()
       return
     }
-    if (!siteConfig.contactEndpoint) {
+    if (!siteConfig.applicationEndpoint) {
       setStatus('unconfigured')
       return
     }
     setStatus('submitting')
     try {
-      await submitApplicationForm(data, gotcha)
+      await submitApplicationForm(data, gotcha, lang)
       setStatus('success')
       reset()
     } catch {

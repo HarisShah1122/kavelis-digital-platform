@@ -10,16 +10,19 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "prerender": "node scripts/prerender.mjs",
-    "postbuild": "node scripts/prerender.mjs"
+    "postbuild": "node scripts/prerender.mjs",
+    "email:preview": "node scripts/preview-emails.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.548.0",
+    "nodemailer": "^6.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
+    "@types/nodemailer": "^6.4.24",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.0",

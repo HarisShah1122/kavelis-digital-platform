@@ -31,8 +31,13 @@ export const siteConfig = {
     { id: 'uae', tel: '+971507221495', display: '+971 50 722 1495' },
     { id: 'ksa', tel: '+966559645341', display: '+966 55 964 5341' },
   ],
-  /** Optional POST endpoint for form submissions (Formspree) — inquiries and applications. */
+  /**
+   * POST endpoint for project enquiries: Formspree, or "/api/contact" for the
+   * Nodemailer backend in netlify/functions once SMTP is configured.
+   */
   contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
+  /** POST endpoint for job applications ("/api/careers" with the Nodemailer backend). Falls back to the contact endpoint. */
+  applicationEndpoint: import.meta.env.VITE_APPLICATION_ENDPOINT ?? import.meta.env.VITE_CONTACT_ENDPOINT ?? '',
   startPath: '/contact',
 } as const
 
@@ -46,25 +51,29 @@ export function buildContactPayload(
   data: ContactFormData,
   reference?: string,
   gotcha?: string,
+  lang: 'en' | 'ar' = 'en',
 ): ContactPayload {
   return {
     ...data,
     ...(reference ? { reference } : {}),
     ...(gotcha ? { _gotcha: gotcha } : {}),
     _subject: `Project enquiry — ${data.service || 'General'}`,
+    lang,
     submittedAt: new Date().toISOString(),
   }
 }
 
 /**
- * Sends a project enquiry to the configured Formspree endpoint. Formspree
- * performs server-side validation and spam filtering; `_gotcha` is its
- * honeypot field and must stay empty for human submissions.
+ * Sends a project enquiry to the configured endpoint (Formspree or the
+ * Nodemailer backend). Both validate server-side; `_gotcha` is the honeypot
+ * and must stay empty for human submissions. `lang` picks the language of
+ * the confirmation email.
  */
 export async function submitContactForm(
   data: ContactFormData,
   reference?: string,
   gotcha?: string,
+  lang: 'en' | 'ar' = 'en',
 ): Promise<void> {
   const endpoint = siteConfig.contactEndpoint
   if (!endpoint) {
@@ -74,7 +83,7 @@ export async function submitContactForm(
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(buildContactPayload(data, reference, gotcha)),
+    body: JSON.stringify(buildContactPayload(data, reference, gotcha, lang)),
   })
 
   if (!response.ok) {
@@ -83,15 +92,17 @@ export async function submitContactForm(
 }
 
 /**
- * Sends a job application to the shared Formspree endpoint.
- * The payload is tagged with `form: 'application'` and a role-based subject
- * so applications can be told apart from project inquiries in one inbox.
+ * Sends a job application to the application endpoint (the careers backend,
+ * or the shared Formspree form). The payload is tagged with
+ * `form: 'application'` and a role-based subject so applications can be told
+ * apart from project inquiries in a shared inbox.
  */
 export async function submitApplicationForm(
   data: ApplicationFormData,
   gotcha?: string,
+  lang: 'en' | 'ar' = 'en',
 ): Promise<void> {
-  const endpoint = siteConfig.contactEndpoint
+  const endpoint = siteConfig.applicationEndpoint
   if (!endpoint) {
     throw new Error('CONTACT_ENDPOINT_MISSING')
   }
@@ -101,12 +112,13 @@ export async function submitApplicationForm(
     ...(gotcha ? { _gotcha: gotcha } : {}),
     _subject: data.role ? `Application — ${data.role}` : 'General application — Kavelis',
     form: 'application',
+    lang,
     submittedAt: new Date().toISOString(),
   }
 
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify(payload),
   })
 
